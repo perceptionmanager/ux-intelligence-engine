@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Design Intelligence Engine // Perception Manager</title>
+    
+    <!-- Google Fonts matching base.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      :root {
+        --bg: #14171F;
+        --bg-panel: #1B1F29;
+        --bg-card: #20242F;
+        --line: rgba(255, 255, 255, .10);
+        --ink: #F3F1EC;
+        --ink-dim: #A6ADBB;
+        --ink-faint: #7A8290;
+        --coral: #FF6A4C;
+        --cyan: #45E0FF;
+        --green: #4ADE80;
+        --amber: #FBBF24;
+        --grad: linear-gradient(100deg, #FF6A4C 0%, #FF9C5B 35%, #45E0FF 100%);
+        --nav-height: 96px;
+        --wrap-max: 1160px;
+        --wrap-pad: 48px;
+      }
+
+      @media (max-width: 860px) {
+        :root { --nav-height: 80px; --wrap-pad: 22px; }
+      }
+
+      * { box-sizing: border-box }
+      html { background: var(--bg) }
+      body { margin: 0; background: var(--bg); font-family: 'IBM Plex Sans', sans-serif; color: var(--ink); overflow-x: hidden; }
+
+      a { color: inherit; text-decoration: none }
+      a, button { -webkit-tap-highlight-color: transparent; outline: none; }
+      a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+      h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 400; margin: 0 }
+      .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-pad); }
+
+      header {
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        background: rgba(20, 23, 31, 0.85);
+        backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 40;
+      }
+
+      .nav-content { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+      
+      .site-name { 
+        font-family: 'Fraunces', serif; font-size: 20px; display: flex; align-items: center; gap: 12px; 
+      }
+
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+        border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-dim);
+        background: rgba(255, 255, 255, .03);
+      }
+      .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 12px 2px #4ADE80; }
+
+      .source-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--ink-dim);
+        background: rgba(255, 255, 255, .02);
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+      }
+      .source-pill:hover {
+        border-color: var(--green);
+        color: var(--ink);
+        background: rgba(74, 222, 128, 0.05);
+      }
+      .source-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 8px 1px var(--green);
+      }
+
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        padding: 14px 24px; border-radius: 12px; font-weight: 600; font-size: 14px;
+        transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        cursor: pointer; border: none; font-family: 'IBM Plex Sans', sans-serif;
+      }
+      .btn-ghost { background: var(--bg-panel); color: var(--ink); border: 1px solid var(--line) }
+      .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px) }
+
+      .btn-gradient {
+        background: var(--grad);
+        color: #14171F;
+        border-radius: 999px;
+        font-weight: 600;
+        padding: 10px 20px;
+        font-size: 13px;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+      .btn-gradient:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .card { 
+        background: var(--bg-card); border: 1px solid var(--line); border-radius: 18px; padding: 32px; 
+        transition: border-color .3s ease;
+      }
+      .card:hover { border-color: rgba(69, 224, 255, 0.3); }
+
+      .panel {
+        background: var(--bg-panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+      }
+
+      .tag {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+        letter-spacing: 0.05em; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03); color: var(--cyan);
+      }
+
+      .hero-section {
+        padding: 50px 0 30px 0; border-bottom: 1px solid var(--line);
+        background: radial-gradient(circle at 50% -20%, rgba(255, 106, 76, 0.12) 0%, rgba(69, 224, 255, 0.05) 40%, transparent 70%);
+      }
+
+      .filter-container { margin: 32px 0; }
+      .filter-label {
+        font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);
+        text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 12px;
+      }
+      .filter-buttons { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .filter-btn {
+        background: var(--bg-panel); border: 1px solid var(--line); color: var(--ink-dim);
+        padding: 9px 18px; border-radius: 999px; font-size: 13px; cursor: pointer; transition: all 0.2s ease;
+      }
+      .filter-btn.active {
+        background: rgba(69, 224, 255, 0.1); border-color: var(--cyan); color: var(--cyan);
+        box-shadow: 0 0 12px rgba(69, 224, 255, 0.15);
+      }
+      .filter-btn:hover { border-color: var(--cyan); color: var(--ink); }
+
+      .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      @media (max-width: 768px) { .grid-split { grid-template-columns: 1fr; } }
+
+      .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+      .collapsible-content.open { max-height: 1200px; transition: max-height 0.6s ease-in; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="wrap nav-content">
+            <div class="site-name">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--line); border-radius: 8px; padding: 4px; background: var(--bg-panel);">
+                    <path d="M5 9L9 9L9 5" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 3L10 10" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19 9L15 9L15 5" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 3L14 10" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5 15L9 15L9 19" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 21L10 14" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19 15L15 15L15 19" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 21L14 14" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                UX Design Intelligence Engine
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+                    <div class="pill hidden sm:inline-flex" style="padding: 4px 12px; font-size: 12px;">
+                        <span class="dot"></span>
+                        <span>Content Pipeline Active • 14 Sources</span>
+                    </div>
+                    <span id="lastUpdated" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint);">Last updated: Today, 8:30 AM</span>
+                </div>
+                <button onclick="runIngestion(this)" class="btn btn-ghost" style="padding: 10px 18px; font-size: 13px;">
+                    <i class="fa-solid fa-rotate"></i> Update
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="wrap">
+            <h1 style="font-size: clamp(32px, 4vw, 46px); line-height: 1.15; margin-bottom: 16px;">
+                Balanced Views from Across the Design Ecosystem.
+            </h1>
+            <p style="color: var(--ink-dim); font-size: 16px; max-width: 700px; line-height: 1.6; margin: 0;">
+                Clear, practical insights from across the industry—cutting through the hype to show what's actually working for product teams.
+            </p>
+        </div>
+    </section>
+
+    <main class="wrap" style="padding-top: 30px; padding-bottom: 80px;">
+        
+        <div class="filter-container">
+            <span class="filter-label">Filter Stream (Multi-Select):</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all" onclick="toggleFilter('all')">All Briefings</button>
+                <button class="filter-btn" data-category="discovery" onclick="toggleFilter('discovery')">Product Discovery</button>
+                <button class="filter-btn" data-category="leadership" onclick="toggleFilter('leadership')">Design Leadership</button>
+                <button class="filter-btn" data-category="systems" onclick="toggleFilter('systems')">Design Systems</button>
+                <button class="filter-btn" data-category="tooling" onclick="toggleFilter('tooling')">Tooling & AI</button>
+                <button class="filter-btn" data-category="operations" onclick="toggleFilter('operations')">Ops & Strategy</button>
+            </div>
+        </div>
+
+        <div id="feedContainer" style="display: flex; flex-direction: column; gap: 24px;">
+
+            <!-- 1. Product Discovery -->
+            <article class="card briefing-item" data-category="discovery">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="tag">Product Discovery</span>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);">
+                        <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> 1 hour ago • 4 Sources Analyzed
+                    </div>
+                </div>
+
+                <h2 style="font-size: 26px; line-height: 1.25; margin-bottom: 12px; color: var(--ink);">
+                    User Research vs. Tight Deadlines
+                </h2>
+                <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    How to keep talking to users when leadership wants features shipped yesterday.
+                </p>
+
+                <div style="background: rgba(251, 191, 36, 0.04); border-left: 3px solid var(--amber); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 22px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; font-weight: 600;">
+                        <i class="fa-regular fa-lightbulb"></i> Real-Life Enterprise Scenario
+                    </div>
+                    <p style="font-size: 14px; color: var(--ink); line-height: 1.5; margin: 0;">
+                        Your team wants to spend two weeks interviewing customers before touching code. Meanwhile, executives need a working demo for next month's board meeting and view research as a slowdown.
+                    </p>
+                </div>
+
+                <div class="grid-split" style="margin-bottom: 24px;">
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-bullhorn"></i> The Textbook Advice
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Never skip customer interviews, or you risk building the wrong thing entirely and wasting weeks of engineering time.
+                        </p>
+                    </div>
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> The Hard Reality
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            When hard launch dates loom, ideal research plans fall apart because waiting around for formal interviews isn't an option.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="detail-disc" class="collapsible-content">
+                    <div style="padding-top: 24px; border-top: 1px solid var(--line); margin-bottom: 20px; display: flex; flex-direction: column; gap: 18px;">
+                        <div>
+                            <h4 style="font-size: 16px; color: #FFFFFF; margin-bottom: 6px; font-family: 'Fraunces', serif; letter-spacing: 0.02em;">CONTEXT & BACKGROUND</h4>
+                            <p style="font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0;">
+                                The clash between ongoing user discovery and fixed quarterly deadlines is one of the most common friction points in product design. When planning is locked in advance, research often gets cut.
+                            </p>
+                        </div>
+                        <div style="background: rgba(74, 222, 128, 0.04); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 10px 10px 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-regular fa-square-check"></i> Practical Steps to Take
+                            </div>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Keep it bite-sized:</strong> Do quick 30-minute weekly chats with users instead of scheduling massive, upfront research projects.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Use internal shortcuts:</strong> When customers aren't immediately accessible, lean on support tickets, sales notes, and internal experts for fast answers.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Reframe the roadmap:</strong> Treat upcoming features as ideas to test rather than fixed promises, which helps build trust with leadership.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap;">
+                        <span>Sources (4):</span>
+                        <a href="https://www.lennysnewsletter.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Lenny's <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> NN/g <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://uxdesign.cc/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> UX Collective <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.mindtheproduct.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Mind the Product <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleDetails('detail-disc', this)" class="btn btn-gradient" style="padding: 10px 20px; font-size: 13px;">
+                        <span>View Full Synthesis</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 2. Design Leadership -->
+            <article class="card briefing-item" data-category="leadership">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="tag">Design Leadership</span>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);">
+                        <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> 4 hours ago • 4 Sources Analyzed
+                    </div>
+                </div>
+
+                <h2 style="font-size: 26px; line-height: 1.25; margin-bottom: 12px; color: var(--ink);">
+                    Avoiding Design Bureaucracy
+                </h2>
+                <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    How to keep standards high across growing teams without creating painful approval bottlenecks.
+                </p>
+
+                <div style="background: rgba(251, 191, 36, 0.04); border-left: 3px solid var(--amber); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 22px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; font-weight: 600;">
+                        <i class="fa-regular fa-lightbulb"></i> Real-Life Enterprise Scenario
+                    </div>
+                    <p style="font-size: 14px; color: var(--ink); line-height: 1.5; margin: 0;">
+                        As your design team grows past 100 people, leadership introduces strict design review boards to keep things consistent. Suddenly, simple updates take weeks to get approved and teams start working around the system.
+                    </p>
+                </div>
+
+                <div class="grid-split" style="margin-bottom: 24px;">
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-building-shield"></i> The Control Approach
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Strict gatekeeping is necessary to prevent messy UIs, broken accessibility, and scattered brand guidelines.
+                        </p>
+                    </div>
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> The Team Impact
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Heavy approval gates kill team momentum and turn design ops into an internal roadblock rather than a helpful partner.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="detail-lead" class="collapsible-content">
+                    <div style="padding-top: 24px; border-top: 1px solid var(--line); margin-bottom: 20px; display: flex; flex-direction: column; gap: 18px;">
+                        <div>
+                            <h4 style="font-size: 16px; color: #FFFFFF; margin-bottom: 6px; font-family: 'Fraunces', serif; letter-spacing: 0.02em;">CONTEXT & BACKGROUND</h4>
+                            <p style="font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0;">
+                                When quality slips, leaders often react by adding more rules and checkpoints. But policing teams only breeds frustration and creates an us-versus-them dynamic.
+                            </p>
+                        </div>
+                        <div style="background: rgba(74, 222, 128, 0.04); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 10px 10px 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-regular fa-square-check"></i> Practical Steps to Take
+                            </div>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Be an enabler, not a gatekeeper:</strong> Replace manual review meetings with clear documentation and automated checks in Figma.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Open up contributions:</strong> Let product designers help build and update core components so they feel ownership.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Measure what matters:</strong> Track how fast teams ship good work rather than counting how many reviews you blocked.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap;">
+                        <span>Sources (4):</span>
+                        <a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Smashing Mag <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> NN/g <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://rosenfeldmedia.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Rosenfeld <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://alistapart.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> A List Apart <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleDetails('detail-lead', this)" class="btn btn-gradient" style="padding: 10px 20px; font-size: 13px;">
+                        <span>View Full Synthesis</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 3. Design Systems -->
+            <article class="card briefing-item" data-category="systems">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="tag">Design Systems</span>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);">
+                        <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> 5 hours ago • 4 Sources Analyzed
+                    </div>
+                </div>
+
+                <h2 style="font-size: 26px; line-height: 1.25; margin-bottom: 12px; color: var(--ink);">
+                    Making Multi-Brand Design Tokens Work
+                </h2>
+                <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    How to balance centralized design rules with the real-world speed that product squads need.
+                </p>
+
+                <div style="background: rgba(251, 191, 36, 0.04); border-left: 3px solid var(--amber); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 22px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; font-weight: 600;">
+                        <i class="fa-regular fa-lightbulb"></i> Real-Life Enterprise Scenario
+                    </div>
+                    <p style="font-size: 14px; color: var(--ink); line-height: 1.5; margin: 0;">
+                        A squad is rushing to launch a regional checkout page in two weeks. Because the main design token system is too rigid to customize, engineers just hardcode color values straight into the CSS to hit their deadline.
+                    </p>
+                </div>
+
+                <div class="grid-split" style="margin-bottom: 24px;">
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-building-shield"></i> The Centralized Goal
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Enforcing a single, top-down rulebook keeps brand consistency tight and makes code audits clean.
+                        </p>
+                    </div>
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> The Sprint Reality
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            When teams are under pressure, they will bypass rigid systems. Without flexible override options, rules get ignored at the git commit stage.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="detail-sys" class="collapsible-content">
+                    <div style="padding-top: 24px; border-top: 1px solid var(--line); margin-bottom: 20px; display: flex; flex-direction: column; gap: 18px;">
+                        <div>
+                            <h4 style="font-size: 16px; color: #FFFFFF; margin-bottom: 6px; font-family: 'Fraunces', serif; letter-spacing: 0.02em;">CONTEXT & BACKGROUND</h4>
+                            <p style="font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0;">
+                                Systems fail when they ignore how software gets built. If a token setup makes normal shipping harder, workarounds become permanent technical debt.
+                            </p>
+                        </div>
+                        <div style="background: rgba(74, 222, 128, 0.04); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 10px 10px 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-regular fa-square-check"></i> Practical Steps to Take
+                            </div>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Organize into three tiers:</strong> Keep raw base values separate from semantic intent and component-specific rules.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Build safe escape hatches:</strong> Provide approved ways to tweak colors or spacing for regional brands so people don't resort to hardcoding.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Automate checks:</strong> Use code linters to catch messy overrides before code ever gets merged.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap;">
+                        <span>Sources (4):</span>
+                        <a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> NN/g <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://designsystemsrepo.com" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> DS Repo <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.lennysnewsletter.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Lenny's <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://news.ycombinator.com" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Hacker News <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleDetails('detail-sys', this)" class="btn btn-gradient" style="padding: 10px 20px; font-size: 13px;">
+                        <span>View Full Synthesis</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 4. Tooling & AI -->
+            <article class="card briefing-item" data-category="tooling">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="tag">Tooling & AI</span>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);">
+                        <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> 6 hours ago • 4 Sources Analyzed
+                    </div>
+                </div>
+
+                <h2 style="font-size: 26px; line-height: 1.25; margin-bottom: 12px; color: var(--ink);">
+                    AI Code Generation in Practice
+                </h2>
+                <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    What happens when AI turns Figma designs straight into React code, and why engineers usually rewrite it.
+                </p>
+
+                <div style="background: rgba(251, 191, 36, 0.04); border-left: 3px solid var(--amber); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 22px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; font-weight: 600;">
+                        <i class="fa-regular fa-lightbulb"></i> Real-Life Enterprise Scenario
+                    </div>
+                    <p style="font-size: 14px; color: var(--ink); line-height: 1.5; margin: 0;">
+                        Designers use AI tools to generate clean React code directly from wireframes. But front-end developers find the code lacks proper accessibility labels and uses messy positioning, forcing them to rebuild it from scratch.
+                    </p>
+                </div>
+
+                <div class="grid-split" style="margin-bottom: 24px;">
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-bolt"></i> The Marketing Pitch
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            AI code translation promises to wipe out handoff friction and turn static design files into ready-to-ship code instantly.
+                        </p>
+                    </div>
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> The Dev Reality
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Without proper semantic structure and design system mapping, raw AI code creates immediate tech debt and accessibility failures.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="detail-tool" class="collapsible-content">
+                    <div style="padding-top: 24px; border-top: 1px solid var(--line); margin-bottom: 20px; display: flex; flex-direction: column; gap: 18px;">
+                        <div>
+                            <h4 style="font-size: 16px; color: #FFFFFF; margin-bottom: 6px; font-family: 'Fraunces', serif; letter-spacing: 0.02em;">CONTEXT & BACKGROUND</h4>
+                            <p style="font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0;">
+                                AI tools are great at matching visual layouts, but they don't automatically understand clean HTML structure, screen reader requirements, or complex state management.
+                            </p>
+                        </div>
+                        <div style="background: rgba(74, 222, 128, 0.04); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 10px 10px 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-regular fa-square-check"></i> Practical Steps to Take
+                            </div>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Use AI for prototyping:</strong> Rely on AI code gen for quick interactive mockups and user testing rather than final production code.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Set clear component rules:</strong> Define how Figma components map to React props before letting tools output code.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Check accessibility early:</strong> Run automated checks on AI output before pushing anything into enterprise repos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap;">
+                        <span>Sources (4):</span>
+                        <a href="https://www.figma.com/blog/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Figma Blog <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://github.com/trending" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://news.ycombinator.com" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Hacker News <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.theverge.com/tech" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> The Verge <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleDetails('detail-tool', this)" class="btn btn-gradient" style="padding: 10px 20px; font-size: 13px;">
+                        <span>View Full Synthesis</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 5. Ops & Strategy -->
+            <article class="card briefing-item" data-category="operations">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="tag">Ops & Strategy</span>
+                    </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-faint);">
+                        <i class="fa-regular fa-clock" style="margin-right: 4px;"></i> 1 day ago • 4 Sources Analyzed
+                    </div>
+                </div>
+
+                <h2 style="font-size: 26px; line-height: 1.25; margin-bottom: 12px; color: var(--ink);">
+                    Proving UX ROI to Leadership
+                </h2>
+                <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    Moving beyond subjective satisfaction scores to show real cost savings and efficiency gains.
+                </p>
+
+                <div style="background: rgba(251, 191, 36, 0.04); border-left: 3px solid var(--amber); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 22px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; font-weight: 600;">
+                        <i class="fa-regular fa-lightbulb"></i> Real-Life Enterprise Scenario
+                    </div>
+                    <p style="font-size: 14px; color: var(--ink); line-height: 1.5; margin: 0;">
+                        Your team redesigns a complex internal tool to cut down data entry errors. When finance asks for proof that the redesign was worth it, standard customer satisfaction scores don't convince them—they want to see numbers.
+                    </p>
+                </div>
+
+                <div class="grid-split" style="margin-bottom: 24px;">
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-chart-line"></i> The Ideal Approach
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            Link design changes directly to operational efficiency, fewer user mistakes, and faster task completion speeds.
+                        </p>
+                    </div>
+                    <div class="panel">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> The Tracking Hurdle
+                        </div>
+                        <p style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin: 0;">
+                            It's tough to separate what portion of an efficiency gain came from good design versus backend database upgrades.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="detail-ops" class="collapsible-content">
+                    <div style="padding-top: 24px; border-top: 1px solid var(--line); margin-bottom: 20px; display: flex; flex-direction: column; gap: 18px;">
+                        <div>
+                            <h4 style="font-size: 16px; color: #FFFFFF; margin-bottom: 6px; font-family: 'Fraunces', serif; letter-spacing: 0.02em;">CONTEXT & BACKGROUND</h4>
+                            <p style="font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0;">
+                                To win over finance and leadership, UX teams need to speak the language of business. Vague satisfaction scores often get dismissed as fluff when evaluating internal enterprise software.
+                            </p>
+                        </div>
+                        <div style="background: rgba(74, 222, 128, 0.04); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 10px 10px 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-regular fa-square-check"></i> Practical Steps to Take
+                            </div>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-dim); line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Benchmark task times:</strong> Measure how long common workflows take before you touch the design.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Count the errors:</strong> Track drops in data corrections, validation errors, and support tickets after launch.</li>
+                                <li style="color: var(--ink);"><strong style="color: #FFFFFF; font-weight: 500;">Partner with finance:</strong> Translate time saved into labor cost reductions to show tangible ROI.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap;">
+                        <span>Sources (4):</span>
+                        <a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> NN/g <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.bloomberg.com/technology" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> Bloomberg Tech <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://hbr.org/" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> HBR <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                        <a href="https://www.mckinsey.com/capabilities/mckinsey-design" target="_blank" rel="noopener noreferrer" class="source-pill">
+                            <span class="source-dot"></span> McKinsey Design <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleDetails('detail-ops', this)" class="btn btn-gradient" style="padding: 10px 20px; font-size: 13px;">
+                        <span>View Full Synthesis</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer style="border-top: 1px solid var(--line); padding: 32px 0; background: var(--bg-panel);">
+        <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 13px; color: var(--ink-faint);">
+            <div>© Alex Grinyayev · 2026[cite: 7]</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px;">Built with Gemini, source on GitHub, deployed on Vercel[cite: 7]</div>
+        </div>
+    </footer>
+
+    <!-- Multi-Select Filtering & Update Logic -->
+    <script>
+        let selectedCategories = ['all'];
+
+        function toggleFilter(category) {
+            const allBtn = document.querySelector('.filter-btn[data-category="all"]');
+            
+            if (category === 'all') {
+                selectedCategories = ['all'];
+            } else {
+                selectedCategories = selectedCategories.filter(c => c !== 'all');
+                
+                if (selectedCategories.includes(category)) {
+                    selectedCategories = selectedCategories.filter(c => c !== category);
+                } else {
+                    selectedCategories.push(category);
+                }
+                
+                if (selectedCategories.length === 0) {
+                    selectedCategories = ['all'];
+                }
+            }
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const cat = btn.dataset.category;
+                if (selectedCategories.includes(cat)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            document.querySelectorAll('.briefing-item').forEach(card => {
+                if (selectedCategories.includes('all')) {
+                    card.style.display = 'block';
+                } else {
+                    const cardCat = card.dataset.category;
+                    if (selectedCategories.includes(cardCat)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function toggleDetails(id, button) {
+            const content = document.getElementById(id);
+            const icon = button.querySelector('i');
+            const span = button.querySelector('span');
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                span.textContent = 'View Full Synthesis';
+                icon.className = 'fa-solid fa-chevron-down text-xs';
+            } else {
+                content.classList.add('open');
+                span.textContent = 'Hide Synthesis';
+                icon.className = 'fa-solid fa-chevron-up text-xs';
+            }
+        }
+
+        function runIngestion(btn) {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking sources...';
+            btn.style.borderColor = 'var(--cyan)';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-check" style="color: #4ADE80;"></i> Updated';
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('lastUpdated').textContent = `Last updated: Today, ${timeString}`;
+                setTimeout(() => { btn.innerHTML = originalHTML; btn.style.borderColor = 'var(--line)'; }, 2200);
+            }, 1600);
+        }
+    </script>
+</body>
+</html>
