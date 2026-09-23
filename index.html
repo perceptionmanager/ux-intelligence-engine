@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ymdijxhww9");
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UX Design Intelligence Engine // Perception Manager</title>
@@ -32,13 +25,12 @@
         --green: #4ADE80;
         --amber: #FBBF24;
         --grad: linear-gradient(100deg, #FF6A4C 0%, #FF9C5B 35%, #45E0FF 100%);
-        --nav-height: 96px;
         --wrap-max: 1160px;
         --wrap-pad: 48px;
       }
 
       @media (max-width: 860px) {
-        :root { --nav-height: 80px; --wrap-pad: 22px; }
+        :root { --wrap-pad: 22px; }
       }
 
       * { box-sizing: border-box }
@@ -53,9 +45,7 @@
       .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-pad); }
 
       header {
-        height: var(--nav-height);
-        display: flex;
-        align-items: center;
+        padding: 20px 0;
         border-bottom: 1px solid var(--line);
         background: rgba(20, 23, 31, 0.85);
         backdrop-filter: blur(12px);
@@ -64,10 +54,24 @@
         z-index: 40;
       }
 
-      .nav-content { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+      .nav-content { 
+        width: 100%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 16px;
+        flex-wrap: wrap;
+      }
       
       .site-name { 
         font-family: 'Fraunces', serif; font-size: 20px; display: flex; align-items: center; gap: 12px; 
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
 
       .pill {
@@ -168,6 +172,12 @@
 
       .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
       .collapsible-content.open { max-height: 1200px; transition: max-height 0.6s ease-in; }
+
+      @media (max-width: 768px) {
+        .nav-content { flex-direction: column; align-items: flex-start; gap: 14px; }
+        .nav-right { width: 100%; justify-content: space-between; }
+        .site-name { font-size: 18px; }
+      }
     </style>
 </head>
 <body>
@@ -175,7 +185,7 @@
     <header>
         <div class="wrap nav-content">
             <div class="site-name">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--line); border-radius: 8px; padding: 4px; background: var(--bg-panel);">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--line); border-radius: 8px; padding: 4px; background: var(--bg-panel); flex-shrink: 0;">
                     <path d="M5 9L9 9L9 5" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M3 3L10 10" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
                     <path d="M19 9L15 9L15 5" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -185,11 +195,11 @@
                     <path d="M19 15L15 15L15 19" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M21 21L14 14" stroke="#FF6A4C" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                UX Design Intelligence Engine
+                <span>UX Design Intelligence Engine</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
-                    <div class="pill hidden sm:inline-flex" style="padding: 4px 12px; font-size: 12px;">
+            <div class="nav-right">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                    <div class="pill" style="padding: 4px 12px; font-size: 12px;">
                         <span class="dot"></span>
                         <span>Content Pipeline Active • 14 Sources</span>
                     </div>
