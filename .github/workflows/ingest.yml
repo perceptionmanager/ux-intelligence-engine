@@ -1,0 +1,38 @@
+name: Weekly briefing
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'   # Mondays 12:00 UTC (7:00 Central)
+  workflow_dispatch:        # "Run workflow" button for manual runs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: briefing
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Generate briefing
+        run: npm run ingest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ vars.MODEL }}
+      - name: Commit if changed
+        run: |
+          git config user.name "briefing-bot"
+          git config user.email "briefing-bot@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Briefing $(date -u +%Y-%m-%d)"
+          git push
