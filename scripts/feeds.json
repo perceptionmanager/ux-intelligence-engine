@@ -11,7 +11,6 @@
   { "name": "Rosenfeld Media", "site": "https://rosenfeldmedia.com", "url": "https://rosenfeldmedia.com/feed/" },
   { "name": "UXmatters", "site": "https://www.uxmatters.com", "url": "https://www.uxmatters.com/index.xml" },
   { "name": "Brad Frost", "site": "https://bradfrost.com", "url": "https://bradfrost.com/feed/" },
-  { "name": "EightShapes", "site": "https://medium.com/eightshapes-llc", "url": "ttps://medium.com/feed/eightshapes-llc" },
   { "name": "Figma Blog", "site": "https://www.figma.com/blog", "url": "https://www.figma.com/blog/feed/atom.xml" },
   { "name": "UX Planet", "site": "https://uxplanet.org", "url": "https://uxplanet.org/feed" },
   { "name": "Prototypr", "site": "https://blog.prototypr.io", "url": "https://blog.prototypr.io/feed" }
