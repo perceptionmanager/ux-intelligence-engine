@@ -31,7 +31,8 @@ const CATEGORIES = {
 
 // ── Feed handling ───────────────────────────────────────────────
 
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+// processEntities: false avoids the parser's entity-expansion cap on large feeds; decode() handles entities instead.
+const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_', processEntities: false, htmlEntities: false });
 
 const asArray = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
 const text = (v) => {
@@ -42,16 +43,23 @@ const text = (v) => {
 };
 
 const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', hellip: '…', mdash: '—', ndash: '–', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' };
-export function clean(html) {
-  return text(html)
-    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
+function decode(str) {
+  return str
     .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
     .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&([a-z]+);/gi, (m, n) => ENTITIES[n.toLowerCase()] ?? m)
+    .replace(/&([a-z]+);/gi, (m, n) => ENTITIES[n.toLowerCase()] ?? m);
+}
+
+export function clean(html) {
+  // Decode first so entity-escaped markup (&lt;p&gt;) is stripped too; decode twice for double-escaped feeds.
+  return decode(decode(text(html)))
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
+
+const cleanUrl = (u) => decode(text(u)).trim();
 
 function atomLink(link) {
   const links = asArray(link);
@@ -66,21 +74,21 @@ export function parseFeed(xml, feed) {
   if (doc?.rss?.channel) {
     raw = asArray(doc.rss.channel.item).map((it) => ({
       title: clean(it.title),
-      url: text(it.link).trim(),
+      url: cleanUrl(it.link),
       date: text(it.pubDate) || text(it['dc:date']),
       excerpt: clean(it.description || it['content:encoded']),
     }));
   } else if (doc?.feed) {
     raw = asArray(doc.feed.entry).map((e) => ({
       title: clean(e.title),
-      url: atomLink(e.link),
+      url: cleanUrl(atomLink(e.link)),
       date: text(e.published) || text(e.updated),
       excerpt: clean(e.summary || e.content),
     }));
   } else if (doc?.['rdf:RDF']) {
     raw = asArray(doc['rdf:RDF'].item).map((it) => ({
       title: clean(it.title),
-      url: text(it.link).trim(),
+      url: cleanUrl(it.link),
       date: text(it['dc:date']),
       excerpt: clean(it.description),
     }));
@@ -175,19 +183,27 @@ const fmtItem = (it) => `[${it.id}] ${it.outlet} · ${new Date(it.time).toISOStr
 const str = (v, max = 600) => typeof v === 'string' && v.trim().length > 0 && v.length <= max;
 
 export function validateBriefing(b, theme, byId) {
-  if (!b || b.skip) return null;
+  if (!b) throw new Error('empty response');
+  if (b.skip) throw new Error('Claude declined: the excerpts did not support a coherent briefing');
   const allowed = new Set(theme.ids);
-  const ok =
-    str(b.title, 90) && str(b.dek, 300) && str(b.scenario, 500) && str(b.context, 700) && str(b.caveat, 300) &&
-    ['disagree', 'emphasis'].includes(b.relation) &&
-    Array.isArray(b.positions) && b.positions.length === 2 &&
-    b.positions.every((p) => str(p.label, 60) && str(p.summary, 400) && Array.isArray(p.ids) && p.ids.length > 0 && p.ids.every((id) => allowed.has(id))) &&
-    Array.isArray(b.steps) && b.steps.length >= 2 && b.steps.length <= 4 &&
-    b.steps.every((s) => str(s.label, 40) && str(s.text, 300));
-  if (!ok) return null;
+  const fail = (why) => { throw new Error(why); };
+
+  for (const [k, max] of [['title', 90], ['dek', 300], ['scenario', 500], ['context', 700], ['caveat', 300]]) {
+    if (!str(b[k], max)) fail(`field "${k}" missing or over ${max} chars`);
+  }
+  if (!['disagree', 'emphasis'].includes(b.relation)) fail(`invalid relation "${b.relation}"`);
+  if (!Array.isArray(b.positions) || b.positions.length !== 2) fail('needs exactly 2 positions');
+  b.positions.forEach((p, i) => {
+    if (!str(p.label, 60) || !str(p.summary, 400)) fail(`position ${i + 1} label/summary missing or too long`);
+    if (!Array.isArray(p.ids) || !p.ids.length) fail(`position ${i + 1} cites no articles`);
+    const bad = p.ids.filter((id) => !allowed.has(id));
+    if (bad.length) fail(`position ${i + 1} cites articles outside its group: ${bad.join(', ')}`);
+  });
+  if (!Array.isArray(b.steps) || b.steps.length < 2 || b.steps.length > 4) fail('needs 2-4 steps');
+  if (!b.steps.every((s) => str(s.label, 40) && str(s.text, 300))) fail('a step label/text is missing or too long');
 
   const [a, c] = b.positions.map((p) => new Set(p.ids));
-  if ([...a].every((id) => c.has(id)) && [...c].every((id) => a.has(id))) return null; // identical citations
+  if ([...a].every((id) => c.has(id)) && [...c].every((id) => a.has(id))) fail('both positions cite the same articles');
 
   const outletsFor = (ids) => [...new Set(ids.map((id) => byId.get(id).outlet))];
   return {
@@ -254,10 +270,10 @@ async function main() {
   // Enforce the clustering rules in code, not just in the prompt
   const used = new Set();
   const validThemes = themes.filter((t) => {
-    if (!CATEGORIES[t.category] || !Array.isArray(t.ids)) return false;
+    if (!CATEGORIES[t.category] || !Array.isArray(t.ids)) { console.warn(`  ✗ theme rejected: unknown category "${t.category}"`); return false; }
     t.ids = [...new Set(t.ids)].filter((id) => byId.has(id) && !used.has(id)).slice(0, 6);
     const outlets = new Set(t.ids.map((id) => byId.get(id).outlet));
-    if (t.ids.length < 2 || outlets.size < 2) return false;
+    if (t.ids.length < 2 || outlets.size < 2) { console.warn(`  ✗ ${t.category} theme rejected: needs 2+ articles from 2+ publications`); return false; }
     t.ids.forEach((id) => used.add(id));
     return true;
   });
@@ -274,9 +290,14 @@ async function main() {
 
   const briefings = synth
     .map((r, i) => {
-      if (r.status === 'rejected') console.warn(`  ✗ ${finalThemes[i].category}: ${r.reason?.message}`);
-      else if (!r.value) console.warn(`  ✗ ${finalThemes[i].category}: skipped or failed validation`);
-      return r.status === 'fulfilled' ? r.value : null;
+      const t = finalThemes[i];
+      if (r.status === 'rejected') {
+        console.warn(`  ✗ ${t.category}: ${r.reason?.message}`);
+        console.warn(`      question: ${t.question}`);
+        return null;
+      }
+      console.log(`  ✓ ${t.category}: ${r.value.title}`);
+      return r.value;
     })
     .filter(Boolean)
     .sort((a, b) => Object.keys(CATEGORIES).indexOf(a.category) - Object.keys(CATEGORIES).indexOf(b.category));

@@ -1,14 +1,18 @@
 [
   { "name": "NN/g", "site": "https://www.nngroup.com", "url": "https://www.nngroup.com/feed/rss/" },
-  { "name": "Jakob Nielsen", "site": "https://jakobnielsenphd.substack.com", "url": "https://jakobnielsenphd.substack.com/feed" },
+  { "name": "UX Tigers (Jakob Nielsen)", "site": "https://www.uxtigers.com", "url": "https://www.uxtigers.com/feed" },
   { "name": "Smashing Magazine", "site": "https://www.smashingmagazine.com", "url": "https://www.smashingmagazine.com/feed/" },
   { "name": "UX Collective", "site": "https://uxdesign.cc", "url": "https://uxdesign.cc/feed" },
   { "name": "A List Apart", "site": "https://alistapart.com", "url": "https://alistapart.com/main/feed/" },
   { "name": "Lenny's Newsletter", "site": "https://www.lennysnewsletter.com", "url": "https://www.lennysnewsletter.com/feed" },
-  { "name": "Mind the Product", "site": "https://www.mindtheproduct.com", "url": "https://www.mindtheproduct.com/feed/" },
+  { "name": "Product Talk", "site": "https://www.producttalk.org", "url": "https://www.producttalk.org/feed/" },
+  { "name": "SVPG", "site": "https://www.svpg.com", "url": "https://www.svpg.com/feed/" },
+  { "name": "MeasuringU", "site": "https://measuringu.com", "url": "https://measuringu.com/feed/" },
   { "name": "Rosenfeld Media", "site": "https://rosenfeldmedia.com", "url": "https://rosenfeldmedia.com/feed/" },
   { "name": "UXmatters", "site": "https://www.uxmatters.com", "url": "https://www.uxmatters.com/index.xml" },
   { "name": "Brad Frost", "site": "https://bradfrost.com", "url": "https://bradfrost.com/feed/" },
+  { "name": "EightShapes", "site": "https://medium.com/eightshapes-llc", "url": "https://medium.com/eightshapes-llc/feed" },
   { "name": "Figma Blog", "site": "https://www.figma.com/blog", "url": "https://www.figma.com/blog/feed/atom.xml" },
-  { "name": "Boxes and Arrows", "site": "https://boxesandarrows.com", "url": "https://boxesandarrows.com/feed/" }
+  { "name": "UX Planet", "site": "https://uxplanet.org", "url": "https://uxplanet.org/feed" },
+  { "name": "Prototypr", "site": "https://blog.prototypr.io", "url": "https://blog.prototypr.io/feed" }
 ]
