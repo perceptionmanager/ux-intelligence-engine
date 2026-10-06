@@ -1,9 +1,9 @@
 {
   "status": "ok",
-  "generatedAt": "2026-10-06T15:52:52.117Z",
+  "generatedAt": "2026-10-06T15:58:20.464Z",
   "model": "claude-sonnet-5-5",
   "lookbackDays": 14,
-  "articlesScanned": 46,
+  "articlesScanned": 54,
   "feeds": [
     {
       "name": "NN/g",
@@ -14,9 +14,8 @@
     {
       "name": "UX Tigers (Jakob Nielsen)",
       "site": "https://www.uxtigers.com",
-      "ok": false,
-      "articles": 0,
-      "error": "HTTP 404"
+      "ok": true,
+      "articles": 8
     },
     {
       "name": "Smashing Magazine",
@@ -83,7 +82,7 @@
       "site": "https://medium.com/eightshapes-llc",
       "ok": false,
       "articles": 0,
-      "error": "Not an RSS or Atom document"
+      "error": "fetch failed"
     },
     {
       "name": "Figma Blog",
@@ -106,58 +105,70 @@
   ],
   "briefings": [
     {
-      "id": "discovery-muwuxzmd",
+      "id": "discovery-muwv50z3",
       "category": "discovery",
       "categoryLabel": "Product discovery",
-      "title": "AI as research analyst versus AI as participant",
-      "dek": "Teams must decide whether to use AI to process what real participants say, to replace the participants, or neither.",
-      "scenario": "A research team at a large retailer has a slow recruitment pipeline and a backlog of unread survey comments and interview notes. Leadership asks whether AI-generated users and automated synthesis can cut both the cost and the wait.",
+      "title": "Synthetic users: explore with them, verify with people",
+      "dek": "Teams must decide which research jobs AI can take over and which still need real participants.",
+      "scenario": "A research group at a large retailer is told to cut recruitment spend and wants AI-simulated users to pre-screen a checkout redesign. The same group is also considering AI to code thousands of open-ended survey comments and to synthesize interview notes.",
       "relation": "emphasis",
       "positions": [
         {
-          "label": "Start with analysis work",
-          "summary": "One piece revisits an earlier bet that coding open-ended survey comments is a good job for AI, since those comments often get only a cursory look. Another describes rebuilding a product around interview synthesis, and says the hard part was the evaluation and repair machinery around the agents, not the agents themselves.",
+          "label": "Divergent thinking, not verdicts",
+          "summary": "Nielsen sees synthetic users as useful early in design, where they help teams reflect on usage and generate more directions. He also warns that their feedback skews too positive, which weakens them as evidence of how real people will respond.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)"
+          ]
+        },
+        {
+          "label": "Test the substitution claim",
+          "summary": "MeasuringU frames the cost and speed appeal of simulated participants as a hypothesis to check, for example by comparing digital-twin predictions of usability scores with real ones. It also revisits AI coding of open-ended comments, a narrower analysis job it thought promising. Product Talk describes AI synthesis of interviews that depends on evaluation and repair loops.",
           "outlets": [
             "MeasuringU",
             "Product Talk"
           ]
-        },
-        {
-          "label": "Test synthetic participants first",
-          "summary": "This piece starts from the cost and delay of recruitment and the appeal of AI that mimics participants' attitudes. It checks that appeal against a concrete benchmark, SUS scores, rather than assuming the substitution works.",
-          "outlets": [
-            "MeasuringU"
-          ]
         }
       ],
-      "context": "Recruitment is a major cost in research budgets, so the pull toward synthetic users is strong. Coding open-ended responses and synthesizing interviews are analysis steps that still start from real participant data. Replacing the participants removes that grounding, so it needs a different standard of proof.",
+      "context": "Recruitment is a large and slow part of research budgets, which is why simulated participants are attractive. The sources separate two uses: AI standing in for participants, and AI helping analyze data that real participants produced. The second use keeps people at the source of the evidence.",
       "steps": [
         {
-          "label": "Baseline against humans",
-          "text": "Before trusting AI coding or synthesis, compare its output with a human-coded sample from the same data."
+          "label": "Separate the jobs",
+          "text": "List which research tasks are idea generation, which are analysis of real data, and which are evidence about real behavior, and only consider AI substitution for the first two."
         },
         {
-          "label": "Build evals early",
-          "text": "Budget time for evaluation and correction steps around any automated synthesis, since the surrounding checks may be the hard part."
+          "label": "Benchmark against humans",
+          "text": "Before relying on simulated users or AI coding, run both alongside a real-participant study and compare how closely the results match."
         },
         {
-          "label": "Validate synthetic users",
-          "text": "Run synthetic participants alongside a real study and compare their results to known outcomes before they inform any decision."
+          "label": "Build in checks",
+          "text": "For AI synthesis, add review steps and error-correction loops, and watch for overly favorable feedback from simulated users."
         }
       ],
-      "caveat": "The excerpts are truncated and give no results, so they don't show how accurate AI coding, synthesis, or digital twins actually were.",
+      "caveat": "The excerpts do not show the results of the digital-twin score comparison or the ChatGPT coding comparison, so how well AI performs on those tasks remains unsettled here.",
       "sources": [
         {
-          "outlet": "MeasuringU",
-          "title": "ChatGPT vs Humans for Coding Open-Ended Responses, Three Years Later",
-          "url": "https://measuringu.com/chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later/?utm_source=rss&utm_medium=rss&utm_campaign=chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later",
-          "date": "2026-09-30"
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: AI Errors Halve Every 5 Months | Muse Charm | Synthetic Users in Exploratory Design | Context | AI-Simulated Users Are Biased | Price Comparisons | Perceived Affordance | Consistency | Tab",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261005",
+          "date": "2026-10-05"
+        },
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: AI Agents Help Blind Users | Style Exploration | Recognition: Show Options | Synthetic Users Help Designers Reflect | Local Optimization | Fail Early | Before–After Sliders | Error Message",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20260925",
+          "date": "2026-09-25"
         },
         {
           "outlet": "MeasuringU",
           "title": "How Well Do Digital Twins Predict SUS Scores?",
           "url": "https://measuringu.com/how-well-do-synthetic-users-predict-sus-scores/?utm_source=rss&utm_medium=rss&utm_campaign=how-well-do-synthetic-users-predict-sus-scores",
           "date": "2026-09-23"
+        },
+        {
+          "outlet": "MeasuringU",
+          "title": "ChatGPT vs Humans for Coding Open-Ended Responses, Three Years Later",
+          "url": "https://measuringu.com/chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later/?utm_source=rss&utm_medium=rss&utm_campaign=chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later",
+          "date": "2026-09-30"
         },
         {
           "outlet": "Product Talk",
@@ -168,64 +179,52 @@
       ]
     },
     {
-      "id": "tooling-muwuxt7o",
+      "id": "tooling-muwv50dh",
       "category": "tooling",
       "categoryLabel": "Tooling and AI",
-      "title": "Delegating design work to agents has a price",
-      "dek": "Teams must decide which design tasks to give to AI agents, knowing that each handoff may weaken the system, the skills, or the judgment behind it.",
-      "scenario": "A design systems team at a large retailer is offered an agent that can update component libraries, draft specs, and give first-pass critique. Leaders want the speed, but the team worries that no one will understand the system after a year of agent-built changes.",
+      "title": "Delegating to agents without losing your judgment",
+      "dek": "Teams must decide whether skill loss from AI delegation is a real threat to guard against or a worry built on weak evidence.",
+      "scenario": "A design team at a large retailer starts running several AI agents at once, one on library updates, one on critique notes, one on spec drafts. Output doubles, but the lead notices that nobody can say how the pieces fit together, and junior designers are making fewer of their own calls.",
       "relation": "disagree",
       "positions": [
         {
-          "label": "Delegate the routine, keep the craft",
-          "summary": "Figma presents the agent as a way to take over library updates, critique feedback, and first-draft specs so designers can concentrate on the core problem. It treats deciding what to hand off as a learnable skill and points to teams that report fast, high-quality work.",
+          "label": "Skill erosion is real",
+          "summary": "Three pieces argue that handing thinking to AI wears down reasoning, weakens taste, and fragments attention. One author describes producing more than ever while no longer being able to see any project as a whole.",
           "outlets": [
-            "Figma Blog"
-          ]
-        },
-        {
-          "label": "Delegation erodes understanding",
-          "summary": "These pieces argue that cheap agent output leads to fragile systems that their owners no longer grasp, and to weaker thinking and taste. One author describes running many agents at once and losing the ability to see work as a whole.",
-          "outlets": [
-            "NN/g",
             "UX Collective"
           ]
+        },
+        {
+          "label": "Delegation is a skill",
+          "summary": "Nielsen's roundup claims most deskilling studies examine the wrong condition, which weakens the alarm. Figma's workflow piece treats choosing what to hand to an agent as a skill in itself, with the designer keeping the core shaping work.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)",
+            "Figma Blog"
+          ]
         }
       ],
-      "context": "Figma's agent is now generally available, so the question has moved from experiment to everyday practice. The critical pieces describe a different pattern: when producing is nearly free, people produce more, understand less, and lean on safe defaults. Both sides agree that judgment about what to delegate matters, but they disagree about whether the tools help build it or wear it down.",
+      "context": "Agents now run in parallel on routine design tasks such as library maintenance, feedback synthesis and spec drafting. That raises output but changes where designers spend attention. The debate is about whether the lost practice is the kind that matters: taste, reasoning, and a sense of the whole.",
       "steps": [
         {
-          "label": "Map the handoffs",
-          "text": "List the tasks in your workflow and mark which ones an agent could take, separating mechanical upkeep from decisions that shape the product."
+          "label": "Name your core work",
+          "text": "Decide which decisions, such as framing the problem and judging quality, stay with a human, and hand off only the surrounding tasks."
         },
         {
-          "label": "Keep a human owner",
-          "text": "Give every agent-touched artifact, such as a library or spec, a named person who can explain how it works without asking the agent."
+          "label": "Review as a whole",
+          "text": "Set aside regular time to look at agent output together as one system, so the overall picture doesn't dissolve into separate deliveries."
         },
         {
-          "label": "Protect practice time",
-          "text": "Set aside work that designers do by hand, and review it for taste and critique skills, so judgment is exercised rather than assumed."
+          "label": "Keep practice alive",
+          "text": "Have designers, juniors especially, still do some work unaided and make critique calls before consulting an agent."
         }
       ],
-      "caveat": "The excerpts are short and the Figma pieces are vendor-authored, so none of them offers measured evidence on how much delegation actually degrades systems or skills over time.",
+      "caveat": "These are excerpts only, so they don't show what evidence the deskilling studies use or what the 'wrong condition' is, and none of them tests whether any workflow actually preserves judgment.",
       "sources": [
         {
-          "outlet": "Figma Blog",
-          "title": "Workflow lab: Staying in the flow with Figma’s agent",
-          "url": "https://www.figma.com/blog/workflow-lab-staying-in-the-flow-with-the-figma-agent/",
-          "date": "2026-10-06"
-        },
-        {
-          "outlet": "Figma Blog",
-          "title": "3 ways product designers use the Figma agent for craft, speed, and creative expression",
-          "url": "https://www.figma.com/blog/3-ways-product-designers-use-the-figma-agent/",
-          "date": "2026-10-06"
-        },
-        {
-          "outlet": "NN/g",
-          "title": "The New Big Ball of Mud: Why Agentic AI Systems Turn Fragile",
-          "url": "https://www.nngroup.com/articles/big-ball-of-mud-ai/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
-          "date": "2026-10-02"
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: Bogus Deskilling Research | Jargon Alienates | AI Exposure Improves AI Attitudes | Interruptions | Prioritizing > Everything | Paper Prototyping | Unsupportive Support | Resizable Panes",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20260928",
+          "date": "2026-09-28"
         },
         {
           "outlet": "UX Collective",
@@ -235,15 +234,21 @@
         },
         {
           "outlet": "UX Collective",
+          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
+          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
+          "date": "2026-10-05"
+        },
+        {
+          "outlet": "UX Collective",
           "title": "The feed I produce myself",
           "url": "https://uxdesign.cc/the-feed-i-produce-myself-11e4192f394c?source=rss----138adf9c44c---4",
           "date": "2026-10-03"
         },
         {
-          "outlet": "UX Collective",
-          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
-          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
-          "date": "2026-10-05"
+          "outlet": "Figma Blog",
+          "title": "Workflow lab: Staying in the flow with Figma’s agent",
+          "url": "https://www.figma.com/blog/workflow-lab-staying-in-the-flow-with-the-figma-agent/",
+          "date": "2026-10-06"
         }
       ]
     }
