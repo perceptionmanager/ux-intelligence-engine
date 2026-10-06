@@ -1,9 +1,9 @@
 {
   "status": "ok",
-  "generatedAt": "2026-10-06T15:32:59.624Z",
+  "generatedAt": "2026-10-06T15:52:52.117Z",
   "model": "claude-sonnet-5-5",
   "lookbackDays": 14,
-  "articlesScanned": 31,
+  "articlesScanned": 46,
   "feeds": [
     {
       "name": "NN/g",
@@ -12,11 +12,11 @@
       "articles": 4
     },
     {
-      "name": "Jakob Nielsen",
-      "site": "https://jakobnielsenphd.substack.com",
+      "name": "UX Tigers (Jakob Nielsen)",
+      "site": "https://www.uxtigers.com",
       "ok": false,
       "articles": 0,
-      "error": "HTTP 403"
+      "error": "HTTP 404"
     },
     {
       "name": "Smashing Magazine",
@@ -43,11 +43,22 @@
       "articles": 8
     },
     {
-      "name": "Mind the Product",
-      "site": "https://www.mindtheproduct.com",
-      "ok": false,
-      "articles": 0,
-      "error": "Not an RSS or Atom document"
+      "name": "Product Talk",
+      "site": "https://www.producttalk.org",
+      "ok": true,
+      "articles": 3
+    },
+    {
+      "name": "SVPG",
+      "site": "https://www.svpg.com",
+      "ok": true,
+      "articles": 1
+    },
+    {
+      "name": "MeasuringU",
+      "site": "https://measuringu.com",
+      "ok": true,
+      "articles": 2
     },
     {
       "name": "Rosenfeld Media",
@@ -64,9 +75,15 @@
     {
       "name": "Brad Frost",
       "site": "https://bradfrost.com",
+      "ok": true,
+      "articles": 1
+    },
+    {
+      "name": "EightShapes",
+      "site": "https://medium.com/eightshapes-llc",
       "ok": false,
       "articles": 0,
-      "error": "Entity expansion limit exceeded: 1027 > 1000"
+      "error": "Not an RSS or Atom document"
     },
     {
       "name": "Figma Blog",
@@ -75,110 +92,122 @@
       "articles": 7
     },
     {
-      "name": "Boxes and Arrows",
-      "site": "https://boxesandarrows.com",
-      "ok": false,
-      "articles": 0,
-      "error": "Not an RSS or Atom document"
+      "name": "UX Planet",
+      "site": "https://uxplanet.org",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Prototypr",
+      "site": "https://blog.prototypr.io",
+      "ok": true,
+      "articles": 0
     }
   ],
   "briefings": [
     {
-      "id": "systems-muwu8eys",
-      "category": "systems",
-      "categoryLabel": "Design systems",
-      "title": "Naming conventions or automation for component libraries",
-      "dek": "Teams maintaining a component library must decide whether to put effort into shared naming rules or into tools that handle upkeep automatically.",
-      "scenario": "A design systems team at a large retailer has a library that has grown to hundreds of components, with inconsistent names and slow manual cleanup. They must decide whether to spend the next quarter on a naming standard or on setting up an automated assistant to maintain the library.",
+      "id": "discovery-muwuxzmd",
+      "category": "discovery",
+      "categoryLabel": "Product discovery",
+      "title": "AI as research analyst versus AI as participant",
+      "dek": "Teams must decide whether to use AI to process what real participants say, to replace the participants, or neither.",
+      "scenario": "A research team at a large retailer has a slow recruitment pipeline and a backlog of unread survey comments and interview notes. Leadership asks whether AI-generated users and automated synthesis can cut both the cost and the wait.",
       "relation": "emphasis",
       "positions": [
         {
-          "label": "Names as foundation",
-          "summary": "The Smashing Magazine guide treats naming as a practical craft, offering conventions and structures for UI components. The implication is that consistency starts with people agreeing on how things are called.",
+          "label": "Start with analysis work",
+          "summary": "One piece revisits an earlier bet that coding open-ended survey comments is a good job for AI, since those comments often get only a cursory look. Another describes rebuilding a product around interview synthesis, and says the hard part was the evaluation and repair machinery around the agents, not the agents themselves.",
           "outlets": [
-            "Smashing Magazine"
+            "MeasuringU",
+            "Product Talk"
           ]
         },
         {
-          "label": "Automate the repetitive work",
-          "summary": "Figma's post presents its agent as a way to take over repetitive upkeep, including library maintenance and keeping designs aligned with the system. The emphasis is on reducing manual effort rather than on the naming rules themselves.",
+          "label": "Test synthetic participants first",
+          "summary": "This piece starts from the cost and delay of recruitment and the appeal of AI that mimics participants' attitudes. It checks that appeal against a concrete benchmark, SUS scores, rather than assuming the substitution works.",
           "outlets": [
-            "Figma Blog"
+            "MeasuringU"
           ]
         }
       ],
-      "context": "Component libraries tend to drift as more people add, rename, and adapt parts. Naming conventions give a shared vocabulary, while tooling can apply rules at a scale people struggle to match by hand. The two excerpts address different layers of the same upkeep problem and do not argue against each other.",
+      "context": "Recruitment is a major cost in research budgets, so the pull toward synthetic users is strong. Coding open-ended responses and synthesizing interviews are analysis steps that still start from real participant data. Replacing the participants removes that grounding, so it needs a different standard of proof.",
       "steps": [
         {
-          "label": "Audit current drift",
-          "text": "List where your library is inconsistent today and note whether the cause is unclear names or repetitive manual work."
+          "label": "Baseline against humans",
+          "text": "Before trusting AI coding or synthesis, compare its output with a human-coded sample from the same data."
         },
         {
-          "label": "Write the rules down",
-          "text": "Settle a naming convention and structure first, so any automation has a clear standard to enforce."
+          "label": "Build evals early",
+          "text": "Budget time for evaluation and correction steps around any automated synthesis, since the surrounding checks may be the hard part."
         },
         {
-          "label": "Pilot automation narrowly",
-          "text": "Try an automated assistant on one repetitive task, and review its output against your conventions before widening its scope."
+          "label": "Validate synthetic users",
+          "text": "Run synthetic participants alongside a real study and compare their results to known outcomes before they inform any decision."
         }
       ],
-      "caveat": "The excerpts are short descriptions only, so they give no evidence on how well either approach works in practice or how the two perform together.",
+      "caveat": "The excerpts are truncated and give no results, so they don't show how accurate AI coding, synthesis, or digital twins actually were.",
       "sources": [
         {
-          "outlet": "Smashing Magazine",
-          "title": "A Practical Guide To Naming Things",
-          "url": "https://smashingmagazine.com/2026/10/how-name-things/",
-          "date": "2026-10-06"
+          "outlet": "MeasuringU",
+          "title": "ChatGPT vs Humans for Coding Open-Ended Responses, Three Years Later",
+          "url": "https://measuringu.com/chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later/?utm_source=rss&utm_medium=rss&utm_campaign=chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later",
+          "date": "2026-09-30"
         },
         {
-          "outlet": "Figma Blog",
-          "title": "How to lighten design system upkeep with the Figma agent",
-          "url": "https://www.figma.com/blog/figma-agent-and-design-systems/",
-          "date": "2026-10-06"
+          "outlet": "MeasuringU",
+          "title": "How Well Do Digital Twins Predict SUS Scores?",
+          "url": "https://measuringu.com/how-well-do-synthetic-users-predict-sus-scores/?utm_source=rss&utm_medium=rss&utm_campaign=how-well-do-synthetic-users-predict-sus-scores",
+          "date": "2026-09-23"
+        },
+        {
+          "outlet": "Product Talk",
+          "title": "Generating Opportunity Solution Trees with AI: How Vistaly Rebuilt Its Product Around Interview Synthesis, Evals, and Repair Loops",
+          "url": "https://www.producttalk.org/generating-opportunity-solution-trees-with-ai-how-vistaly-rebuilt-its-product-around-interview-synthesis-evals-and-repair-loops/",
+          "date": "2026-10-01"
         }
       ]
     },
     {
-      "id": "tooling-muwu8fhk",
+      "id": "tooling-muwuxt7o",
       "category": "tooling",
       "categoryLabel": "Tooling and AI",
-      "title": "How much design work to give agents",
-      "dek": "Teams must decide which design tasks to delegate to agents, knowing that heavy delegation may erode the judgment and understanding needed to direct them.",
-      "scenario": "A design team at a large software company has an agent that updates component libraries, gathers crit feedback, and drafts specs. Output has gone up, but a senior designer worries that nobody can explain why the system looks and behaves as it does.",
+      "title": "Delegating design work to agents has a price",
+      "dek": "Teams must decide which design tasks to give to AI agents, knowing that each handoff may weaken the system, the skills, or the judgment behind it.",
+      "scenario": "A design systems team at a large retailer is offered an agent that can update component libraries, draft specs, and give first-pass critique. Leaders want the speed, but the team worries that no one will understand the system after a year of agent-built changes.",
       "relation": "disagree",
       "positions": [
         {
           "label": "Delegate the routine, keep the craft",
-          "summary": "Deciding what to hand over is itself a skill. Agents can take library updates, feedback gathering, and first-draft specs while the designer concentrates on shaping the feature, and teams are presenting this as a way to work faster without lowering quality.",
+          "summary": "Figma presents the agent as a way to take over library updates, critique feedback, and first-draft specs so designers can concentrate on the core problem. It treats deciding what to hand off as a learnable skill and points to teams that report fast, high-quality work.",
           "outlets": [
             "Figma Blog"
           ]
         },
         {
-          "label": "Delegation erodes thinking and taste",
-          "summary": "Handing work to AI wears down thinking, and taste is getting harder to develop. Running many agents at once also lets output pile up while the ability to see the work as a whole fades, and building almost for free produces fragile systems that their owners no longer understand.",
+          "label": "Delegation erodes understanding",
+          "summary": "These pieces argue that cheap agent output leads to fragile systems that their owners no longer grasp, and to weaker thinking and taste. One author describes running many agents at once and losing the ability to see work as a whole.",
           "outlets": [
-            "UX Collective",
-            "NN/g"
+            "NN/g",
+            "UX Collective"
           ]
         }
       ],
-      "context": "Figma's agent is now generally available, and its own posts frame delegation as a practice to learn. The other articles come from practitioners and researchers who are concerned about what is lost when the work is outsourced. The common thread is that cheap production shifts the scarce resource from making things to judging and comprehending them.",
+      "context": "Figma's agent is now generally available, so the question has moved from experiment to everyday practice. The critical pieces describe a different pattern: when producing is nearly free, people produce more, understand less, and lean on safe defaults. Both sides agree that judgment about what to delegate matters, but they disagree about whether the tools help build it or wear it down.",
       "steps": [
         {
-          "label": "Sort tasks",
-          "text": "List your recurring tasks and mark which ones are mechanical, such as library upkeep, and which ones shape the design's direction, then delegate only the mechanical ones at first."
+          "label": "Map the handoffs",
+          "text": "List the tasks in your workflow and mark which ones an agent could take, separating mechanical upkeep from decisions that shape the product."
         },
         {
-          "label": "Review before accepting",
-          "text": "Require a person to read, explain, and be able to defend each agent-produced artifact, such as a spec draft, before it enters the system."
+          "label": "Keep a human owner",
+          "text": "Give every agent-touched artifact, such as a library or spec, a named person who can explain how it works without asking the agent."
         },
         {
-          "label": "Protect hands-on time",
-          "text": "Reserve regular stretches of focused work done without agents so that judgment and taste keep developing, and limit how many agent threads run at once."
+          "label": "Protect practice time",
+          "text": "Set aside work that designers do by hand, and review it for taste and critique skills, so judgment is exercised rather than assumed."
         }
       ],
-      "caveat": "The excerpts give no evidence on how much delegation actually degrades judgment, and the vendor posts show intended workflows rather than measured outcomes.",
+      "caveat": "The excerpts are short and the Figma pieces are vendor-authored, so none of them offers measured evidence on how much delegation actually degrades systems or skills over time.",
       "sources": [
         {
           "outlet": "Figma Blog",
@@ -193,15 +222,15 @@
           "date": "2026-10-06"
         },
         {
-          "outlet": "UX Collective",
-          "title": "AI skill atrophy: Are we forgetting how to think?",
-          "url": "https://uxdesign.cc/ai-skill-atrophy-cognitive-offloading-1afbf92eb496?source=rss----138adf9c44c---4",
-          "date": "2026-10-05"
+          "outlet": "NN/g",
+          "title": "The New Big Ball of Mud: Why Agentic AI Systems Turn Fragile",
+          "url": "https://www.nngroup.com/articles/big-ball-of-mud-ai/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+          "date": "2026-10-02"
         },
         {
           "outlet": "UX Collective",
-          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
-          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
+          "title": "AI skill atrophy: Are we forgetting how to think?",
+          "url": "https://uxdesign.cc/ai-skill-atrophy-cognitive-offloading-1afbf92eb496?source=rss----138adf9c44c---4",
           "date": "2026-10-05"
         },
         {
@@ -211,10 +240,10 @@
           "date": "2026-10-03"
         },
         {
-          "outlet": "NN/g",
-          "title": "The New Big Ball of Mud: Why Agentic AI Systems Turn Fragile",
-          "url": "https://www.nngroup.com/articles/big-ball-of-mud-ai/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
-          "date": "2026-10-02"
+          "outlet": "UX Collective",
+          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
+          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
+          "date": "2026-10-05"
         }
       ]
     }
