@@ -1,0 +1,222 @@
+{
+  "status": "ok",
+  "generatedAt": "2026-10-06T15:32:59.624Z",
+  "model": "claude-sonnet-5-5",
+  "lookbackDays": 14,
+  "articlesScanned": 31,
+  "feeds": [
+    {
+      "name": "NN/g",
+      "site": "https://www.nngroup.com",
+      "ok": true,
+      "articles": 4
+    },
+    {
+      "name": "Jakob Nielsen",
+      "site": "https://jakobnielsenphd.substack.com",
+      "ok": false,
+      "articles": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "name": "Smashing Magazine",
+      "site": "https://www.smashingmagazine.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "UX Collective",
+      "site": "https://uxdesign.cc",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "A List Apart",
+      "site": "https://alistapart.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Lenny's Newsletter",
+      "site": "https://www.lennysnewsletter.com",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Mind the Product",
+      "site": "https://www.mindtheproduct.com",
+      "ok": false,
+      "articles": 0,
+      "error": "Not an RSS or Atom document"
+    },
+    {
+      "name": "Rosenfeld Media",
+      "site": "https://rosenfeldmedia.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "UXmatters",
+      "site": "https://www.uxmatters.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Brad Frost",
+      "site": "https://bradfrost.com",
+      "ok": false,
+      "articles": 0,
+      "error": "Entity expansion limit exceeded: 1027 > 1000"
+    },
+    {
+      "name": "Figma Blog",
+      "site": "https://www.figma.com/blog",
+      "ok": true,
+      "articles": 7
+    },
+    {
+      "name": "Boxes and Arrows",
+      "site": "https://boxesandarrows.com",
+      "ok": false,
+      "articles": 0,
+      "error": "Not an RSS or Atom document"
+    }
+  ],
+  "briefings": [
+    {
+      "id": "systems-muwu8eys",
+      "category": "systems",
+      "categoryLabel": "Design systems",
+      "title": "Naming conventions or automation for component libraries",
+      "dek": "Teams maintaining a component library must decide whether to put effort into shared naming rules or into tools that handle upkeep automatically.",
+      "scenario": "A design systems team at a large retailer has a library that has grown to hundreds of components, with inconsistent names and slow manual cleanup. They must decide whether to spend the next quarter on a naming standard or on setting up an automated assistant to maintain the library.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Names as foundation",
+          "summary": "The Smashing Magazine guide treats naming as a practical craft, offering conventions and structures for UI components. The implication is that consistency starts with people agreeing on how things are called.",
+          "outlets": [
+            "Smashing Magazine"
+          ]
+        },
+        {
+          "label": "Automate the repetitive work",
+          "summary": "Figma's post presents its agent as a way to take over repetitive upkeep, including library maintenance and keeping designs aligned with the system. The emphasis is on reducing manual effort rather than on the naming rules themselves.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "Component libraries tend to drift as more people add, rename, and adapt parts. Naming conventions give a shared vocabulary, while tooling can apply rules at a scale people struggle to match by hand. The two excerpts address different layers of the same upkeep problem and do not argue against each other.",
+      "steps": [
+        {
+          "label": "Audit current drift",
+          "text": "List where your library is inconsistent today and note whether the cause is unclear names or repetitive manual work."
+        },
+        {
+          "label": "Write the rules down",
+          "text": "Settle a naming convention and structure first, so any automation has a clear standard to enforce."
+        },
+        {
+          "label": "Pilot automation narrowly",
+          "text": "Try an automated assistant on one repetitive task, and review its output against your conventions before widening its scope."
+        }
+      ],
+      "caveat": "The excerpts are short descriptions only, so they give no evidence on how well either approach works in practice or how the two perform together.",
+      "sources": [
+        {
+          "outlet": "Smashing Magazine",
+          "title": "A Practical Guide To Naming Things",
+          "url": "https://smashingmagazine.com/2026/10/how-name-things/",
+          "date": "2026-10-06"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "How to lighten design system upkeep with the Figma agent",
+          "url": "https://www.figma.com/blog/figma-agent-and-design-systems/",
+          "date": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "tooling-muwu8fhk",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "How much design work to give agents",
+      "dek": "Teams must decide which design tasks to delegate to agents, knowing that heavy delegation may erode the judgment and understanding needed to direct them.",
+      "scenario": "A design team at a large software company has an agent that updates component libraries, gathers crit feedback, and drafts specs. Output has gone up, but a senior designer worries that nobody can explain why the system looks and behaves as it does.",
+      "relation": "disagree",
+      "positions": [
+        {
+          "label": "Delegate the routine, keep the craft",
+          "summary": "Deciding what to hand over is itself a skill. Agents can take library updates, feedback gathering, and first-draft specs while the designer concentrates on shaping the feature, and teams are presenting this as a way to work faster without lowering quality.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        },
+        {
+          "label": "Delegation erodes thinking and taste",
+          "summary": "Handing work to AI wears down thinking, and taste is getting harder to develop. Running many agents at once also lets output pile up while the ability to see the work as a whole fades, and building almost for free produces fragile systems that their owners no longer understand.",
+          "outlets": [
+            "UX Collective",
+            "NN/g"
+          ]
+        }
+      ],
+      "context": "Figma's agent is now generally available, and its own posts frame delegation as a practice to learn. The other articles come from practitioners and researchers who are concerned about what is lost when the work is outsourced. The common thread is that cheap production shifts the scarce resource from making things to judging and comprehending them.",
+      "steps": [
+        {
+          "label": "Sort tasks",
+          "text": "List your recurring tasks and mark which ones are mechanical, such as library upkeep, and which ones shape the design's direction, then delegate only the mechanical ones at first."
+        },
+        {
+          "label": "Review before accepting",
+          "text": "Require a person to read, explain, and be able to defend each agent-produced artifact, such as a spec draft, before it enters the system."
+        },
+        {
+          "label": "Protect hands-on time",
+          "text": "Reserve regular stretches of focused work done without agents so that judgment and taste keep developing, and limit how many agent threads run at once."
+        }
+      ],
+      "caveat": "The excerpts give no evidence on how much delegation actually degrades judgment, and the vendor posts show intended workflows rather than measured outcomes.",
+      "sources": [
+        {
+          "outlet": "Figma Blog",
+          "title": "Workflow lab: Staying in the flow with Figma’s agent",
+          "url": "https://www.figma.com/blog/workflow-lab-staying-in-the-flow-with-the-figma-agent/",
+          "date": "2026-10-06"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "3 ways product designers use the Figma agent for craft, speed, and creative expression",
+          "url": "https://www.figma.com/blog/3-ways-product-designers-use-the-figma-agent/",
+          "date": "2026-10-06"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "AI skill atrophy: Are we forgetting how to think?",
+          "url": "https://uxdesign.cc/ai-skill-atrophy-cognitive-offloading-1afbf92eb496?source=rss----138adf9c44c---4",
+          "date": "2026-10-05"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
+          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
+          "date": "2026-10-05"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "The feed I produce myself",
+          "url": "https://uxdesign.cc/the-feed-i-produce-myself-11e4192f394c?source=rss----138adf9c44c---4",
+          "date": "2026-10-03"
+        },
+        {
+          "outlet": "NN/g",
+          "title": "The New Big Ball of Mud: Why Agentic AI Systems Turn Fragile",
+          "url": "https://www.nngroup.com/articles/big-ball-of-mud-ai/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+          "date": "2026-10-02"
+        }
+      ]
+    }
+  ]
+}
