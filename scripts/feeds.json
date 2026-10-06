@@ -1,6 +1,6 @@
 [
   { "name": "NN/g", "site": "https://www.nngroup.com", "url": "https://www.nngroup.com/feed/rss/" },
-  { "name": "UX Tigers (Jakob Nielsen)", "site": "https://www.uxtigers.com", "url": "https://www.uxtigers.com/feed" },
+  { "name": "UX Tigers (Jakob Nielsen)", "site": "https://www.uxtigers.com", "url": "https://www.uxtigers.com/blog-feed.xml" },
   { "name": "Smashing Magazine", "site": "https://www.smashingmagazine.com", "url": "https://www.smashingmagazine.com/feed/" },
   { "name": "UX Collective", "site": "https://uxdesign.cc", "url": "https://uxdesign.cc/feed" },
   { "name": "A List Apart", "site": "https://alistapart.com", "url": "https://alistapart.com/main/feed/" },
@@ -11,7 +11,7 @@
   { "name": "Rosenfeld Media", "site": "https://rosenfeldmedia.com", "url": "https://rosenfeldmedia.com/feed/" },
   { "name": "UXmatters", "site": "https://www.uxmatters.com", "url": "https://www.uxmatters.com/index.xml" },
   { "name": "Brad Frost", "site": "https://bradfrost.com", "url": "https://bradfrost.com/feed/" },
-  { "name": "EightShapes", "site": "https://medium.com/eightshapes-llc", "url": "https://medium.com/eightshapes-llc/feed" },
+  { "name": "EightShapes", "site": "https://medium.com/eightshapes-llc", "url": "ttps://medium.com/feed/eightshapes-llc" },
   { "name": "Figma Blog", "site": "https://www.figma.com/blog", "url": "https://www.figma.com/blog/feed/atom.xml" },
   { "name": "UX Planet", "site": "https://uxplanet.org", "url": "https://uxplanet.org/feed" },
   { "name": "Prototypr", "site": "https://blog.prototypr.io", "url": "https://blog.prototypr.io/feed" }
