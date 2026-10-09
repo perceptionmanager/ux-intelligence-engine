@@ -8,430 +8,135 @@
   <meta name="description" content="A weekly briefing on what UX and product design practitioners are debating, synthesized from linked source articles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@v0.1.0/dist/tokens.css">
-  <style>
-    /* UX Design Briefing styles. Every value comes from the design system (--pm-*);
-       raw colors, px font sizes and off-scale spacing don't belong here. */
-    @layer tokens, base, components, product;
-
-    @layer product {
-      *, *::before, *::after { box-sizing: border-box; }
-      html { background: var(--pm-color-surface-page); scroll-behavior: smooth; }
-      body {
-        margin: 0; background: var(--pm-color-surface-page); color: var(--pm-color-text-primary);
-        font-family: var(--pm-font-family-sans); font-size: var(--pm-type-body-size); line-height: var(--pm-font-line-height-relaxed);
-        -webkit-font-smoothing: antialiased; overflow-x: hidden;
-      }
-      h1, h2, h3, h4 { font-family: var(--pm-font-family-display); font-weight: var(--pm-font-weight-regular); margin: 0; }
-      p { margin: 0; }
-      a { color: inherit; text-decoration: none; }
-      a, button { -webkit-tap-highlight-color: transparent; }
-      a:focus, button:focus { outline: none; }
-      a:focus-visible, button:focus-visible {
-        outline: var(--pm-focus-ring-width) solid var(--pm-color-focus-ring);
-        outline-offset: var(--pm-focus-ring-offset);
-        border-radius: var(--pm-radius-xs);
-      }
-      .wrap { max-width: var(--pm-layout-content-max); margin: 0 auto; padding: 0 var(--pm-layout-gutter); }
-      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-      /* ── Site header (mirrors portfolio nav) ── */
-      .site-header {
-        position: sticky; top: 0; z-index: var(--pm-z-nav);
-        background: var(--pm-color-surface-scrim); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--pm-color-border-subtle);
-      }
-      .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--pm-space-6); min-height: var(--pm-space-16); }
-      .brand { display: flex; align-items: center; gap: var(--pm-space-4); }
-      .brand-name { font-family: var(--pm-font-family-display); font-size: var(--pm-type-heading-sm-size); }
-      .badge { display: inline-flex; align-items: center; gap: var(--pm-space-2); font-size: var(--pm-type-caption-size); color: var(--pm-color-text-tertiary); transition: color var(--pm-motion-hover); }
-      .badge img { width: 26px; height: 26px; } /* badge artwork size, not a spacing value */
-      .badge:hover { color: var(--pm-color-text-secondary); }
-      .nav-links { display: flex; align-items: center; gap: var(--pm-space-8); font-size: var(--pm-type-small-size); }
-      .nav-links a { color: var(--pm-nav-link-color); transition: color var(--pm-motion-hover); }
-      .nav-links a:hover { color: var(--pm-nav-link-hover); }
-      .nav-links .nav-cta {
-        color: var(--pm-button-primary-text); background: var(--pm-button-primary-bg); font-weight: var(--pm-font-weight-semibold);
-        padding: var(--pm-space-2) var(--pm-space-5); border-radius: var(--pm-radius-full);
-      }
-      .nav-links .nav-cta:hover { color: var(--pm-button-primary-text); box-shadow: var(--pm-button-primary-shadow); }
-      .menu-btn {
-        display: none; min-height: var(--pm-space-10);
-        background: none; border: 1px solid var(--pm-color-border-subtle); color: var(--pm-color-text-primary);
-        border-radius: var(--pm-radius-md); padding: var(--pm-space-2) var(--pm-space-3);
-        font: inherit; font-size: var(--pm-type-small-size); cursor: pointer;
-      }
-      @media (max-width: 860px) {
-        .badge span { display: none; }
-        .menu-btn { display: inline-flex; align-items: center; }
-        .nav-links {
-          display: none; position: absolute; inset: var(--pm-space-16) 0 auto 0; flex-direction: column; align-items: flex-start;
-          gap: var(--pm-space-5); padding: var(--pm-space-6) var(--pm-layout-gutter) var(--pm-space-8);
-          background: var(--pm-color-surface-page); border-bottom: 1px solid var(--pm-color-border-subtle);
-          font-size: var(--pm-type-lead-size);
-        }
-        .nav-links.open { display: flex; }
-      }
-
-      /* ── Hero ── */
-      .hero { padding: var(--pm-space-20) 0 var(--pm-space-10); border-bottom: 1px solid var(--pm-color-border-subtle); }
-      .hero h1 { font-size: var(--pm-type-display-md-size); line-height: var(--pm-type-display-md-line-height); max-width: 18ch; text-wrap: balance; }
-      .hero-lede { color: var(--pm-color-text-secondary); font-size: var(--pm-type-lead-size); max-width: 60ch; margin-top: var(--pm-space-5); }
-      .run-status {
-        margin-top: var(--pm-space-8); display: flex; flex-wrap: wrap; align-items: center; gap: var(--pm-space-3) var(--pm-space-5);
-        font-size: var(--pm-type-small-size); color: var(--pm-color-text-secondary);
-      }
-      .run-dot { width: var(--pm-space-2); height: var(--pm-space-2); border-radius: var(--pm-radius-full); background: var(--pm-color-text-tertiary); flex-shrink: 0; }
-      .run-status[data-state="fresh"] .run-dot { background: var(--pm-color-status-success); box-shadow: var(--pm-shadow-glow-success); }
-      .run-status[data-state="stale"] .run-dot { background: var(--pm-color-status-warning); }
-      .run-status[data-state="error"] .run-dot { background: var(--pm-color-status-error); }
-      .run-status a { color: var(--pm-color-accent-secondary); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-
-      /* ── Filters ── */
-      .filters { display: flex; flex-wrap: wrap; align-items: center; gap: var(--pm-space-3); margin: var(--pm-space-10) 0 var(--pm-space-8); }
-      .filters-label { font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); margin-right: var(--pm-space-1); }
-      .chip {
-        font: inherit; font-size: var(--pm-type-small-size); cursor: pointer; min-height: var(--pm-space-10);
-        background: var(--pm-color-surface-raised); color: var(--pm-color-text-secondary);
-        border: 1px solid var(--pm-color-border-subtle); border-radius: var(--pm-radius-full); padding: var(--pm-space-2) var(--pm-space-4);
-        transition: border-color var(--pm-motion-hover), color var(--pm-motion-hover), background var(--pm-motion-hover);
-      }
-      .chip:hover { border-color: var(--pm-color-border-strong); color: var(--pm-color-text-primary); }
-      .chip[aria-pressed="true"] { background: var(--pm-color-accent-secondary-subtle); border-color: var(--pm-color-accent-secondary); color: var(--pm-color-accent-secondary); }
-      .chip .count { color: var(--pm-color-text-tertiary); margin-left: var(--pm-space-2); }
-      .chip[aria-pressed="true"] .count { color: inherit; }
-
-      /* ── Briefing card ── */
-      .feed { display: flex; flex-direction: column; gap: var(--pm-space-6); padding-bottom: var(--pm-space-6); }
-      .briefing { background: var(--pm-card-bg); border: 1px solid var(--pm-card-border); border-radius: var(--pm-card-radius); padding: var(--pm-space-10); }
-      @media (max-width: 640px) { .briefing { padding: var(--pm-space-6) var(--pm-space-5); } }
-      .briefing-meta { display: flex; flex-wrap: wrap; gap: var(--pm-space-2) var(--pm-space-4); align-items: center; font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); margin-bottom: var(--pm-space-4); }
-      .tag {
-        color: var(--pm-color-accent-secondary); background: var(--pm-color-accent-secondary-subtle);
-        border-radius: var(--pm-radius-full); padding: var(--pm-space-1) var(--pm-space-3);
-      }
-      .briefing h2 { font-size: var(--pm-type-heading-md-size); line-height: var(--pm-type-heading-md-line-height); max-width: 30ch; text-wrap: balance; }
-      .dek { color: var(--pm-color-text-secondary); font-size: var(--pm-type-lead-size); margin-top: var(--pm-space-3); max-width: 64ch; }
-
-      .scenario { margin-top: var(--pm-space-6); padding: var(--pm-space-1) 0 var(--pm-space-1) var(--pm-space-5); border-left: 2px solid var(--pm-color-status-warning); max-width: 70ch; }
-      .scenario-label { font-size: var(--pm-type-small-size); color: var(--pm-color-status-warning); margin-bottom: var(--pm-space-1); }
-      .scenario p { font-size: var(--pm-type-body-size); color: var(--pm-color-text-primary); }
-
-      .positions-head { margin: var(--pm-space-8) 0 var(--pm-space-3); font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); }
-      .positions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pm-space-4); }
-      @media (max-width: 760px) { .positions { grid-template-columns: 1fr; } }
-      .position {
-        background: var(--pm-color-surface-raised); border: 1px solid var(--pm-color-border-subtle); border-radius: var(--pm-radius-md);
-        padding: var(--pm-space-6); border-top: 2px solid var(--pm-color-accent-primary);
-      }
-      .position + .position { border-top-color: var(--pm-color-accent-secondary); }
-      .position h3 { font-size: var(--pm-type-heading-sm-size); line-height: var(--pm-type-heading-sm-line-height); }
-      .position p { color: var(--pm-color-text-secondary); font-size: var(--pm-type-body-size); margin-top: var(--pm-space-2); }
-      .position .argued { margin-top: var(--pm-space-4); font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); }
-
-      .detail { margin-top: var(--pm-space-8); padding-top: var(--pm-space-6); border-top: 1px solid var(--pm-color-border-subtle); display: grid; gap: var(--pm-space-6); max-width: 76ch; }
-      .detail[hidden] { display: none; }
-      .detail h4 { font-size: var(--pm-type-heading-sm-size); margin: 0 0 var(--pm-space-2); }
-      .detail p { color: var(--pm-color-text-secondary); font-size: var(--pm-type-body-size); }
-      .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--pm-space-3); counter-reset: step; }
-      .steps li { counter-increment: step; display: grid; grid-template-columns: var(--pm-space-8) 1fr; gap: var(--pm-space-3); font-size: var(--pm-type-body-size); color: var(--pm-color-text-secondary); }
-      .steps li::before { content: counter(step); font-family: var(--pm-font-family-display); color: var(--pm-color-text-accent); font-size: var(--pm-type-body-lg-size); line-height: var(--pm-font-line-height-snug); }
-      .steps strong { color: var(--pm-color-text-primary); font-weight: var(--pm-font-weight-semibold); }
-      .caveat { font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); }
-
-      .sources { margin-top: var(--pm-space-8); padding-top: var(--pm-space-5); border-top: 1px solid var(--pm-color-border-subtle); }
-      .sources-head { font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); margin-bottom: var(--pm-space-3); }
-      .sources ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--pm-space-2); }
-      .sources li { font-size: var(--pm-type-small-size); display: flex; flex-wrap: wrap; gap: var(--pm-space-1) var(--pm-space-3); align-items: baseline; }
-      .sources a { color: var(--pm-color-text-primary); text-decoration: underline; text-decoration-color: var(--pm-color-border-strong); text-underline-offset: 3px; transition: text-decoration-color var(--pm-motion-hover); }
-      .sources a:hover { text-decoration-color: var(--pm-color-accent-secondary); }
-      .sources .src-meta { color: var(--pm-color-text-tertiary); font-size: var(--pm-type-small-size); }
-
-      /* design-system Button: Ghost */
-      .card-actions { margin-top: var(--pm-space-6); }
-      .pm-btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: var(--pm-button-gap);
-        min-height: var(--pm-button-min-height);
-        padding: calc(var(--pm-button-padding-y) - 1px) calc(var(--pm-button-padding-x) - 1px);
-        border: 1px solid transparent; border-radius: var(--pm-button-radius);
-        font: inherit; font-size: var(--pm-type-body-size); font-weight: var(--pm-font-weight-semibold); line-height: var(--pm-font-line-height-snug);
-        cursor: pointer; transition: border-color var(--pm-motion-hover), color var(--pm-motion-hover), transform var(--pm-motion-hover);
-      }
-      .pm-btn--ghost { background: transparent; color: var(--pm-color-text-primary); border-color: var(--pm-button-ghost-border); }
-      .pm-btn--ghost:hover { border-color: var(--pm-button-ghost-border-hover); color: var(--pm-color-text-interactive-hover); }
-      @media (prefers-reduced-motion: no-preference) { .pm-btn--ghost:hover { transform: translateY(-2px); } }
-
-      /* ── Empty / error states ── */
-      .notice { background: var(--pm-color-surface-raised); border: 1px solid var(--pm-color-border-subtle); border-radius: var(--pm-radius-md); padding: var(--pm-space-8); color: var(--pm-color-text-secondary); }
-      .notice h2 { font-size: var(--pm-type-heading-sm-size); color: var(--pm-color-text-primary); margin-bottom: var(--pm-space-2); }
-
-      /* ── Method ── */
-      .method { padding: var(--pm-layout-section-y) 0 var(--pm-space-20); border-top: 1px solid var(--pm-color-border-subtle); margin-top: var(--pm-space-12); }
-      .method h2 { font-size: var(--pm-type-heading-lg-size); line-height: var(--pm-type-heading-lg-line-height); }
-      .method-intro { color: var(--pm-color-text-secondary); max-width: 62ch; margin-top: var(--pm-space-3); }
-      .method-steps { margin: var(--pm-space-8) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--pm-space-4); counter-reset: m; }
-      @media (max-width: 960px) { .method-steps { grid-template-columns: 1fr 1fr; } }
-      @media (max-width: 560px) { .method-steps { grid-template-columns: 1fr; } }
-      .method-steps li { counter-increment: m; background: var(--pm-card-bg); border: 1px solid var(--pm-card-border); border-radius: var(--pm-radius-md); padding: var(--pm-space-6); }
-      .method-steps li::before { content: '0' counter(m); display: block; font-family: var(--pm-font-family-display); font-size: var(--pm-type-heading-sm-size); color: var(--pm-color-accent-primary); margin-bottom: var(--pm-space-2); }
-      .method-steps h3 { font-size: var(--pm-type-body-lg-size); margin-bottom: var(--pm-space-2); }
-      .method-steps p { font-size: var(--pm-type-small-size); color: var(--pm-color-text-secondary); }
-      .source-status { margin-top: var(--pm-space-8); }
-      .source-status h3 { font-size: var(--pm-type-heading-sm-size); margin-bottom: var(--pm-space-3); }
-      .source-status ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: var(--pm-space-2); }
-      .source-status li { font-size: var(--pm-type-small-size); border: 1px solid var(--pm-color-border-subtle); border-radius: var(--pm-radius-full); padding: var(--pm-space-2) var(--pm-space-4); color: var(--pm-color-text-secondary); }
-      .source-status li.down { color: var(--pm-color-text-tertiary); border-style: dashed; }
-
-      /* ── Footer (mirrors portfolio) ── */
-      .site-footer { border-top: 1px solid var(--pm-color-border-subtle); background: var(--pm-color-surface-raised); padding: var(--pm-space-8) 0; }
-      .site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--pm-space-4); font-size: var(--pm-type-small-size); color: var(--pm-color-text-tertiary); }
-      .site-footer a { text-decoration: underline; text-underline-offset: 3px; }
-
-      @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        * { transition: none !important; }
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css?v=20261010">
 </head>
-<body>
+<body class="pg-briefing">
 
-<header class="site-header">
-  <div class="wrap nav">
-    <div class="brand">
-      <a class="brand-name" href="https://www.perceptionmanager.com/index.html">Alex Grinyayev</a>
-      <a class="badge" href="https://www.nngroup.com/ux-certification/people/" target="_blank" rel="noopener">
-        <img src="https://www.perceptionmanager.com/assets/img/nng-ux-certified-badge.png" alt="NN/g UX Certified">
-        <span>NNg Certified - ID 1064178</span>
-      </a>
-    </div>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
-    <nav class="nav-links" id="navLinks" aria-label="Main">
-      <a href="https://www.perceptionmanager.com/index.html">Home</a>
-      <a href="https://www.perceptionmanager.com/case-studies.html">Case Studies</a>
-      <a href="https://www.perceptionmanager.com/about.html">About Me</a>
-      <a class="nav-cta" href="mailto:perceptionmanager@gmail.com">Let's connect</a>
-    </nav>
+<div class="page">
+
+  <!-- backdrop: same animated background as the portfolio (grain, aura, drifting spotlights; assets/js/site.js adds the line pattern) -->
+  <div class="grain"></div>
+  <div class="aura"></div>
+  <div class="grid-overlay"></div>
+
+  <div id="bdBlobCoral" data-blob-group data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.75" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.62" data-dur-min="4" data-dur-max="8">
+    <div class="grain-clear bd-coral-mask" data-blob-target style="transform:translate(0,0) scale(1);opacity:.35"></div>
+    <div class="blob coral bd-coral-glow" data-blob-target style="transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
   </div>
-</header>
+  <div id="bdBlobCyan" class="blob-cyan-group" data-blob-group data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.7" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.6" data-dur-min="4.5" data-dur-max="8.5">
+    <div class="grain-clear bd-cyan-mask" data-blob-target style="transform:translate(0,0) scale(1);opacity:.35"></div>
+    <div class="blob cyan bd-cyan-glow" data-blob-target style="transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
+  </div>
 
-<main>
-  <section class="hero">
+  <!-- NAV (same as the portfolio) -->
+  <header class="site-nav">
     <div class="wrap">
-      <h1>What UX teams are weighing this week.</h1>
-      <p class="hero-lede">Each briefing groups recent articles from design and product publications around one practical question, then lays out where they agree and where they split. Every briefing links to the articles it came from.</p>
-      <p class="run-status" id="runStatus" data-state="loading" role="status">
-        <span class="run-dot" aria-hidden="true"></span>
-        <span id="runText">Loading the latest briefing…</span>
-        <a href="#method">How this is made</a>
+      <div class="brand">
+        <span class="site-name">Alex Grinyayev</span>
+        <a class="cert-link" href="https://www.nngroup.com/ux-certification/people/" target="_blank" rel="noopener">
+          <img class="badge-icon" src="assets/img/nng-ux-certified-badge.webp" alt="NN/g UX Certified" width="56" height="53">
+          <span class="badge-label"><span class="badge-prefix">NNg Certified - </span>ID 1064178</span>
+        </a>
+      </div>
+      <nav class="nav-links" aria-label="Main">
+        <a class="btn btn-ghost magnetic" data-magnetic href="mailto:perceptionmanager@gmail.com" aria-label="Let's connect"><svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="btn-label">Let's connect</span></a>
+      </nav>
+    </div>
+    <div class="nav-rule"></div>
+    <div class="nav-progress" data-scroll-progress></div>
+  </header>
+  <div class="nav-spacer"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="cs-hero wrap">
+      <p class="pill fade-in" style="animation-delay:.05s"><span class="dot" aria-hidden="true"></span>Side project · Weekly briefing</p>
+      <h1>
+        <span class="split-word" style="animation-delay:.05s">What</span>
+        <span class="split-word" style="animation-delay:.12s">UX</span>
+        <span class="split-word" style="animation-delay:.19s">teams</span>
+        <span class="split-word" style="animation-delay:.26s">are</span>
+        <span class="split-word" style="animation-delay:.33s;text-shadow:-2px 0 0 var(--pm-color-accent-secondary),2px 0 0 var(--pm-color-accent-primary)">weighing</span>
+        <span class="split-word" style="animation-delay:.4s">this&nbsp;week.</span>
+      </h1>
+      <p class="cs-hero-sub fade-in" style="animation-delay:.25s">Each briefing groups recent articles from design and product publications around one practical question, then lays out where they agree and where they split. Every briefing links to the articles it came from.</p>
+      <p class="run-status fade-in" id="runStatus" data-state="loading" role="status" style="animation-delay:.3s">
+        <span class="dot" aria-hidden="true"></span>
+        <span><span id="runText">Loading the latest briefing…</span> <a href="#method">How this is made</a></span>
       </p>
-    </div>
-  </section>
+    </section>
 
-  <div class="wrap">
-    <div class="filters" id="filters" role="group" aria-label="Filter briefings by topic" hidden>
-      <span class="filters-label">Show</span>
-    </div>
-    <div class="feed" id="feed" aria-live="polite"></div>
-  </div>
-
-  <section class="method" id="method">
-    <div class="wrap">
-      <h2>How this briefing is made</h2>
-      <p class="method-intro">An automated pipeline runs every Monday. Nothing on this page is written by hand, and nothing is updated between runs.</p>
-      <ol class="method-steps">
-        <li><h3>Collect</h3><p>A scheduled job reads the RSS feeds of the publications listed below and keeps articles from the last two weeks.</p></li>
-        <li><h3>Group</h3><p>Claude groups articles that address the same practical question. A topic needs at least two different publications to qualify.</p></li>
-        <li><h3>Synthesize</h3><p>Claude writes each briefing from article titles and excerpts only, not full text. Read it as a map to the articles, not a summary of them.</p></li>
-        <li><h3>Check</h3><p>Code rejects any briefing that cites an article outside its group. If fewer than three feeds respond, the run fails and the previous briefing stays up.</p></li>
-      </ol>
-      <div class="source-status" id="sourceStatus" hidden>
-        <h3>Sources in the last run</h3>
-        <ul id="sourceList"></ul>
+    <!-- STATS -->
+    <div class="wrap fade-in sec-stats" style="position:relative;z-index:var(--pm-z-content);animation-delay:.35s">
+      <div class="stat-row" id="statRow">
+        <div class="stat"><b class="stat-value" id="stat0">–</b><span>Briefings this week, each drawn from at least two publications</span></div>
+        <div class="stat"><b class="stat-value" id="stat1">–</b><span>Articles scanned from the last two weeks</span></div>
+        <div class="stat"><b class="stat-value" id="stat2">–</b><span>Sources that responded in the last run</span></div>
       </div>
     </div>
-  </section>
-</main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div>© Alex Grinyayev · 2026</div>
-    <div>Built with Gemini and Claude, <a href="https://github.com/perceptionmanager/ux-briefing" target="_blank" rel="noopener">source on GitHub</a>, deployed on Vercel</div>
-  </div>
-</footer>
+    <!-- BRIEFINGS -->
+    <section class="wrap brief-sec" id="briefings">
+      <h2>This week’s briefings</h2>
+      <p class="sec-desc">Each one starts from a single practical question. Filter by topic, or open a briefing for the context and what to try.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter briefings by topic" hidden>
+        <span class="filters-label">Show</span>
+      </div>
+      <div class="feed" id="feed" aria-live="polite"></div>
+    </section>
 
-<script>
-(() => {
-  const STALE_DAYS = 9;
-  const ORDER = ['discovery', 'leadership', 'systems', 'tooling', 'operations'];
-  const feedEl = document.getElementById('feed');
-  const filtersEl = document.getElementById('filters');
-  const statusEl = document.getElementById('runStatus');
-  const runText = document.getElementById('runText');
-  let selected = new Set(['all']);
+    <!-- HOW IT IS MADE -->
+    <section class="wrap cs-split cs-approach" id="method">
+      <h2>How this briefing is made</h2>
+      <div>
+        <p class="method-intro">An automated pipeline runs every Monday. Nothing on this page is written by hand, and nothing is updated between runs.</p>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-num">1</div>
+          <div><h3>Collect</h3><p>A scheduled job reads the RSS feeds of the publications listed below and keeps articles from the last two weeks.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-num">2</div>
+          <div><h3>Group</h3><p>Claude groups articles that address the same practical question. A topic needs at least two different publications to qualify.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-num">3</div>
+          <div><h3>Synthesize</h3><p>Claude writes each briefing from article titles and excerpts only, not full text. Read it as a map to the articles, not a summary of them.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><h3>Check</h3><p>Code rejects any briefing that cites an article outside its group. If fewer than three feeds respond, the run fails and the previous briefing stays up.</p></div>
+        </div>
+      </div>
+    </section>
 
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
-  menuBtn.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.textContent = open ? 'Close' : 'Menu';
-  });
+    <!-- SOURCES -->
+    <section class="wrap cs-split" id="sourceStatus" hidden>
+      <h2>Sources in the last run</h2>
+      <div>
+        <ul class="source-list" id="sourceList"></ul>
+        <p class="source-note">Number in parentheses: articles kept from the last two weeks. A dashed outline means the feed didn’t respond.</p>
+      </div>
+    </section>
 
-  // Safe DOM builder: all model output goes through textContent, never innerHTML
-  function el(tag, attrs = {}, ...kids) {
-    const n = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) {
-      if (v == null || v === false) continue;
-      if (k === 'class') n.className = v;
-      else if (k === 'text') n.textContent = v;
-      else n.setAttribute(k, v === true ? '' : v);
-    }
-    kids.flat().filter(Boolean).forEach((k) => n.append(k));
-    return n;
-  }
-  const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
-  const safeUrl = (u) => (/^https?:\/\//i.test(u || '') ? u : null);
+  </main>
 
-  const fmtDate = (iso) => new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-  function relDays(iso) {
-    const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-    return d <= 0 ? 'today' : d === 1 ? 'yesterday' : `${d} days ago`;
-  }
+  <!-- FOOTER -->
+  <footer class="footer-line site-footer" style="position:relative;z-index:var(--pm-z-content)">
+    <div class="wrap">
+      <span>© Alex Grinyayev · 2026</span>
+      <span>Built with Gemini and Claude, source on GitHub, deployed on Vercel</span>
+    </div>
+  </footer>
 
-  function setStatus(state, message) {
-    statusEl.dataset.state = state;
-    runText.textContent = message;
-  }
+</div>
 
-  function renderBriefing(b, i) {
-    const detailId = `detail-${i}`;
-    const sources = (b.sources || []).filter((s) => safeUrl(s.url));
-    const outletCount = new Set(sources.map((s) => s.outlet)).size;
-
-    const toggle = el('button', { class: 'pm-btn pm-btn--ghost', 'aria-expanded': 'false', 'aria-controls': detailId, text: 'Show context and next steps' });
-    const detail = el('div', { class: 'detail', id: detailId, hidden: true },
-      el('div', {}, el('h4', { text: 'Context' }), el('p', { text: b.context })),
-      el('div', {}, el('h4', { text: 'What to try' }),
-        el('ol', { class: 'steps' }, (b.steps || []).map((s) =>
-          el('li', {}, el('span', {}, el('strong', { text: s.label + '. ' }), s.text))))),
-      el('p', { class: 'caveat', text: 'What these sources don’t settle: ' + b.caveat })
-    );
-    toggle.addEventListener('click', () => {
-      const open = detail.hidden;
-      detail.hidden = !open;
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'Hide context and next steps' : 'Show context and next steps';
-    });
-
-    return el('article', { class: 'briefing', 'data-category': b.category, 'aria-labelledby': `title-${i}` },
-      el('div', { class: 'briefing-meta' },
-        el('span', { class: 'tag', text: b.categoryLabel }),
-        el('span', { text: `${plural(sources.length, 'article')} from ${plural(outletCount, 'publication')}` })),
-      el('h2', { id: `title-${i}`, text: b.title }),
-      el('p', { class: 'dek', text: b.dek }),
-      el('div', { class: 'scenario' },
-        el('p', { class: 'scenario-label', text: 'Illustrative scenario' }),
-        el('p', { text: b.scenario })),
-      el('p', { class: 'positions-head', text: b.relation === 'disagree' ? 'Where the sources disagree' : 'Where the sources put the weight' }),
-      el('div', { class: 'positions' }, (b.positions || []).map((p) =>
-        el('section', { class: 'position' },
-          el('h3', { text: p.label }),
-          el('p', { text: p.summary }),
-          el('p', { class: 'argued', text: 'Argued in ' + (p.outlets || []).join(', ') })))),
-      detail,
-      el('div', { class: 'card-actions' }, toggle),
-      el('div', { class: 'sources' },
-        el('p', { class: 'sources-head', text: 'Read the sources' }),
-        el('ul', {}, sources.map((s) =>
-          el('li', {},
-            el('a', { href: safeUrl(s.url), target: '_blank', rel: 'noopener', text: s.title }),
-            el('span', { class: 'src-meta', text: `${s.outlet}, ${fmtDate(s.date + 'T12:00:00')}` })))))
-    );
-  }
-
-  function applyFilter() {
-    filtersEl.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(selected.has(c.dataset.category))));
-    feedEl.querySelectorAll('.briefing').forEach((card) => {
-      card.hidden = !(selected.has('all') || selected.has(card.dataset.category));
-    });
-  }
-
-  function toggleFilter(cat) {
-    if (cat === 'all') selected = new Set(['all']);
-    else {
-      selected.delete('all');
-      selected.has(cat) ? selected.delete(cat) : selected.add(cat);
-      if (selected.size === 0) selected.add('all');
-    }
-    applyFilter();
-  }
-
-  function renderFilters(briefings) {
-    const cats = ORDER.filter((c) => briefings.some((b) => b.category === c));
-    if (cats.length < 2) return; // a filter with one option is noise
-    const labelFor = (c) => briefings.find((b) => b.category === c).categoryLabel;
-    const chip = (cat, label, count) => {
-      const b = el('button', { class: 'chip', 'data-category': cat, 'aria-pressed': 'false' }, label, count != null ? el('span', { class: 'count', text: String(count) }) : null);
-      b.addEventListener('click', () => toggleFilter(cat));
-      return b;
-    };
-    filtersEl.append(chip('all', 'All topics'));
-    cats.forEach((c) => filtersEl.append(chip(c, labelFor(c), briefings.filter((b) => b.category === c).length)));
-    filtersEl.hidden = false;
-    applyFilter();
-  }
-
-  function renderSources(feeds) {
-    if (!Array.isArray(feeds) || !feeds.length) return;
-    const list = document.getElementById('sourceList');
-    feeds.forEach((f) => {
-      const label = f.ok ? `${f.name} (${f.articles})` : `${f.name}, didn’t respond`;
-      const item = el('li', { class: f.ok ? null : 'down' });
-      const href = safeUrl(f.site);
-      item.append(href ? el('a', { href, target: '_blank', rel: 'noopener', text: label }) : label);
-      list.append(item);
-    });
-    document.getElementById('sourceStatus').hidden = false;
-  }
-
-  function notice(title, body) {
-    feedEl.replaceChildren(el('div', { class: 'notice' }, el('h2', { text: title }), el('p', { text: body })));
-  }
-
-  async function load() {
-    let data;
-    try {
-      const res = await fetch('data/briefings.json', { cache: 'no-store' });
-      if (!res.ok) throw new Error(res.status);
-      data = await res.json();
-    } catch {
-      setStatus('error', 'The briefing data didn’t load.');
-      notice('Briefing unavailable', 'The data file couldn’t be loaded. Refresh the page; if it still fails, the latest run may not have deployed yet.');
-      return;
-    }
-
-    if (data.status !== 'ok' || !data.briefings?.length) {
-      setStatus('pending', 'No briefing has been generated yet.');
-      notice('First briefing pending', 'The pipeline hasn’t completed its first run. Briefings appear here after the next scheduled Monday run.');
-      return;
-    }
-
-    const okFeeds = (data.feeds || []).filter((f) => f.ok).length;
-    const ageDays = (Date.now() - new Date(data.generatedAt).getTime()) / 86400000;
-    const summary = `Generated ${fmtDate(data.generatedAt)} (${relDays(data.generatedAt)}) from ${data.articlesScanned} articles across ${okFeeds} of ${(data.feeds || []).length} sources.`;
-    setStatus(ageDays > STALE_DAYS ? 'stale' : 'fresh', ageDays > STALE_DAYS ? summary + ' The weekly run is overdue, so this may be out of date.' : summary);
-
-    feedEl.replaceChildren(...data.briefings.map(renderBriefing));
-    renderFilters(data.briefings);
-    renderSources(data.feeds);
-  }
-
-  load();
-})();
-</script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/briefing.js"></script>
 </body>
 </html>

@@ -8,13 +8,17 @@ as static JSON that the page renders. Every briefing links to its source article
 ## Structure
 
 ```
-index.html                 Page (portfolio tokens, renders data/briefings.json)
+index.html                 Page markup (same header, backdrop, cards and footer as the portfolio case studies; no links back to the portfolio, it opens on its own)
+assets/css/site.css        Styles: a synced copy of the portfolio's shared CSS + this page's own (.pg-briefing)
+assets/js/site.js          Copy of the portfolio's site.js (menu, scroll bar, drifting spotlights, line pattern)
+assets/js/briefing.js      Renders data/briefings.json (textContent only)
+assets/img/                NN/g badge, self-hosted
 data/briefings.json        Latest run output (starts as "pending")
 data/archive/              Dated copy of every successful run
 scripts/feeds.json         Publications to read — edit freely
 scripts/ingest.mjs         Pipeline: fetch → group → synthesize → validate → write
 .github/workflows/ingest.yml  Runs Mondays 12:00 UTC, plus a manual button
-vercel.json                No-cache header on data/ so new runs show immediately
+vercel.json                No-cache header on data/ so new runs show immediately; short cache on css/js, 7 days on images
 ```
 
 ## Setup
@@ -46,3 +50,12 @@ Local test without API calls: `npm ci && npm run ingest:dry` (fetches feeds only
 - Claude sees titles and RSS excerpts only, not full articles. The page says so.
 - Feed URLs in `feeds.json` were not reachable from the build sandbox; confirm them
   on the first run and replace any that fail.
+
+## Staying in sync with the portfolio
+
+`assets/css/site.css` (the "components" layer) and `assets/js/site.js` are copies of the shared parts of
+perceptionmanager.com's `assets/css/base.css` (everything above its first "Page:" section) and `assets/js/site.js`.
+Change them in the portfolio first, then re-copy, so the two sites never drift apart. The longer-term plan is to
+move this shared chrome and the backdrop into the design system and load it from there in every product.
+
+The page opts out of the animated line pattern with `<body data-backdrop-lines="off">`.
