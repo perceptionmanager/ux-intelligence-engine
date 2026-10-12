@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "generatedAt": "2026-10-06T16:01:06.080Z",
+  "generatedAt": "2026-10-12T21:00:02.922Z",
   "model": "claude-sonnet-5-5",
   "lookbackDays": 14,
   "articlesScanned": 54,
@@ -98,46 +98,55 @@
   ],
   "briefings": [
     {
-      "id": "discovery-muwv8krk",
+      "id": "discovery-mv5qk4nl",
       "category": "discovery",
       "categoryLabel": "Product discovery",
-      "title": "Synthetic users: useful for ideas, unproven for measurement",
-      "dek": "Teams must decide which research tasks can go to AI stand-ins and which still need real participants and human judgment.",
-      "scenario": "A product team at a large retailer has a tight budget and a long recruitment queue. They are considering AI-simulated users to shape early concepts, predict usability scores, and sort thousands of open-ended survey comments that nobody has time to read.",
+      "title": "Where AI helps UX research, and where not",
+      "dek": "Teams must decide which research tasks to hand to AI and which to keep with human researchers.",
+      "scenario": "A research group at a large retailer has thousands of open-ended survey comments nobody has time to read, and a leader asks whether synthetic users could replace some recruited sessions. The team needs to decide which of those requests is reasonable and which could mislead product decisions.",
       "relation": "emphasis",
       "positions": [
         {
-          "label": "Use for early exploration",
-          "summary": "Nielsen's roundups present simulated users as a way to widen early design thinking, involve more perspectives, and help designers reason through usage. He also warns that their feedback skews too positive, so they suit divergent thinking better than verdicts.",
+          "label": "Delegate comment coding",
+          "summary": "Sorting open-ended survey comments into themes is the clearest assistant-level job for AI. One source reports AI now matches human researchers at it, and another has tracked the idea for three years as a promising use.",
           "outlets": [
+            "MeasuringU",
             "UX Tigers (Jakob Nielsen)"
           ]
         },
         {
-          "label": "Test against human benchmarks",
-          "summary": "MeasuringU treats replacement as a claim to check. It compares digital-twin predictions of SUS scores with real results, and it revisits whether ChatGPT can code open-ended survey comments as well as human researchers. The excerpts name the cost and speed appeal but do not show the outcomes.",
+          "label": "Hold back on judgment work",
+          "summary": "Finding usability problems has produced mixed results so far. Synthetic users are contested: they may suit rough, low-stakes artifacts or early exploration, but one source says they give feedback that is too positive, and another urges very limited use for a human-centered discipline.",
           "outlets": [
-            "MeasuringU"
+            "MeasuringU",
+            "UX Collective",
+            "UX Tigers (Jakob Nielsen)"
           ]
         }
       ],
-      "context": "Recruitment is slow and expensive, and open-ended survey comments are often skimmed or skipped, so both simulated participants and automated coding are tempting. The sources cover two kinds of use. One is generative, where a flawed simulation can still prompt useful thinking. The other is evaluative, where the output stands in for a measurement and errors or flattery matter more.",
+      "context": "Interest in AI for research has moved from whether it can replace researchers to which tasks it can take on. The sources split the work into assistant-level tasks, such as coding comments, and analyst-level tasks, such as spotting usability problems or standing in for participants. Researchers are also divided on whether synthetic users are acceptable at all.",
       "steps": [
         {
-          "label": "Sort by purpose",
-          "text": "Label each planned AI use as idea generation or as evidence for a decision, and allow synthetic participants only for the first."
+          "label": "Pilot comment coding",
+          "text": "Run AI coding on a past survey where human-coded themes already exist, and compare the two before relying on it."
         },
         {
-          "label": "Run a human check",
-          "text": "Before trusting automated coding or predicted scores, compare them with human-coded or real-participant results from a past study."
+          "label": "Limit synthetic users",
+          "text": "Use them only for early exploration or rough artifacts, and treat their feedback as likely too favorable."
         },
         {
-          "label": "Watch for flattery",
-          "text": "Read simulated feedback with the expectation that it is too agreeable, and confirm any usability concern or approval with real users."
+          "label": "Keep humans on findings",
+          "text": "Have researchers decide which usability problems are real, and use AI output only as a second set of observations to check against theirs."
         }
       ],
-      "caveat": "The excerpts do not report how accurate digital twins or ChatGPT coding turned out to be, so the validity of either use is not settled here.",
+      "caveat": "The excerpts are short and give no study methods or error rates, so they don't show how well AI performs across different products, participants, or datasets.",
       "sources": [
+        {
+          "outlet": "UX Collective",
+          "title": "Are synthetic users (really) the future of UX research?",
+          "url": "https://uxdesign.cc/are-synthetic-users-really-the-future-of-ux-research-fd76fcb479ec?source=rss----138adf9c44c---4",
+          "date": "2026-10-08"
+        },
         {
           "outlet": "UX Tigers (Jakob Nielsen)",
           "title": "UX Roundup: AI Errors Halve Every 5 Months | Muse Charm | Synthetic Users in Exploratory Design | Context | AI-Simulated Users Are Biased | Price Comparisons | Perceived Affordance | Consistency | Tab",
@@ -145,132 +154,121 @@
           "date": "2026-10-05"
         },
         {
-          "outlet": "UX Tigers (Jakob Nielsen)",
-          "title": "UX Roundup: AI Agents Help Blind Users | Style Exploration | Recognition: Show Options | Synthetic Users Help Designers Reflect | Local Optimization | Fail Early | Before–After Sliders | Error Message",
-          "url": "https://www.uxtigers.com/post/ux-roundup-20260925",
-          "date": "2026-09-25"
-        },
-        {
           "outlet": "MeasuringU",
-          "title": "How Well Do Digital Twins Predict SUS Scores?",
-          "url": "https://measuringu.com/how-well-do-synthetic-users-predict-sus-scores/?utm_source=rss&utm_medium=rss&utm_campaign=how-well-do-synthetic-users-predict-sus-scores",
-          "date": "2026-09-23"
+          "title": "Using AI To Find Usability Problems: Examining Task Failure",
+          "url": "https://measuringu.com/using-ai-to-find-usability-problems-examining-task-failure/?utm_source=rss&utm_medium=rss&utm_campaign=using-ai-to-find-usability-problems-examining-task-failure",
+          "date": "2026-10-07"
         },
         {
           "outlet": "MeasuringU",
           "title": "ChatGPT vs Humans for Coding Open-Ended Responses, Three Years Later",
           "url": "https://measuringu.com/chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later/?utm_source=rss&utm_medium=rss&utm_campaign=chatgpt-vs-humans-for-coding-open-ended-responses-three-years-later",
           "date": "2026-09-30"
-        }
-      ]
-    },
-    {
-      "id": "leadership-muwv8in0",
-      "category": "leadership",
-      "categoryLabel": "Design leadership",
-      "title": "Is AI quietly eroding designers' core skills?",
-      "dek": "Teams must decide whether to treat deskilling as a real threat to judgment and taste, or as a fear built on weak evidence.",
-      "scenario": "A design org at a large retailer has rolled out AI tools and agents across its product teams, and output has climbed sharply. A lead wonders whether junior designers are still building the judgment to tell good work from merely plausible work, and whether to limit tool use or leave things alone.",
-      "relation": "disagree",
-      "positions": [
-        {
-          "label": "Erosion is already happening",
-          "summary": "Several writers argue that handing thinking to AI weakens skills, that taste is hard to develop in today's tools and risk-averse culture, and that running many agents at once makes it harder to see work as a whole.",
-          "outlets": [
-            "UX Collective"
-          ]
-        },
-        {
-          "label": "Evidence is overstated",
-          "summary": "Jakob Nielsen's roundup holds that most deskilling research looks at the wrong condition, so its findings should not be taken as proof that designers are losing ability.",
-          "outlets": [
-            "UX Tigers (Jakob Nielsen)"
-          ]
-        }
-      ],
-      "context": "Taste, judgment and holistic view are often named as the human strengths that last as AI takes over production. The pieces here ask whether current working conditions let designers keep building those strengths. The disagreement is partly about evidence: first-person and cultural arguments on one side, a critique of study design on the other.",
-      "steps": [
-        {
-          "label": "Audit your own use",
-          "text": "Note where your team lets AI make judgment calls versus where it only speeds up execution."
-        },
-        {
-          "label": "Protect formation time",
-          "text": "Keep some work, especially for less experienced designers, done by hand so they practice critique and evaluation."
-        },
-        {
-          "label": "Question the research",
-          "text": "Before citing a deskilling study, check whether its test conditions resemble how your designers actually work."
-        }
-      ],
-      "caveat": "The excerpts are short and mostly opinion, so they give no direct measurement of skill change among working designers and do not show what the criticized research actually found.",
-      "sources": [
-        {
-          "outlet": "UX Collective",
-          "title": "AI skill atrophy: Are we forgetting how to think?",
-          "url": "https://uxdesign.cc/ai-skill-atrophy-cognitive-offloading-1afbf92eb496?source=rss----138adf9c44c---4",
-          "date": "2026-10-05"
-        },
-        {
-          "outlet": "UX Collective",
-          "title": "The taste paradox: why the skill everyone says matters is the one we’ve stopped building",
-          "url": "https://uxdesign.cc/the-taste-paradox-why-the-skill-everyone-says-matters-is-the-one-weve-stopped-building-32d1523f1f95?source=rss----138adf9c44c---4",
-          "date": "2026-10-05"
         },
         {
           "outlet": "UX Tigers (Jakob Nielsen)",
-          "title": "UX Roundup: Bogus Deskilling Research | Jargon Alienates | AI Exposure Improves AI Attitudes | Interruptions | Prioritizing > Everything | Paper Prototyping | Unsupportive Support | Resizable Panes",
-          "url": "https://www.uxtigers.com/post/ux-roundup-20260928",
-          "date": "2026-09-28"
-        },
-        {
-          "outlet": "UX Collective",
-          "title": "The feed I produce myself",
-          "url": "https://uxdesign.cc/the-feed-i-produce-myself-11e4192f394c?source=rss----138adf9c44c---4",
-          "date": "2026-10-03"
+          "title": "UX Roundup: Erik the Red | AI Thematic Analysis | Nano Banana 2.1 | Scrolling | Fast Asymptote in AI Skills | Average Users | Wishlists | Usability Testing Without Findings | Naming Consistency",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261009",
+          "date": "2026-10-09"
         }
       ]
     },
     {
-      "id": "tooling-muwv8ij8",
-      "category": "tooling",
-      "categoryLabel": "Tooling and AI",
-      "title": "Handing craft to AI: vendor claims versus tests",
-      "dek": "Teams must decide how much design work to delegate to AI agents and models when vendor stories and independent tests point in different directions.",
-      "scenario": "A design systems team at a large retailer is told to let an AI agent handle library updates, critique summaries, and first-draft specs so designers can focus on new features. Before changing their process, they have to decide whether the vendor's examples reflect what the tools will produce on their own screens.",
-      "relation": "disagree",
+      "id": "systems-mv5qk1k6",
+      "category": "systems",
+      "categoryLabel": "Design systems",
+      "title": "Naming conventions or an agent for system upkeep",
+      "dek": "Teams must decide whether design system coherence comes mainly from human-readable naming structures or from an agent that takes over repetitive maintenance.",
+      "scenario": "A design system team at a large retailer has a component library that has drifted, with inconsistent names and product designs that stray from approved patterns. They have to choose between writing and enforcing a naming guide, or piloting an agent to handle library upkeep and keep designs aligned.",
+      "relation": "emphasis",
       "positions": [
         {
-          "label": "Delegate, keep judgment",
-          "summary": "Figma presents the agent as ready for general use. Its articles describe designers keeping the core product thinking while the agent does library updates, feedback gathering, and draft specs, and they cite teams at named companies as examples. Choosing what to hand off is framed as a skill in its own right.",
+          "label": "Name things deliberately",
+          "summary": "The Smashing guide treats naming of UI components as a craft problem and offers conventions, structures, and reference resources. The implied route to coherence is shared vocabulary that people apply by hand.",
           "outlets": [
-            "Figma Blog"
+            "Smashing Magazine"
           ]
         },
         {
-          "label": "Independent tests disappoint",
-          "summary": "Hands-on writers tested new models on web and UI design. One concludes that Sonnet 5.5 falls short of the vendor's claims. Others compare models and effort settings, which suggests output quality depends on which model and setting you use rather than being reliably high.",
+          "label": "Automate the repetitive upkeep",
+          "summary": "Figma's post presents its agent as a way to take on routine work in a design system, including library maintenance and helping designs follow the system. The implied route to coherence is offloading chores rather than relying on people to do them.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "Design systems tend to lose consistency as they grow, through naming drift, outdated components, and designs that depart from the library. The two articles address different layers of that problem: how components are labeled and structured, and who carries out the ongoing maintenance. One is a general guide to practice, the other a vendor's description of its own tool.",
+      "steps": [
+        {
+          "label": "Audit current drift",
+          "text": "List where your system is actually inconsistent, separating naming problems from maintenance backlog and from designs that ignore the library."
+        },
+        {
+          "label": "Set naming first",
+          "text": "Agree on a convention and structure for components so that any person or tool working on the library has a clear pattern to follow."
+        },
+        {
+          "label": "Pilot on chores",
+          "text": "Try the agent on one bounded, repetitive task and have a person review the results before widening its scope."
+        }
+      ],
+      "caveat": "The excerpts don't show how well the agent performs or whether it depends on good naming, so they can't say whether the two approaches compete or complement each other.",
+      "sources": [
+        {
+          "outlet": "Smashing Magazine",
+          "title": "A Practical Guide To Naming Things",
+          "url": "https://smashingmagazine.com/2026/10/how-name-things/",
+          "date": "2026-10-06"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "How to lighten design system upkeep with the Figma agent",
+          "url": "https://www.figma.com/blog/figma-agent-and-design-systems/",
+          "date": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "tooling-mv5qk4x6",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "Delegating design work to agents: where limits appear",
+      "dek": "Teams must decide which design tasks to give an AI agent now, and how to check that it holds up on large, interconnected projects.",
+      "scenario": "A design org at a large enterprise software company is reworking a platform with hundreds of linked screens. Leadership wants an agent to update components, collect critique feedback and draft specs, but nobody knows whether it will cope with the full scope.",
+      "relation": "disagree",
+      "positions": [
+        {
+          "label": "Hand off bounded chores",
+          "summary": "Figma's own workflow pieces describe the designer working on the core problem while the agent takes library updates, critique feedback and a first-draft spec. They also say deciding what to delegate is a skill in itself. A separate piece casts a fast, token-efficient model as a capable entry-level helper.",
+          "outlets": [
+            "Figma Blog",
+            "UX Planet"
+          ]
+        },
+        {
+          "label": "Scale exposes the gaps",
+          "summary": "One practitioner tried AI-assisted interface generation ahead of designing 800+ interconnected enterprise screens. The test ran into trouble with visual quality and, by the author's account, never got to the hard part of the project.",
           "outlets": [
             "UX Planet"
           ]
         }
       ],
-      "context": "Figma's posts come from the vendor and are about a product it has just made generally available. The UX Planet pieces are individual practitioner tests of general-purpose models, not of Figma's agent. The two sets cover different tools and different kinds of work, so they are not a direct comparison.",
+      "context": "Figma's agent is now generally available, and its blog is showcasing product teams that use it for speed and craft. Independent writers are testing similar AI tooling against less tidy conditions. The vendor examples centre on well-scoped tasks, while the critical account involves a large system with many dependencies.",
       "steps": [
         {
-          "label": "Sort tasks",
-          "text": "List your recurring design tasks and mark which are mechanical, such as library updates and draft specs, and which depend on judgment."
+          "label": "Pilot small tasks",
+          "text": "Start with contained work such as library updates, critique summaries and first-draft specs, and have a designer review every output."
         },
         {
-          "label": "Run your own test",
-          "text": "Try a candidate tool on a real screen from your product, and compare the output with your own standards instead of the vendor's demonstration."
+          "label": "Keep judgment human",
+          "text": "Leave the framing of the problem and the decisions about how screens connect with the designers who own the project."
         },
         {
-          "label": "Compare settings",
-          "text": "If you use a general-purpose model, test more than one model and more than one effort level before deciding where it fits."
+          "label": "Stress-test early",
+          "text": "Run the agent against a realistic slice of your most interconnected flows before committing it to the whole program."
         }
       ],
-      "caveat": "The excerpts don't show the testing methods, scoring criteria, or results in detail, and none of them tests Figma's agent independently.",
+      "caveat": "These are short excerpts, the Figma pieces come from the vendor, and none of them gives measured error rates or a direct comparison of agent output with human work on a large project.",
       "sources": [
         {
           "outlet": "Figma Blog",
@@ -286,21 +284,76 @@
         },
         {
           "outlet": "UX Planet",
-          "title": "I Tested Claude Sonnet 5.5 for Web Design",
-          "url": "https://uxplanet.org/i-tested-claude-sonnet-5-5-for-web-design-8ab1df274cf9?source=rss----819cc2aaeee0---4",
+          "title": "I Tried Claude With Figma on an 800+ Screen Project. It Never Reached the Hard Part",
+          "url": "https://uxplanet.org/i-tried-claude-with-figma-on-an-800-screen-project-it-never-reached-the-hard-part-7735b120f43a?source=rss----819cc2aaeee0---4",
+          "date": "2026-10-09"
+        },
+        {
+          "outlet": "UX Planet",
+          "title": "Claude Haiku 5.5 is the Ultimate Junior Designer",
+          "url": "https://uxplanet.org/claude-haiku-5-5-is-the-ultimate-junior-designer-f8567a2d9697?source=rss----819cc2aaeee0---4",
+          "date": "2026-10-08"
+        }
+      ]
+    },
+    {
+      "id": "operations-mv5qk1qw",
+      "category": "operations",
+      "categoryLabel": "Ops and strategy",
+      "title": "Automate less, and design oversight people can sustain",
+      "dek": "Teams must decide how much work to hand to AI and whether asking people to supervise it is a workable safeguard.",
+      "scenario": "A product team at a large insurer plans to let an AI system process most claims and route a few flagged cases to adjusters for approval. Leadership calls this human-in-the-loop, but the team suspects reviewers will stop looking closely once most flags turn out to be fine.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Design for vigilance limits",
+          "summary": "Human attention fails in two ways: it fades during long monitoring, and it fades again across repeated occasional approval requests. Oversight only holds up if the watching shifts are short and the questions put to people are rare and meaningful.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)"
+          ]
+        },
+        {
+          "label": "Automate with intention",
+          "summary": "Many organizations chase full automation without checking whether they are ready or whether customers benefit. The argument is to set a deliberate direction and sequence automation, drawing on human factors and systems thinking, rather than treating AI as a break from earlier automation.",
+          "outlets": [
+            "Rosenfeld Media"
+          ]
+        }
+      ],
+      "context": "Human factors research on monitoring and automation predates current AI, and these pieces apply it to AI products. Two of the three are from the same author, so the vigilance argument is overrepresented. The third is a book promotion that frames automation as a strategy problem.",
+      "steps": [
+        {
+          "label": "Audit oversight points",
+          "text": "List every place a person is expected to watch or approve AI output, and estimate how often each one actually requires a real judgment."
+        },
+        {
+          "label": "Shorten and ration",
+          "text": "Cap continuous monitoring stretches and cut approval prompts to the cases that truly need a person, so each question stays meaningful."
+        },
+        {
+          "label": "Sequence automation",
+          "text": "Tie each step toward more automation to evidence of readiness and customer value, rather than to a fully automated end state."
+        }
+      ],
+      "caveat": "The excerpts give no evidence on how to calibrate automation levels in specific domains, and the figures cited come from one author's summary of monitoring research.",
+      "sources": [
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "User Vigilance Fails Twice in the AI Age: Watch Duty & Verdict Duty",
+          "url": "https://www.uxtigers.com/post/vigilance",
           "date": "2026-09-29"
         },
         {
-          "outlet": "UX Planet",
-          "title": "I Tested Opus 5.5 at Every Effort Level for UI Design",
-          "url": "https://uxplanet.org/i-tested-opus-5-5-at-every-effort-level-for-ui-design-c19860ad8563?source=rss----819cc2aaeee0---4",
-          "date": "2026-09-25"
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: Vigilance Fatigue | Adaptive Authoring | UI Clutter | Scenarios vs. Surveys for User Preferences | Measure Outcomes | Spotlight Features | Allow Paste | Ambient AI | Proactive Writing AI",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261002",
+          "date": "2026-10-02"
         },
         {
-          "outlet": "UX Planet",
-          "title": "GPT-6.1 Sol vs Claude Sonnet 5.5: I Tested Both for Web Design",
-          "url": "https://uxplanet.org/gpt-6-1-sol-vs-claude-sonnet-5-5-i-tested-both-for-web-design-6612bc851872?source=rss----819cc2aaeee0---4",
-          "date": "2026-09-30"
+          "outlet": "Rosenfeld Media",
+          "title": "Read the first chapter of What Your Machines Should Do by Stefanie Hutka",
+          "url": "https://rosenfeldmedia.com/read-the-first-chapter-of-what-your-machines-should-do/",
+          "date": "2026-10-08"
         }
       ]
     }
