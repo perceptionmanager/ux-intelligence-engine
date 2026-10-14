@@ -1,4 +1,4 @@
-# UX Design Briefing
+# UX Design Briefing (UX Intelligence Engine)
 
 A weekly briefing on what UX and product practitioners are debating. A GitHub
 Action pulls recent articles from design publications, Claude groups them by a
@@ -23,7 +23,7 @@ vercel.json                No-cache header on data/ so new runs show immediately
 
 ## Setup
 
-1. Create a GitHub repo `perceptionmanager/ux-briefing` and push this folder.
+1. Fork or clone this repo (`perceptionmanager/ux-intelligence-engine`) into your own GitHub account.
 2. Repo → Settings → Secrets and variables → Actions:
    - Secret `ANTHROPIC_API_KEY`
    - Optional variable `MODEL` (defaults to `claude-sonnet-5-5`)
@@ -48,8 +48,7 @@ Local test without API calls: `npm ci && npm run ingest:dry` (fetches feeds only
 ## Known limits
 
 - Claude sees titles and RSS excerpts only, not full articles. The page says so.
-- Feed URLs in `feeds.json` were not reachable from the build sandbox; confirm them
-  on the first run and replace any that fail.
+- Feeds change or disappear. Each run logs which feeds responded; replace any that fail in `scripts/feeds.json`.
 
 ## Staying in sync with the portfolio
 
@@ -59,3 +58,7 @@ Change them in the portfolio first, then re-copy, so the two sites never drift a
 move this shared chrome and the backdrop into the design system and load it from there in every product.
 
 The page opts out of the animated line pattern with `<body data-backdrop-lines="off">`.
+
+## License
+
+Code is MIT-licensed (see `LICENSE`). The NN/g UX Certified badge in `assets/img/` is Nielsen Norman Group's mark and is not covered by that license.
