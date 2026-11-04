@@ -1,0 +1,341 @@
+{
+  "status": "ok",
+  "generatedAt": "2026-11-04T01:14:16.835Z",
+  "model": "claude-sonnet-5-5",
+  "lookbackDays": 14,
+  "articlesScanned": 51,
+  "feeds": [
+    {
+      "name": "NN/g",
+      "site": "https://www.nngroup.com",
+      "ok": true,
+      "articles": 4
+    },
+    {
+      "name": "UX Tigers (Jakob Nielsen)",
+      "site": "https://www.uxtigers.com",
+      "ok": true,
+      "articles": 6
+    },
+    {
+      "name": "Smashing Magazine",
+      "site": "https://www.smashingmagazine.com",
+      "ok": true,
+      "articles": 3
+    },
+    {
+      "name": "UX Collective",
+      "site": "https://uxdesign.cc",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "A List Apart",
+      "site": "https://alistapart.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Lenny's Newsletter",
+      "site": "https://www.lennysnewsletter.com",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Product Talk",
+      "site": "https://www.producttalk.org",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "SVPG",
+      "site": "https://www.svpg.com",
+      "ok": true,
+      "articles": 1
+    },
+    {
+      "name": "MeasuringU",
+      "site": "https://measuringu.com",
+      "ok": true,
+      "articles": 1
+    },
+    {
+      "name": "Rosenfeld Media",
+      "site": "https://rosenfeldmedia.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "UXmatters",
+      "site": "https://www.uxmatters.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Brad Frost",
+      "site": "https://bradfrost.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Figma Blog",
+      "site": "https://www.figma.com/blog",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "UX Planet",
+      "site": "https://uxplanet.org",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Prototypr",
+      "site": "https://blog.prototypr.io",
+      "ok": true,
+      "articles": 0
+    }
+  ],
+  "briefings": [
+    {
+      "id": "discovery-mw1fbr8e",
+      "category": "discovery",
+      "categoryLabel": "Product discovery",
+      "title": "AI in user research: stand-in or support?",
+      "dek": "Teams must decide whether AI belongs in the participant seat, in the researcher's prep, or as a narrow check for specific interface flaws.",
+      "scenario": "A research lead at a large retailer is asked to cut study costs by replacing some usability sessions with synthetic participants. Meanwhile, a colleague proposes running an automated agent through the checkout flow to catch obvious dead ends before recruiting anyone.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Real people stay essential",
+          "summary": "Both roundups say AI cannot yet simulate human participants and that real users surface things synthetic ones miss. They see AI's value in helping researchers prepare, for example by practicing interviews before sessions with actual users.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)"
+          ]
+        },
+        {
+          "label": "Agents as flaw detectors",
+          "summary": "The UX Collective author argues that computer-use agents expose interface problems because they cannot guess or improvise. In one run an agent picked the wrong button between two confusingly labeled options and stalled, which the author blames on the design rather than the agent.",
+          "outlets": [
+            "UX Collective"
+          ]
+        }
+      ],
+      "context": "Synthetic users are language models asked to act like research participants. Agent-based testing is a different idea: an automated agent works through a real interface and shows where it breaks. The first claims to model human attitudes and behavior. The second only surfaces structural obstacles.",
+      "steps": [
+        {
+          "label": "Separate the use cases",
+          "text": "Decide whether you want AI to represent human opinion, to practice your craft, or to probe an interface for dead ends, since the evidence differs for each."
+        },
+        {
+          "label": "Pilot agent runs",
+          "text": "Run an agent through a few key flows and compare where it fails with where human participants struggled in past studies."
+        },
+        {
+          "label": "Keep humans for judgment",
+          "text": "Hold on to sessions with real people for questions about motivation, trust, and meaning, and use AI practice runs to sharpen your interviewing beforehand."
+        }
+      ],
+      "caveat": "These excerpts give assertions and one anecdote, not comparative data, and the agent-testing author builds agent infrastructure, so none of them settles how far agent failures predict human ones.",
+      "sources": [
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: Practice Interviewing With AI | AI Answer Complexity | Date-Picking | NASA-TLX | Why vs. What | Activity Theory | Filtering | Commanding Heights",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261102",
+          "date": "2026-11-02"
+        },
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: AI Persuasion | Fake Users vs. Real Users | Summaries as Dark Design | Agentic Video Production | Feedback | High AI Subscription Churn | Sparring with Voice AI | Silence | Split View",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261030",
+          "date": "2026-10-30"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "Agents struggle with the same bad UX we do",
+          "url": "https://uxdesign.cc/agents-struggle-with-the-same-bad-ux-we-do-98415f2b8981?source=rss----138adf9c44c---4",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "leadership-mw1fbtkz",
+      "category": "leadership",
+      "categoryLabel": "Design leadership",
+      "title": "UX scope when AI reshapes software building",
+      "dek": "Teams must decide whether to widen UX's remit to cover AI agents or hold firm on core responsibilities that AI may not change.",
+      "scenario": "A product organization at a large company is moving to a development process where AI agents write and ship much of the code. Leadership asks the UX group whether it should be renamed and re-scoped, or whether its job is basically unchanged.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Widen the field",
+          "summary": "AI agents now act on behalf of people, so the design problem reaches past human users. The broader name, experience design, fits this, while the work still starts from what people are trying to achieve.",
+          "outlets": [
+            "NN/g"
+          ]
+        },
+        {
+          "label": "Protect the core work",
+          "summary": "In AI-driven development, UX risks becoming just one more input to the machine. It must keep owning discovery of user needs, shaping what gets built, and evaluating it before and after launch. The podcast pushes the same way by doubting that AI changes everything.",
+          "outlets": [
+            "NN/g",
+            "Product Talk"
+          ]
+        }
+      ],
+      "context": "AI-native development processes automate much of the build step, which raises questions about where human design judgment sits. Two of these pieces come from the same research group on the same day and approach the question from different angles. The third is a practitioner conversation that tests the claim that everything is changing.",
+      "steps": [
+        {
+          "label": "List current duties",
+          "text": "Write down which discovery, shaping, and evaluation activities your team performs today and where an automated pipeline could bypass them."
+        },
+        {
+          "label": "Map agent touchpoints",
+          "text": "Identify products where an agent acts for a person, and decide whether your team should design for that interaction."
+        },
+        {
+          "label": "Separate change from noise",
+          "text": "For each claimed shift from AI, ask whether it alters people's goals or only the tooling, and adjust scope only for the former."
+        }
+      ],
+      "caveat": "The excerpts do not show the evidence behind either view, and the podcast excerpt is cut off before its main arguments appear.",
+      "sources": [
+        {
+          "outlet": "NN/g",
+          "title": "The Role of UX in Agentic Software Factories",
+          "url": "https://www.nngroup.com/articles/ux-agentic-software-factories/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+          "date": "2026-10-30"
+        },
+        {
+          "outlet": "NN/g",
+          "title": "Experience Design: Dropping the “User” from “User Experience”",
+          "url": "https://www.nngroup.com/articles/ux-vs-experience-design/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+          "date": "2026-10-30"
+        },
+        {
+          "outlet": "Product Talk",
+          "title": "What AI Changes - All Things Product Podcast with Teresa Torres & Petra Wille",
+          "url": "https://www.producttalk.org/what-ai-changes-all-things-product-podcast-with-teresa-torres-petra-wille/",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "systems-mw1fboe6",
+      "category": "systems",
+      "categoryLabel": "Design systems",
+      "title": "Design systems as context for AI agents",
+      "dek": "Teams must decide whether to keep a design system as a fixed component kit or reshape it into governed context that agents work from.",
+      "scenario": "A design systems team at a large retailer maintains a component library that product teams say lags behind new requirements. Leadership wants AI agents to generate screens, and the team must choose between feeding the agents the existing library or rewriting the system as guidance the agents interpret.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Govern a skill, not a kit",
+          "summary": "A fixed kit stores design decisions that go stale as requirements shift, and written practices leave coherence to the discipline of individual designers and developers. The author proposes that governing an LLM skill could give an evolving system a better foundation.",
+          "outlets": [
+            "UX Collective"
+          ]
+        },
+        {
+          "label": "Feed the system to agents",
+          "summary": "The existing design system can supply an in-tool agent with the principles and guidelines that define a product. The focus is on shaping that material so the agent can use it, not on replacing the system.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "Design systems have traditionally been libraries of components plus documentation that people interpret and apply. AI agents that generate interface work now need something they can read and act on, which raises the question of what the system should be made of. The two articles come from a practitioner's retrospective on a long-running system and a vendor's guidance on using a system with its agent.",
+      "steps": [
+        {
+          "label": "Audit staleness",
+          "text": "Identify which components and rules in your system have drifted from current product requirements, since these are what agents would reproduce."
+        },
+        {
+          "label": "Write agent-readable context",
+          "text": "Turn principles, guidelines and boundaries into material an agent can consume, and test whether its output follows them."
+        },
+        {
+          "label": "Assign governance owners",
+          "text": "Decide who reviews and updates the agent's guidance so that coherence does not rest on individual goodwill."
+        }
+      ],
+      "caveat": "The excerpts give one practitioner's thesis and one vendor how-to, so they don't show whether governed agent context holds up better than a component kit in practice.",
+      "sources": [
+        {
+          "outlet": "UX Collective",
+          "title": "State of a system",
+          "url": "https://uxdesign.cc/state-of-a-system-5c8473db1e9?source=rss----138adf9c44c---4",
+          "date": "2026-11-02"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "How to put your design system to work with the Figma agent",
+          "url": "https://www.figma.com/blog/how-to-put-your-design-system-to-work-with-the-figma-agent/",
+          "date": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "tooling-mw1fbr1d",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "Prototyping with AI and code versus canvas",
+      "dek": "Teams must decide whether to move prototyping into AI and code tools, or add code to the canvas designers already use.",
+      "scenario": "A design org at a large retailer wants its designers to produce working prototypes quickly, and stakeholders are asking for something closer to real software than static frames. The team has to choose between adopting a code-first AI tool and extending its existing canvas workflow.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Shift prototyping into code",
+          "summary": "The university course replaced the canvas tool with AI prototyping and found both real possibilities and uncomfortable trade-offs, including for people with no technical background. Reddit's custom pipeline links Figma to Cursor so any designer can get a shareable prototype shaped like production work in minutes.",
+          "outlets": [
+            "UX Collective",
+            "Lenny's Newsletter"
+          ]
+        },
+        {
+          "label": "Bring code onto the canvas",
+          "summary": "Figma presents code layers, now in open beta, as a way to add code to the design surface itself. It describes six teams using it to experiment, align stakeholders, and work faster without leaving the canvas.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "Generative AI and code-aware tools now let designers produce working interfaces without deep engineering skills. The shared question is where that work should live: in a separate code environment, or inside the design tool. Reddit's example suggests the answer may be a bridge between the two rather than a clean replacement.",
+      "steps": [
+        {
+          "label": "Pilot both routes",
+          "text": "Have a small group build the same prototype once in an AI and code tool and once with code layers on the canvas, then compare the effort and the results."
+        },
+        {
+          "label": "Test with non-coders",
+          "text": "Include designers with little coding experience, since the teaching example is specifically about people outside technical roles."
+        },
+        {
+          "label": "Name your trade-offs",
+          "text": "Before choosing, write down what your team would give up, such as familiar canvas control, and what it needs to gain, such as stakeholder alignment or speed."
+        }
+      ],
+      "caveat": "The excerpts do not say what the trade-offs are, give no measured results, and come partly from a vendor and a single company's internal tool, so none of this settles which approach works better in general.",
+      "sources": [
+        {
+          "outlet": "UX Collective",
+          "title": "What I learned teaching AI prototyping at university",
+          "url": "https://uxdesign.cc/what-i-learned-teaching-ai-prototyping-at-university-b9fff222625e?source=rss----138adf9c44c---4",
+          "date": "2026-11-03"
+        },
+        {
+          "outlet": "Lenny's Newsletter",
+          "title": "Why Reddit built its own AI prototyping tool | Blair Metcalf",
+          "url": "https://www.lennysnewsletter.com/p/why-reddit-built-its-own-ai-prototyping",
+          "date": "2026-10-26"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "6 ways teams are experimenting with code layers",
+          "url": "https://www.figma.com/blog/6-ways-teams-are-experimenting-with-code-layers/",
+          "date": "2026-10-23"
+        }
+      ]
+    }
+  ]
+}
