@@ -1,0 +1,360 @@
+{
+  "status": "ok",
+  "generatedAt": "2026-11-09T21:59:47.696Z",
+  "model": "claude-sonnet-5-5",
+  "lookbackDays": 14,
+  "articlesScanned": 57,
+  "feeds": [
+    {
+      "name": "NN/g",
+      "site": "https://www.nngroup.com",
+      "ok": true,
+      "articles": 5
+    },
+    {
+      "name": "UX Tigers (Jakob Nielsen)",
+      "site": "https://www.uxtigers.com",
+      "ok": true,
+      "articles": 6
+    },
+    {
+      "name": "Smashing Magazine",
+      "site": "https://www.smashingmagazine.com",
+      "ok": true,
+      "articles": 4
+    },
+    {
+      "name": "UX Collective",
+      "site": "https://uxdesign.cc",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "A List Apart",
+      "site": "https://alistapart.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Lenny's Newsletter",
+      "site": "https://www.lennysnewsletter.com",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Product Talk",
+      "site": "https://www.producttalk.org",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "SVPG",
+      "site": "https://www.svpg.com",
+      "ok": true,
+      "articles": 1
+    },
+    {
+      "name": "MeasuringU",
+      "site": "https://measuringu.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "Rosenfeld Media",
+      "site": "https://rosenfeldmedia.com",
+      "ok": true,
+      "articles": 3
+    },
+    {
+      "name": "UXmatters",
+      "site": "https://www.uxmatters.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Brad Frost",
+      "site": "https://bradfrost.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "Figma Blog",
+      "site": "https://www.figma.com/blog",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "UX Planet",
+      "site": "https://uxplanet.org",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Prototypr",
+      "site": "https://blog.prototypr.io",
+      "ok": true,
+      "articles": 0
+    }
+  ],
+  "briefings": [
+    {
+      "id": "discovery-mw9t0qkx",
+      "category": "discovery",
+      "categoryLabel": "Product discovery",
+      "title": "Should AI replace researchers or assist them?",
+      "dek": "Teams must decide whether AI can moderate sessions or play participants, or whether it should stay a tool for the researcher's own prep and analysis.",
+      "scenario": "A product team at a large retailer faces a tight quarter and a backlog of studies. A manager proposes using AI moderators and synthetic participants to cut recruiting and scheduling time, while the lead researcher worries about what that would miss.",
+      "relation": "disagree",
+      "positions": [
+        {
+          "label": "Test AI as moderator",
+          "summary": "MeasuringU treats AI moderation as a serious question that deserves a direct comparison against human moderators. It notes that the technology has improved quickly and that little comparative evidence exists, while warning that marketing runs ahead of the facts.",
+          "outlets": [
+            "MeasuringU"
+          ]
+        },
+        {
+          "label": "Keep AI in support",
+          "summary": "Nielsen's roundups say synthetic users miss things that real users reveal, and that AI cannot yet simulate research participants. They recommend AI for practice, such as rehearsing interviews. The Rosenfeld sessions likewise ask which parts of analysis to automate and which the researcher should own.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)",
+            "Rosenfeld Media"
+          ]
+        }
+      ],
+      "context": "AI tools for research now include synthetic participants, AI-run interviews, and assistants for analysis. Evidence on how well they match human work is still thin, and vendor claims often outpace it. The question splits into several roles: participant, moderator, analyst, and practice partner.",
+      "steps": [
+        {
+          "label": "Separate the roles",
+          "text": "List which research tasks you would hand to AI (participant, moderator, analyst, practice partner) and judge each one on its own."
+        },
+        {
+          "label": "Run a side-by-side",
+          "text": "Before relying on an AI moderator, run the same study with a human and with AI, and compare the findings each surfaces."
+        },
+        {
+          "label": "Keep real users",
+          "text": "Treat synthetic participants as a way to prepare, not as a replacement, and validate key decisions with real people."
+        }
+      ],
+      "caveat": "The excerpts do not show the results of the moderator comparison, so they do not settle whether AI moderators match humans in practice.",
+      "sources": [
+        {
+          "outlet": "MeasuringU",
+          "title": "Do AI Moderators Uncover as Much as Human Moderators?",
+          "url": "https://measuringu.com/do-participants-provide-the-same-depth-of-insight-to-human-and-ai-moderators/?utm_source=rss&utm_medium=rss&utm_campaign=do-participants-provide-the-same-depth-of-insight-to-human-and-ai-moderators",
+          "date": "2026-11-04"
+        },
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: AI Persuasion | Fake Users vs. Real Users | Summaries as Dark Design | Agentic Video Production | Feedback | High AI Subscription Churn | Sparring with Voice AI | Silence | Split View",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261030",
+          "date": "2026-10-30"
+        },
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: Practice Interviewing With AI | AI Answer Complexity | Date-Picking | NASA-TLX | Why vs. What | Activity Theory | Filtering | Commanding Heights",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261102",
+          "date": "2026-11-02"
+        },
+        {
+          "outlet": "Rosenfeld Media",
+          "title": "Starting as a UX Researcher? 3 sessions you must watch",
+          "url": "https://rosenfeldmedia.com/starting-ux-researcher-must-watch-sessions/",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "leadership-mw9t0tfa",
+      "category": "leadership",
+      "categoryLabel": "Design leadership",
+      "title": "Widen your scope or deepen your judgment",
+      "dek": "As AI handles more execution, designers and product people must decide whether to grow into adjacent work such as building, or to invest in the judgment that sets good work apart.",
+      "scenario": "A design team at a large retailer finds that its members can now produce polished prototypes and working front-end code in an afternoon. The design lead has to decide whether to reshape job descriptions around shipping code or to spend the team's learning time on critique and problem framing.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Expand into building",
+          "summary": "When AI makes it easy to turn ideas into working products, designers can take on more of the path from concept to shipped code. The typesetting comparison suggests roles that once passed through many hands are now merging.",
+          "outlets": [
+            "Rosenfeld Media",
+            "UX Collective"
+          ]
+        },
+        {
+          "label": "Deepen underlying craft judgment",
+          "summary": "AI can already produce prototypes, interfaces, copy and research summaries, so output no longer shows who is good. The skills behind the work, such as how someone reaches a solution and explains it, matter more and are harder to see.",
+          "outlets": [
+            "UX Collective"
+          ]
+        }
+      ],
+      "context": "Product and design roles have always varied widely between companies, partly because of inherited job titles, so there is no single baseline to redefine. Generative tools now cover much of the execution that used to separate roles, which is why both boundaries and skill priorities are being renegotiated. The two stances here are not mutually exclusive; they differ in where they say to put effort first.",
+      "steps": [
+        {
+          "label": "Audit your handoffs",
+          "text": "Map where work currently passes between design, product and engineering, and note which handoffs AI tools have made unnecessary."
+        },
+        {
+          "label": "Name the judgment skills",
+          "text": "Write down the abilities you use to tell strong designers from weak ones in portfolios and critiques, and check whether polished output is hiding gaps."
+        },
+        {
+          "label": "Pilot one wider scope",
+          "text": "Let one designer own a small feature through to shipped code, and review the result for quality of decisions as well as speed."
+        }
+      ],
+      "caveat": "These excerpts are partial and offer no evidence on how either path affects hiring, team outcomes or product quality, and the product-role keynote's actual argument is not visible in its excerpt.",
+      "sources": [
+        {
+          "outlet": "SVPG",
+          "title": "AI and the Future of the Product Role",
+          "url": "https://www.svpg.com/ai-and-the-future-of-the-product-role/",
+          "date": "2026-11-06"
+        },
+        {
+          "outlet": "Rosenfeld Media",
+          "title": "From designing to building: The rise of product design engineering with David Siren Eisner",
+          "url": "https://rosenfeldmedia.com/from-designing-to-building-the-rise-of-product-design-engineering-with-david-siren-eisner/",
+          "date": "2026-11-05"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "Otherwise you’re just a machine",
+          "url": "https://uxdesign.cc/otherwise-youre-just-a-machine-a9d3b21179b5?source=rss----138adf9c44c---4",
+          "date": "2026-11-07"
+        },
+        {
+          "outlet": "UX Collective",
+          "title": "Five pairs of hands: what the typesetters can teach designers about AI",
+          "url": "https://uxdesign.cc/five-pairs-of-hands-what-the-typesetters-can-teach-designers-about-ai-9d6b8e8c2285?source=rss----138adf9c44c---4",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "tooling-mw9t0t68",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "Getting production-quality design from AI code tools",
+      "dek": "Teams must decide whether to patch a code generator's weaknesses with extra tooling or to prototype in a shared design canvas.",
+      "scenario": "A design team at a large retailer uses an AI coding assistant to build a working checkout prototype in an afternoon. Engineering says it can't be shipped as is, and the team has to decide whether to improve how they drive the assistant or move the prototype into their design tool.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "Patch the generator's gaps",
+          "summary": "Claude Code is fast for prototypes but has shortcomings when the goal is production-ready design. The UX Planet pieces suggest supplementary tools and specific working habits to close that gap, in both Claude Code and Claude Design.",
+          "outlets": [
+            "UX Planet"
+          ]
+        },
+        {
+          "label": "Prototype inside the canvas",
+          "summary": "Figma's workflow puts code layers and its agent directly on the design canvas. Teams can compare working prototypes side by side and refine a direction together, rather than passing code between separate tools.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "Designers can now generate working interfaces from prompts, so the open question is quality and handoff rather than speed. One approach keeps the work in a standalone code-generation tool and compensates for its weak spots. The other brings code into the design environment where teams already collaborate.",
+      "steps": [
+        {
+          "label": "Audit the output",
+          "text": "Review a generated prototype against your production standards to see where it falls short before choosing a fix."
+        },
+        {
+          "label": "Pilot both routes",
+          "text": "Run one small feature through a standalone assistant with added tooling and the same feature through a canvas-based workflow."
+        },
+        {
+          "label": "Compare handoff cost",
+          "text": "Track how much rework engineering needs from each route and keep the one that needs less."
+        }
+      ],
+      "caveat": "The excerpts are short and don't say which problems the UX Planet articles address or what results either approach produces, and the Figma piece comes from the vendor selling the workflow.",
+      "sources": [
+        {
+          "outlet": "UX Planet",
+          "title": "5 Underrated Claude Code Tools That Fix Its Biggest Problems",
+          "url": "https://uxplanet.org/5-underrated-claude-code-tools-that-fix-its-biggest-problems-1b6007eddf4f?source=rss----819cc2aaeee0---4",
+          "date": "2026-11-09"
+        },
+        {
+          "outlet": "UX Planet",
+          "title": "6 Tricks to Level Up Claude Design",
+          "url": "https://uxplanet.org/6-tricks-to-level-up-claude-design-7ed86375be49?source=rss----819cc2aaeee0---4",
+          "date": "2026-11-03"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "Workflow lab: Test ideas with code layers and the Figma agent",
+          "url": "https://www.figma.com/blog/workflow-lab-build-with-code-on-the-canvas-using-the-figma-agent-and-code-layers/",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "operations-mw9t0tm8",
+      "category": "operations",
+      "categoryLabel": "Ops and strategy",
+      "title": "Who defines quality when AI builds the product",
+      "dek": "As AI takes over more of the build, teams must decide whether UX owns the definition of quality or shares it across product, evals, and judgment.",
+      "scenario": "A large insurer's team starts using AI agents to draft and ship features for its claims portal, and the output arrives faster than anyone can review it by hand. Engineers propose automated checks, product managers want to rely on their instincts, and the UX group has to decide where it fits.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "UX anchors the quality bar",
+          "summary": "The NN/g piece warns that AI-driven development pipelines can shrink UX to a source of context for the machine. It argues UX should keep discovering user needs, shaping what gets built, and evaluating results both before and after launch.",
+          "outlets": [
+            "NN/g"
+          ]
+        },
+        {
+          "label": "Quality is a shared product question",
+          "summary": "The Product Talk episode treats AI evals as a new-looking skill whose hard part is an old product question: deciding what good means. The Lenny's Newsletter interview with a Gemini product leader adds that formal evals and informal gut-feel judgment both matter.",
+          "outlets": [
+            "Product Talk",
+            "Lenny's Newsletter"
+          ]
+        }
+      ],
+      "context": "AI agents are taking over more of the software development lifecycle, so the human work shifts toward specifying and judging output. Evals, which test AI output against defined criteria, are becoming a standard way to do that judging. The sources differ on who should hold the definition of quality, and each pushes a different discipline to the front.",
+      "steps": [
+        {
+          "label": "Write the quality bar",
+          "text": "Before agents generate anything, work with product to state in concrete, user-centered terms what an acceptable outcome looks like."
+        },
+        {
+          "label": "Pair evals with review",
+          "text": "Turn those criteria into automated evals, and keep structured human review for the judgments a test can't capture."
+        },
+        {
+          "label": "Keep research running",
+          "text": "Maintain discovery and post-launch evaluation with real users so the quality bar is checked against reality and revised."
+        }
+      ],
+      "caveat": "These are short excerpts, so they don't show how any team has divided ownership of evals between UX and product, or whether the approaches work in practice.",
+      "sources": [
+        {
+          "outlet": "Product Talk",
+          "title": "Defining What Good Looks Likes - All Things Product Podcast with Teresa Torres & Petra Wille",
+          "url": "https://www.producttalk.org/defining-what-good-looks-likes-all-things-product-podcast-with-teresa-torres-petra-wille/",
+          "date": "2026-10-27"
+        },
+        {
+          "outlet": "NN/g",
+          "title": "The Role of UX in Agentic Software Factories",
+          "url": "https://www.nngroup.com/articles/ux-agentic-software-factories/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
+          "date": "2026-10-30"
+        },
+        {
+          "outlet": "Lenny's Newsletter",
+          "title": "Why PMs are suddenly valuable again | Tulsee Doshi (Head of Product, Gemini)",
+          "url": "https://www.lennysnewsletter.com/p/what-it-actually-takes-to-build-frontier",
+          "date": "2026-11-08"
+        }
+      ]
+    }
+  ]
+}
