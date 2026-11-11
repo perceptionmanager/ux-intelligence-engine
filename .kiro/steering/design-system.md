@@ -4,7 +4,7 @@ inclusion: always
 # Design system rules (perceptionmanager)
 
 
-This product uses the shared perceptionmanager design tokens (`--pm-*`), loaded from the design-system repo's `dist/tokens.css`.
+This product uses the shared perceptionmanager design tokens (`--pm-*`), loaded from the design-system repo's `dist/tokens.css`, with the shared components (`.pm-btn`, `.pm-card`, `.pm-pill`, `.pm-stat`, `.pm-step`, `.pm-tag`) from `dist/components.css`, both pinned at v0.4.0. Use those classes instead of restyling buttons, cards or pills locally.
 
 ## Always
 - Use semantic tokens for every color, font size, spacing, radius, shadow, duration and z-index, e.g. `var(--pm-color-text-secondary)`, `var(--pm-space-6)`, `var(--pm-radius-lg)`.
