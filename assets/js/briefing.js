@@ -66,7 +66,7 @@
     const sources = (b.sources || []).filter((s) => safeUrl(s.url));
     const outletCount = new Set(sources.map((s) => s.outlet)).size;
 
-    const toggle = el('button', { class: 'btn btn-ghost', type: 'button', 'aria-expanded': 'false', 'aria-controls': detailId, text: 'Show context and next steps' });
+    const toggle = el('button', { class: 'pm-btn pm-btn--ghost', type: 'button', 'aria-expanded': 'false', 'aria-controls': detailId, text: 'Show context and next steps' });
     const detail = el('div', { class: 'detail', id: detailId, hidden: true },
       el('div', {}, el('h4', { text: 'Context' }), el('p', { text: b.context })),
       el('div', {}, el('h4', { text: 'What to try' }),
@@ -81,9 +81,9 @@
       toggle.textContent = open ? 'Hide context and next steps' : 'Show context and next steps';
     });
 
-    return el('article', { class: 'card briefing', 'data-category': b.category, 'aria-labelledby': `title-${i}` },
+    return el('article', { class: 'pm-card briefing', 'data-category': b.category, 'aria-labelledby': `title-${i}` },
       el('div', { class: 'briefing-meta' },
-        el('span', { class: 'tag', text: b.categoryLabel }),
+        el('span', { class: 'pm-tag', text: b.categoryLabel }),
         el('span', { text: `${plural(sources.length, 'article')} from ${plural(outletCount, 'publication')}` })),
       el('h2', { id: `title-${i}`, text: b.title }),
       el('p', { class: 'dek', text: b.dek }),
@@ -129,7 +129,7 @@
     if (cats.length < 2) return; // a filter with one option is noise
     const labelFor = (c) => briefings.find((b) => b.category === c).categoryLabel;
     const chip = (cat, label, count) => {
-      const b = el('button', { class: 'chip', type: 'button', 'data-category': cat, 'aria-pressed': 'false' }, label, count != null ? el('span', { class: 'count', text: String(count) }) : null);
+      const b = el('button', { class: 'pm-pill pm-pill--interactive chip', type: 'button', 'data-category': cat, 'aria-pressed': 'false' }, label, count != null ? el('span', { class: 'pm-pill__count', text: String(count) }) : null);
       b.addEventListener('click', () => toggleFilter(cat));
       return b;
     };
