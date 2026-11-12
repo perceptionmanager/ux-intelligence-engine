@@ -8,9 +8,9 @@ as static JSON that the page renders. Every briefing links to its source article
 ## Structure
 
 ```
-index.html                 Page markup (same header, backdrop, cards and footer as the portfolio case studies; no links back to the portfolio, it opens on its own)
-assets/css/site.css        Styles: a synced copy of the portfolio's shared CSS + this page's own (.pg-briefing)
-assets/js/site.js          Copy of the portfolio's site.js (menu, scroll bar, drifting spotlights, line pattern)
+index.html                 Page markup, inside the design system's page shell (header with the portfolio nav, menu, footer, backdrop)
+assets/css/site.css        This page's own styles (.pg-briefing); shell and components come from the design system
+assets/icons.svg, logos.svg  Copies of the design system's icon and footer-logo sprites (SVG <use> needs them on this origin)
 assets/js/briefing.js      Renders data/briefings.json (textContent only)
 assets/img/                NN/g badge, self-hosted
 data/briefings.json        Latest run output (starts as "pending")
@@ -50,14 +50,12 @@ Local test without API calls: `npm ci && npm run ingest:dry` (fetches feeds only
 - Claude sees titles and RSS excerpts only, not full articles. The page says so.
 - Feeds change or disappear. Each run logs which feeds responded; replace any that fail in `scripts/feeds.json`.
 
-## Staying in sync with the portfolio
+## Design system
 
-`assets/css/site.css` (the "components" layer) and `assets/js/site.js` are copies of the shared parts of
-perceptionmanager.com's `assets/css/base.css` (everything above its first "Page:" section) and `assets/js/site.js`.
-Change them in the portfolio first, then re-copy, so the two sites never drift apart. The longer-term plan is to
-move this shared chrome and the backdrop into the design system and load it from there in every product.
-
-The page opts out of the animated line pattern with `<body data-backdrop-lines="off">`.
+The header, mobile menu, footer and animated backdrop are the design system's page shell, loaded from
+`perceptionmanager/design-system@v0.5.0` (`tokens.css`, `components.css`, `shell.css`, `shell.js`), the same files
+the portfolio loads. Change them in the design system and bump the version here; don't restyle them in `site.css`.
+Markup reference: the design system's `docs/shell.md`.
 
 ## License
 

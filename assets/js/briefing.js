@@ -1,5 +1,5 @@
 /* UX Design Briefing: renders data/briefings.json into the page.
-   Page chrome, backdrop and the line pattern come from assets/js/site.js (shared with the portfolio).
+   Page shell (header, menu, footer, backdrop) comes from the design system's shell.js, loaded in index.html.
    Safety: everything that came from the model or from a feed goes through textContent, never innerHTML,
    and only http(s) links are rendered. */
 (() => {
