@@ -37,28 +37,13 @@
     runText.textContent = message;
   }
 
-  /* ---- stat row: numbers from the last run; colours follow the drifting spotlights, like a case study's stats ---- */
+  /* ---- stat row: numbers from the last run. They pop in once filled (the design system's figure pop-in); their colour
+     follows the drifting glows through the shell's data-color-slot. ---- */
   function setStats(values) {
     values.forEach((v, i) => { const n = document.getElementById('stat' + i); if (n) n.textContent = v; });
-  }
-  function startStatColors() {
-    const coral = document.getElementById('bdBlobCoral');
-    const cyan = document.getElementById('bdBlobCyan');
-    if (!coral || !cyan || !window.Site || !window.Site.mixColor) return;
-    const CORAL = [255, 106, 76], CYAN = [69, 224, 255];   // the two accent colours the spotlights use
-    const spots = [-160, 0, 160];                          // x offset of each stat from the page centre
-    function paint() {
-      const cs = coral.blobState || { tx: 0, ty: 0 }, ys = cyan.blobState || { tx: 0, ty: 0 };
-      spots.forEach((x, i) => {
-        const n = document.getElementById('stat' + i);
-        if (!n) return;
-        const dC = Math.hypot(x - (-200 + cs.tx), cs.ty) + 1, dY = Math.hypot(x - (200 + ys.tx), ys.ty) + 1;
-        const wC = 1 / (dC * dC), wY = 1 / (dY * dY);
-        n.style.color = window.Site.mixColor(CORAL, CYAN, wY / (wC + wY));
-      });
-    }
-    setInterval(paint, 900);
-    paint();
+    // shell.js is deferred, so it may not be there yet if the data came back first
+    const pop = () => { if (window.pmShell) window.pmShell.numPop(document.getElementById('statRow'), '.pm-stat__value'); };
+    if (window.pmShell) pop(); else document.addEventListener('DOMContentLoaded', pop);
   }
 
   function renderBriefing(b, i) {
@@ -157,7 +142,6 @@
   }
 
   async function load() {
-    startStatColors();
     let data;
     try {
       const res = await fetch('data/briefings.json', { cache: 'no-store' });
