@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@ae30ca2f0ae9d6d769880b9c2416c42b399e3821/dist/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@ae30ca2f0ae9d6d769880b9c2416c42b399e3821/dist/components.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@ae30ca2f0ae9d6d769880b9c2416c42b399e3821/dist/shell.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/shell.css">
   <link rel="stylesheet" href="assets/css/site.css?v=20261112-shell">
 </head>
 <body class="pg-briefing">
@@ -22,7 +22,7 @@
 
 <div class="pm-page">
 
-  <!-- page shell from the design system (docs/shell.md): backdrop, header, mobile menu -->
+  <!-- page shell from the design system (docs/shell.md): backdrop and the compact header (name, credential, Let's connect) -->
   <div class="pm-backdrop__grain"></div>
   <div class="pm-backdrop__aura"></div>
   <div class="pm-backdrop__noise"></div>
@@ -38,39 +38,18 @@
   <header class="pm-site-header">
     <div class="pm-site-header__inner">
       <div class="pm-site-header__brand">
-        <a class="pm-site-header__name" href="https://perceptionmanager.com/">Alex Grinyayev</a>
+        <span class="pm-site-header__name">Alex Grinyayev</span>
         <a class="pm-site-header__cred" href="https://www.nngroup.com/ux-certification/people/" target="_blank" rel="noopener">
           <img class="pm-site-header__badge" src="assets/img/nng-ux-certified-badge.webp" alt="NN/g UX Certified" width="56" height="53" draggable="false">
           <span class="pm-site-header__badge-label"><span class="pm-site-header__badge-prefix">NNg Certified - </span>ID 1064178</span>
         </a>
       </div>
-      <nav class="pm-site-nav" aria-label="Main">
-        <a class="pm-site-nav__link" href="https://perceptionmanager.com/">Home</a>
-        <a class="pm-site-nav__link" href="https://perceptionmanager.com/case-studies.html">Case Studies</a>
-        <a class="pm-site-nav__link" href="https://perceptionmanager.com/lab.html" aria-current="page">Lab</a>
-        <a class="pm-site-nav__link" href="https://perceptionmanager.com/about.html">About Me</a>
-        <a class="pm-btn pm-btn--ghost pm-site-nav__cta" data-magnetic href="https://www.linkedin.com/in/userexperiences/" target="_blank" rel="noopener"><svg class="pm-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-linkedin"/></svg>Let's connect</a>
-      </nav>
-      <button class="pm-btn pm-btn--ghost pm-btn--icon-only pm-theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle><svg class="pm-icon pm-theme-toggle__sun" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-sun"/></svg><svg class="pm-icon pm-theme-toggle__moon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-moon"/></svg></button>
-      <button class="pm-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu" data-menu-open><span class="pm-menu-btn__bar"></span><span class="pm-menu-btn__bar"></span><span class="pm-menu-btn__bar"></span></button>
+      <a class="pm-btn pm-btn--ghost pm-site-header__cta" data-magnetic href="mailto:perceptionmanager@gmail.com"><svg class="pm-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-mail"/></svg><span class="pm-site-header__cta-label">Let's connect</span></a>
     </div>
     <div class="pm-site-header__rule"></div>
     <div class="pm-site-header__progress" data-scroll-progress></div>
   </header>
   <div style="height:var(--pm-layout-nav-height)"></div>
-
-  <div class="pm-site-menu" id="siteMenu" data-menu>
-    <div class="pm-site-menu__bar">
-      <button class="pm-menu-btn pm-menu-btn--close" type="button" aria-label="Close menu" data-menu-close>✕</button>
-    </div>
-    <nav class="pm-site-menu__nav" aria-label="Mobile menu">
-      <a href="https://perceptionmanager.com/">Home</a>
-      <a href="https://perceptionmanager.com/case-studies.html">Case Studies</a>
-      <a href="https://perceptionmanager.com/lab.html" aria-current="page">Lab</a>
-      <a href="https://perceptionmanager.com/about.html">About Me</a>
-      <a class="pm-site-menu__cta" href="https://www.linkedin.com/in/userexperiences/" target="_blank" rel="noopener"><svg class="pm-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-linkedin"/></svg>Let's connect</a>
-    </nav>
-  </div>
 
   <main id="main" tabindex="-1">
     <!-- HERO -->
@@ -158,7 +137,7 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@ae30ca2f0ae9d6d769880b9c2416c42b399e3821/dist/shell.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/shell.js" defer></script>
 <script src="assets/js/briefing.js"></script>
 </body>
 </html>
