@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/components.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/shell.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=20261112-shell">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@5792abc4c88d57e9effbd87c55bf9899b850d0d0/dist/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@5792abc4c88d57e9effbd87c55bf9899b850d0d0/dist/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@5792abc4c88d57e9effbd87c55bf9899b850d0d0/dist/shell.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=20261113-ds06">
 </head>
 <body class="pg-briefing" data-color-slots>
 
@@ -54,25 +54,18 @@
 
   <main id="main" tabindex="-1">
     <!-- HERO -->
-    <section class="cs-hero wrap">
-      <p class="pm-pill fade-in" style="animation-delay:.05s"><span class="pm-pill__dot" aria-hidden="true"></span>Weekly UX design briefing</p>
-      <h1>
-        <span class="split-word" style="animation-delay:.05s">What</span>
-        <span class="split-word" style="animation-delay:.12s">UX</span>
-        <span class="split-word" style="animation-delay:.19s">teams</span>
-        <span class="split-word" style="animation-delay:.26s">are</span>
-        <span class="split-word" style="animation-delay:.33s">weighing</span>
-        <span class="split-word" style="animation-delay:.4s">this&nbsp;week.</span>
-      </h1>
-      <p class="cs-hero-sub fade-in" style="animation-delay:.25s">Each briefing groups recent articles from design and product publications around one practical question, then lays out where they agree and where they split.</p>
-      <p class="run-status fade-in" id="runStatus" data-state="loading" role="status" style="animation-delay:.3s">
-        <span class="pm-pill__dot" aria-hidden="true"></span>
+    <section class="pm-hero pm-wrap">
+      <p class="pm-pill pm-fade-in" style="animation-delay:.05s"><span class="pm-pill__dot" aria-hidden="true"></span>Weekly UX design briefing</p>
+      <h1>What UX teams are weighing this&nbsp;week.</h1>
+      <p class="pm-hero__sub pm-fade-in" style="animation-delay:.25s">Each briefing groups recent articles from design and product publications around one practical question, then lays out where they agree and where they split.</p>
+      <p class="pm-status run-status pm-fade-in" id="runStatus" data-state="loading" role="status" style="animation-delay:.3s">
+        <span class="pm-status__dot" aria-hidden="true"></span>
         <span><span id="runText">Loading the latest briefing…</span> <a href="#method">How this is made</a></span>
       </p>
     </section>
 
     <!-- STATS -->
-    <div class="wrap fade-in sec-stats" style="position:relative;z-index:var(--pm-z-content);animation-delay:.35s">
+    <div class="pm-wrap pm-section--stats pm-fade-in" style="animation-delay:.35s">
       <div class="pm-stat-bar" id="statRow" data-num-pop="manual">
         <div class="pm-stat"><b class="pm-stat__value" id="stat0" data-color-slot="stat0">–</b><span class="pm-stat__label">Briefings this week, each drawn from at least two publications</span></div>
         <div class="pm-stat"><b class="pm-stat__value" id="stat1" data-color-slot="stat1">–</b><span class="pm-stat__label">Articles scanned from the last two weeks</span></div>
@@ -81,9 +74,9 @@
     </div>
 
     <!-- BRIEFINGS -->
-    <section class="wrap brief-sec" id="briefings">
+    <section class="pm-wrap pm-section" id="briefings">
       <h2>This week’s briefings</h2>
-      <p class="sec-desc">Each one starts from a single practical question. Filter by topic, or open a briefing for the context and what to try.</p>
+      <p class="pm-section__desc">Each one starts from a single practical question. Filter by topic, or open a briefing for the context and what to try.</p>
       <div class="filters" id="filters" role="group" aria-label="Filter briefings by topic" hidden>
         <span class="filters-label">Show</span>
       </div>
@@ -91,10 +84,10 @@
     </section>
 
     <!-- HOW IT IS MADE -->
-    <section class="wrap cs-split cs-approach" id="method">
+    <section class="pm-wrap pm-split" id="method">
       <h2>How this briefing is made</h2>
       <div>
-        <p class="method-intro">An automated pipeline runs every Monday. Nothing on this page is written by hand, and nothing is updated between runs.</p>
+        <p class="pm-split__intro">An automated pipeline runs every Monday. Nothing on this page is written by hand, and nothing is updated between runs.</p>
         <div class="pm-step">
           <div class="pm-step__line"></div>
           <div class="pm-step__num" data-color-slot="step0">1</div>
@@ -118,27 +111,22 @@
     </section>
 
     <!-- SOURCES -->
-    <section class="wrap cs-split" id="sourceStatus" hidden>
+    <section class="pm-wrap pm-split" id="sourceStatus" hidden>
       <h2>Sources in the last run</h2>
       <div>
         <ul class="source-list" id="sourceList"></ul>
-        <p class="source-note">Number in parentheses: articles kept from the last two weeks. A dashed outline means the feed didn’t respond.</p>
+        <p class="pm-split__note">Number in parentheses: articles kept from the last two weeks. A dashed outline means the feed didn’t respond.</p>
       </div>
     </section>
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="pm-site-footer">
-    <div class="pm-site-footer__inner">
-      <span>© Alex Grinyayev · 2026</span>
-      <span>Built with <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-claude"/></svg> Claude, source on <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-github"/></svg> GitHub, deployed on <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-vercel"/></svg> Vercel.</span>
-    </div>
-  </footer>
+  <footer class="pm-site-footer" data-pm-footer></footer>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/shell.js" defer></script>
-<script src="assets/js/briefing.js?v=20261112-statpop"></script>
+<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@5792abc4c88d57e9effbd87c55bf9899b850d0d0/dist/shell.js" defer></script>
+<script src="assets/js/briefing.js?v=20261113-ds06"></script>
 </body>
 </html>

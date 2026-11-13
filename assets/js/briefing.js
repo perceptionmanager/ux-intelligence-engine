@@ -32,8 +32,10 @@
     return d <= 0 ? 'today' : d === 1 ? 'yesterday' : `${d} days ago`;
   }
 
+  // the design system's status line: success, warning, error, loading or none
+  const STATUS = { fresh: 'success', stale: 'warning', error: 'error', loading: 'loading', pending: 'none' };
   function setStatus(state, message) {
-    statusEl.dataset.state = state;
+    statusEl.dataset.state = STATUS[state] || 'none';
     runText.textContent = message;
   }
 
@@ -72,8 +74,8 @@
         el('span', { text: `${plural(sources.length, 'article')} from ${plural(outletCount, 'publication')}` })),
       el('h2', { id: `title-${i}`, text: b.title }),
       el('p', { class: 'dek', text: b.dek }),
-      el('div', { class: 'scenario' },
-        el('p', { class: 'scenario-label', text: 'Illustrative scenario' }),
+      el('div', { class: 'pm-alert pm-alert--warning pm-alert--inline scenario' },
+        el('p', { class: 'pm-alert__title', text: 'Illustrative scenario' }),
         el('p', { text: b.scenario })),
       el('p', { class: 'positions-head', text: b.relation === 'disagree' ? 'Where the sources disagree' : 'Where the sources put the weight' }),
       el('div', { class: 'positions' }, (b.positions || []).map((p) =>
