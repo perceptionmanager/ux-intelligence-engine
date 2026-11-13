@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>/* theme: set before first paint (saved choice, then the system setting); same key as the portfolio */(function(){var t;try{t=localStorage.getItem('pm-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark'}document.documentElement.setAttribute('data-theme',t)})();</script>
   <meta name="robots" content="noindex, nofollow">
   <title>UX Design Briefing — Alex Grinyayev</title>
   <meta name="description" content="A weekly briefing on what UX and product design practitioners are debating, synthesized from linked source articles.">
@@ -10,48 +11,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@v0.4.0/dist/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@v0.4.0/dist/components.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=20261111-ds040">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/shell.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=20261112-shell">
 </head>
-<body class="pg-briefing">
+<body class="pg-briefing" data-color-slots>
 
-<div class="page">
+<a class="pm-skip-link" href="#main">Skip to content</a>
 
-  <!-- backdrop: same animated background as the portfolio (grain, aura, drifting spotlights; assets/js/site.js adds the line pattern) -->
-  <div class="grain"></div>
-  <div class="aura"></div>
-  <div class="grid-overlay"></div>
+<div class="pm-page">
 
-  <div id="bdBlobCoral" data-blob-group data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.75" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.62" data-dur-min="4" data-dur-max="8">
-    <div class="grain-clear bd-coral-mask" data-blob-target style="transform:translate(0,0) scale(1);opacity:.35"></div>
-    <div class="blob coral bd-coral-glow" data-blob-target style="transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
+  <!-- page shell from the design system (docs/shell.md): backdrop and the compact header (name, credential, Let's connect, theme switch) -->
+  <div class="pm-backdrop__grain"></div>
+  <div class="pm-backdrop__aura"></div>
+  <div class="pm-backdrop__noise"></div>
+  <div data-blob-group data-blob-role="coral" data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.75" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.62" data-dur-min="4" data-dur-max="8">
+    <div class="pm-backdrop__clear" data-blob-target style="width:480px;height:480px;top:-180px;left:-170px;transform:translate(0,0) scale(1);opacity:.35"></div>
+    <div class="pm-backdrop__blob pm-backdrop__blob--coral" data-blob-target style="width:320px;height:320px;top:-100px;left:-90px;transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
   </div>
-  <div id="bdBlobCyan" class="blob-cyan-group" data-blob-group data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.7" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.6" data-dur-min="4.5" data-dur-max="8.5">
-    <div class="grain-clear bd-cyan-mask" data-blob-target style="transform:translate(0,0) scale(1);opacity:.35"></div>
-    <div class="blob cyan bd-cyan-glow" data-blob-target style="transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
+  <div class="pm-backdrop__group--desktop" data-blob-group data-blob-role="cyan" data-tx-range="90" data-ty-range="85" data-scale-min="0.55" data-scale-max="1.7" data-blur-min="30" data-blur-max="130" data-op-min="0.14" data-op-max="0.6" data-dur-min="4.5" data-dur-max="8.5">
+    <div class="pm-backdrop__clear" data-blob-target style="width:630px;height:630px;top:35px;right:-265px;transform:translate(0,0) scale(1);opacity:.35"></div>
+    <div class="pm-backdrop__blob pm-backdrop__blob--cyan" data-blob-target style="width:420px;height:420px;top:140px;right:-160px;transform:translate(0,0) scale(1);filter:blur(70px);opacity:.35"></div>
   </div>
 
-  <!-- NAV (same as the portfolio) -->
-  <header class="site-nav">
-    <div class="wrap">
-      <div class="brand">
-        <span class="site-name">Alex Grinyayev</span>
-        <a class="cert-link" href="https://www.nngroup.com/ux-certification/people/" target="_blank" rel="noopener">
-          <img class="badge-icon" src="assets/img/nng-ux-certified-badge.webp" alt="NN/g UX Certified" width="56" height="53">
-          <span class="badge-label"><span class="badge-prefix">NNg Certified - </span>ID 1064178</span>
+  <header class="pm-site-header">
+    <div class="pm-site-header__inner">
+      <div class="pm-site-header__brand">
+        <span class="pm-site-header__name">Alex Grinyayev</span>
+        <a class="pm-site-header__cred" href="https://www.nngroup.com/ux-certification/people/" target="_blank" rel="noopener">
+          <img class="pm-site-header__badge" src="assets/img/nng-ux-certified-badge.webp" alt="NN/g UX Certified" width="56" height="53" draggable="false">
+          <span class="pm-site-header__badge-label"><span class="pm-site-header__badge-prefix">NNg Certified - </span>ID 1064178</span>
         </a>
       </div>
-      <nav class="nav-links" aria-label="Main">
-        <a class="pm-btn pm-btn--ghost magnetic" data-magnetic href="mailto:perceptionmanager@gmail.com" aria-label="Let's connect"><svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="btn-label">Let's connect</span></a>
-      </nav>
+      <a class="pm-btn pm-btn--ghost pm-site-header__cta" data-magnetic href="mailto:perceptionmanager@gmail.com"><svg class="pm-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-mail"/></svg><span class="pm-site-header__cta-label">Let's connect</span></a>
+      <button class="pm-btn pm-btn--ghost pm-btn--icon-only pm-theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle><svg class="pm-icon pm-theme-toggle__sun" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-sun"/></svg><svg class="pm-icon pm-theme-toggle__moon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-moon"/></svg></button>
     </div>
-    <div class="nav-rule"></div>
-    <div class="nav-progress" data-scroll-progress></div>
+    <div class="pm-site-header__rule"></div>
+    <div class="pm-site-header__progress" data-scroll-progress></div>
   </header>
-  <div class="nav-spacer"></div>
+  <div style="height:var(--pm-layout-nav-height)"></div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <!-- HERO -->
     <section class="cs-hero wrap">
       <p class="pm-pill fade-in" style="animation-delay:.05s"><span class="pm-pill__dot" aria-hidden="true"></span>Weekly UX design briefing</p>
@@ -72,10 +73,10 @@
 
     <!-- STATS -->
     <div class="wrap fade-in sec-stats" style="position:relative;z-index:var(--pm-z-content);animation-delay:.35s">
-      <div class="pm-stat-bar" id="statRow">
-        <div class="pm-stat"><b class="pm-stat__value" id="stat0">–</b><span class="pm-stat__label">Briefings this week, each drawn from at least two publications</span></div>
-        <div class="pm-stat"><b class="pm-stat__value" id="stat1">–</b><span class="pm-stat__label">Articles scanned from the last two weeks</span></div>
-        <div class="pm-stat"><b class="pm-stat__value" id="stat2">–</b><span class="pm-stat__label">Sources that responded in the last run</span></div>
+      <div class="pm-stat-bar" id="statRow" data-num-pop="manual">
+        <div class="pm-stat"><b class="pm-stat__value" id="stat0" data-color-slot="stat0">–</b><span class="pm-stat__label">Briefings this week, each drawn from at least two publications</span></div>
+        <div class="pm-stat"><b class="pm-stat__value" id="stat1" data-color-slot="stat1">–</b><span class="pm-stat__label">Articles scanned from the last two weeks</span></div>
+        <div class="pm-stat"><b class="pm-stat__value" id="stat2" data-color-slot="stat2">–</b><span class="pm-stat__label">Sources that responded in the last run</span></div>
       </div>
     </div>
 
@@ -96,21 +97,21 @@
         <p class="method-intro">An automated pipeline runs every Monday. Nothing on this page is written by hand, and nothing is updated between runs.</p>
         <div class="pm-step">
           <div class="pm-step__line"></div>
-          <div class="pm-step__num">1</div>
+          <div class="pm-step__num" data-color-slot="step0">1</div>
           <div><h3>Collect</h3><p>A scheduled job reads the RSS feeds of the publications listed below and keeps articles from the last two weeks.</p></div>
         </div>
         <div class="pm-step">
           <div class="pm-step__line"></div>
-          <div class="pm-step__num">2</div>
+          <div class="pm-step__num" data-color-slot="step1">2</div>
           <div><h3>Group</h3><p>Claude groups articles that address the same practical question. A topic needs at least two different publications to qualify.</p></div>
         </div>
         <div class="pm-step">
           <div class="pm-step__line"></div>
-          <div class="pm-step__num">3</div>
+          <div class="pm-step__num" data-color-slot="step2">3</div>
           <div><h3>Synthesize</h3><p>Claude writes each briefing from article titles and excerpts only, not full text. Read it as a map to the articles, not a summary of them.</p></div>
         </div>
         <div class="pm-step">
-          <div class="pm-step__num">4</div>
+          <div class="pm-step__num" data-color-slot="step3">4</div>
           <div><h3>Check</h3><p>Code rejects any briefing that cites an article outside its group. If fewer than three feeds respond, the run fails and the previous briefing stays up.</p></div>
         </div>
       </div>
@@ -128,16 +129,16 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer-line site-footer" style="position:relative;z-index:var(--pm-z-content)">
-    <div class="wrap">
+  <footer class="pm-site-footer">
+    <div class="pm-site-footer__inner">
       <span>© Alex Grinyayev · 2026</span>
-      <span>Built with Gemini and Claude, source on GitHub, deployed on Vercel</span>
+      <span>Built with <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-claude"/></svg> Claude, source on <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-github"/></svg> GitHub, deployed on <svg class="pm-site-footer__logo" aria-hidden="true" focusable="false"><use href="assets/logos.svg#pm-logo-vercel"/></svg> Vercel.</span>
     </div>
   </footer>
 
 </div>
 
-<script src="assets/js/site.js"></script>
-<script src="assets/js/briefing.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@7a159a3d8804cdecf7fa42e077b56709965ddc31/dist/shell.js" defer></script>
+<script src="assets/js/briefing.js?v=20261112-statpop"></script>
 </body>
 </html>

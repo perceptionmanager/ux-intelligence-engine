@@ -1,28 +1,23 @@
 /* ==========================================================================
-   UX Design Briefing — site stylesheet (components from the design system v0.4.0)
-   Same chrome as perceptionmanager.com so this reads as part of the same family:
-   header, mobile menu, buttons, pills, cards, steps, footer and the animated backdrop
-   (grain, aura, drifting spotlights, line pattern).
-
-   1. "components" layer: a synced copy of the shared part of the portfolio's
-      assets/css/base.css (everything above its first "Page:" section) plus the nav
-      classes below. Don't restyle it here: change it in the portfolio and re-sync, or,
-      better, move it into the design system (see README, "Staying in sync").
-   2. "product" layer: this page only (.pg-briefing).
-   Tokens (--pm-*) are loaded from the design system in <head>.
+   UX Design Briefing — site stylesheet
+   The page shell (header, mobile menu, footer, backdrop) and the shared components come from the
+   design system v0.5.0 (shell.css, components.css); markup in its docs/shell.md. Don't restyle them here.
+   1. "components" layer: the content patterns this page shares with the portfolio (sections, hero, split layout, CTA).
+   2. "product" layer: this page's own styles.
    ========================================================================== */
 @layer tokens, base, components, product;
 
+/* Images carry width/height attributes (they reserve space before load); CSS decides the rendered size. In the base layer so a
+   component rule (the header\'s NN/g badge) can still set a height. */
+@layer base { img { height: auto; } }
+
 @layer components {
-  /* Images carry width/height attributes (they reserve space before load and prevent layout shift);
-     CSS decides the rendered size, so the height follows the width unless a rule says otherwise. */
-  img { height: auto; }
 
   /* ==========================================================================
      Alex Grinyayev — Portfolio
      Shared design system: tokens, reset, and site-wide components.
      Page-specific styles (case study visualizations, etc.) live in each
-     page's own <style> block, loaded after this file.
+     page's own \3c style> block, loaded after this file.
      ========================================================================== */
 
   /* Tokens come from the shared design system (tokens.css + legacy-aliases.css, linked in each page's <head>).
@@ -65,14 +60,6 @@
     .wrap { max-width: none }
   }
 
-  /* Buttons, cards, pills, stats, steps, checks and tags come from the design system's components.css (v0.4.0). */
-
-  /* ---- site wordmark (nav) ---- */
-  .site-name { white-space: nowrap }
-  @media (max-width: 860px) {
-    .site-name { font-size: var(--pm-type-small-size) }
-  }
-
   /* ---- buttons ---- */
   .btn-icon { flex-shrink: 0; display: block }
 
@@ -83,59 +70,6 @@
        the full wording stays available to screen readers */
     .nav-long { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
   }
-
-  /* ---- nav links (desktop top nav) ---- */
-
-  .navlink { position: relative; font-size: var(--pm-type-body-size); color: var(--pm-color-text-secondary); padding: var(--pm-space-2) var(--pm-space-0-5) }
-
-  .navlink::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 2px;
-    border-radius: var(--pm-radius-xs);
-    background: var(--pm-gradient-brand);
-    background-size: 200% 100%;
-    background-position: 0% 50%;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--pm-duration-base) ease;
-  }
-
-  .navlink:hover { color: var(--pm-color-text-primary) }
-  .navlink:hover::after { transform: scaleX(1); animation: navUnderlineMove 1.6s linear infinite }
-
-  @keyframes navUnderlineMove { 0% { background-position: 0% 50% } 100% { background-position: 200% 50% } }
-
-  .magnetic { transition: transform var(--pm-duration-fast) var(--pm-easing-emphasized) }
-
-  /* ---- mobile menu ---- */
-
-  .menu-btn {
-    width: 40px; height: 40px;
-    border-radius: var(--pm-radius-md);
-    border: 1px solid var(--pm-color-border-subtle);
-    background: var(--pm-color-surface-tint);
-    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--pm-space-1);
-  }
-
-  .menu-btn span { width: 16px; height: 2px; background: var(--pm-color-text-primary); border-radius: var(--pm-radius-xs) }
-
-  .overlay {
-    position: fixed; inset: 0;
-    background: var(--pm-color-text-on-accent);
-    z-index: var(--pm-z-nav);
-    display: none;
-    flex-direction: column;
-    padding: var(--pm-space-6);
-    animation: slideDown var(--pm-duration-fast) ease;
-  }
-
-  .overlay.is-open { display: flex }
-
-  .overlay a { font-family: var(--pm-font-family-display); font-size: var(--pm-type-heading-md-size); padding: var(--pm-space-4) 0; border-bottom: 1px solid var(--pm-color-border-subtle) }
-
-  @keyframes slideDown { from { opacity: 0; transform: translateY(-12px) } to { opacity: 1; transform: translateY(0) } }
 
   /* ---- fade-in entrance animation ---- */
 
@@ -151,130 +85,11 @@
 
   @keyframes wordUp { to { opacity: 1; transform: translateY(0) rotate(0) } }
 
-  /* ---- decorative motion system (grain / aura / blobs / grid overlay) ----
-     Carried over byte-for-byte from the original design — not a subject of
-     redesign in this migration. */
-
-  .grain {
-    position: absolute; inset: 0;
-    pointer-events: none;
-    opacity: .16;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation: grainFlicker 2.2s steps(8) infinite;
-  }
-
-  @keyframes grainFlicker { 0%, 100% { opacity: .16 } 20% { opacity: .1 } 35% { opacity: .21 } 55% { opacity: .13 } 70% { opacity: .19 } 85% { opacity: .11 } }
-
-  .grain-clear { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(circle at 50% 50%, var(--pm-color-surface-page) 0%, var(--pm-color-surface-page) 28%, rgba(20, 23, 31, 0) 68%) }
-
-  /* dither: the soft glows are 8-bit gradients, so they step in visible bands. A static, very faint, full-colour noise layer sits on top of
-     the glows (under the content) and breaks those steps up; it is far below the visibility of grain itself. */
-  body::before {
-    content: ""; position: fixed; inset: 0; z-index: var(--pm-z-raised); pointer-events: none;
-    opacity: .016; mix-blend-mode: screen;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='d' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='3 0 0 0 -1.3  0 3 0 0 -1.3  0 0 3 0 -1.3  0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
-    background-size: 256px 256px;
-  }
-
-  .aura {
-    position: absolute; top: -320px; left: 50%;
-    width: 920px; height: 920px; margin-left: -460px;
-    background: conic-gradient(from 0deg, var(--pm-color-accent-primary-muted), var(--pm-color-accent-secondary-subtle), var(--pm-color-accent-primary-muted), var(--pm-color-accent-primary-muted));
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: .55;
-    animation: auraSpin 34s linear infinite;
-    pointer-events: none;
-    z-index: var(--pm-z-base);
-  }
-
-  @media (max-width: 860px) {
-    .aura {
-      top: -200px; width: 520px; height: 520px; margin-left: -260px;
-      filter: blur(70px);
-    }
-  }
-
-  @keyframes auraSpin { to { transform: rotate(360deg) } }
-
-  /* engraved line pattern that only shows inside the drifting spotlights and the coloured aura (drawn by initBackdropLines() in assets/js/site.js,
-     which adds the canvas to every page that has the backdrop) */
-  .spotlight-lines { position: absolute; top: 0; left: 0; width: 100%; height: 1100px; z-index: var(--pm-z-raised); pointer-events: none; mix-blend-mode: screen; opacity: .15 }
-  @media (max-width: 860px) { .spotlight-lines { height: 800px } }
-
-  .grid-overlay {
-    position: absolute; inset: 0; z-index: var(--pm-z-raised);
-    pointer-events: none;
-    opacity: .05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
-    background-size: 95px 95px;
-    -webkit-mask-image: linear-gradient(to bottom, black, transparent 65%);
-    mask-image: linear-gradient(to bottom, black, transparent 65%);
-    animation: gridPan var(--pm-duration-slow) steps(3) infinite;
-  }
-
-  @keyframes gridPan { 0% { background-position: 0 0 } 33% { background-position: -42px 21px } 66% { background-position: 25px -36px } 100% { background-position: 0 0 } }
-
-  .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .35; pointer-events: none }
-  .blob.coral { background: radial-gradient(circle at 35% 35%, var(--pm-color-accent-primary) 0%, rgba(255, 106, 76, 0) 70%) }
-  .blob.cyan { background: radial-gradient(circle at 65% 65%, var(--pm-color-accent-secondary) 0%, rgba(69, 224, 255, 0) 70%) }
-
-  @media (max-width: 860px) {
-    .blob { filter: blur(60px) }
-  }
-
-  /* ---- generic content components ---- */
-
-  .footer-line { border-top: 1px solid var(--pm-color-border-subtle) }
-
-  /* ---- mailto copy confirmation ----
-     Shown next to the clicked control by site.js (initMailtoCopy), so
-     a laptop with no default mail client configured still leaves the person
-     with the address ready to paste, instead of the click silently doing
-     nothing. */
-  .copy-tip {
-    position: fixed; left: 0; top: 0;
-    display: inline-flex; align-items: center; gap: var(--pm-space-2);
-    background: var(--pm-color-surface-card); border: 1px solid var(--pm-color-border-subtle); color: var(--pm-color-text-primary);
-    padding: var(--pm-space-2) var(--pm-space-4); border-radius: var(--pm-radius-full); font-size: var(--pm-type-small-size); line-height: var(--pm-font-line-height-none); white-space: nowrap;
-    opacity: 0; transform: translateY(4px); pointer-events: none;
-    transition: opacity var(--pm-duration-fast) ease, transform var(--pm-duration-fast) ease;
-    z-index: var(--pm-z-toast); box-shadow: var(--pm-shadow-elevation-1);
-  }
-  .copy-tip.is-visible { opacity: 1; transform: none }
-  .copy-tip svg { color: var(--pm-color-status-success); flex-shrink: 0 }
-
   /* ==========================================================================
      Shared components — merged from the per-page copies that used to repeat in every
      "Page:" section below. A page section now only holds what is genuinely different.
      ========================================================================== */
-  .nav-links { display: flex; align-items: center; gap: var(--pm-space-10) }
-  .nav-menu-btn { display: none }
-  @media (max-width: 860px) {
-    .nav-links { display: none }
-    .nav-menu-btn { display: flex }
-  }
-  .badge-icon { height: 20px }
-  .badge-label { font-size: var(--pm-type-caption-size); letter-spacing: var(--pm-font-tracking-caps); white-space: nowrap }
-  @media (max-width: 860px) {
-    .badge-icon { height: 15px }
-  }
-  /* the full "NNg Certified - ID 1064178" no longer fits beside the name on mobile (it wraps and squeezes the menu button),
-     so below 480px only the ID number shows; the badge icon keeps its alt text */
-  @media (max-width: 479px) {
-    .badge-prefix { display: none }
-  }
   .hero-sub { line-height: var(--pm-font-line-height-relaxed); color: var(--pm-color-text-secondary) }
-  .site-footer .wrap { display: flex; flex-direction: column; gap: var(--pm-space-2); color: var(--pm-color-text-tertiary); font-size: var(--pm-type-caption-size) }
-  @media (min-width: 861px) {
-    .site-footer .wrap { flex-direction: row; justify-content: space-between; flex-wrap: wrap; gap: var(--pm-space-3) }
-  }
-  .blob-coral-group { display: block }
-  @media (max-width: 860px) {
-    .blob-coral-group { display: none }
-  }
   .hero-logo { height: 26px }
   @media (max-width: 860px) {
     .hero-logo { height: 18px }
@@ -300,10 +115,6 @@
   .cs-top-nav { display: flex; justify-content: space-between; align-items: center; padding-top: var(--pm-space-4); position: relative; z-index: var(--pm-z-content) }
   @media (max-width: 860px) {
     .cs-top-nav { padding-top: var(--pm-space-3) }
-  }
-  .blob-cyan-group { display: block }
-  @media (max-width: 860px) {
-    .blob-cyan-group { display: none }
   }
   .clear-coral { width: 420px; height: 420px; top: -170px; right: -150px }
   .glow-coral { width: 280px; height: 280px; top: -100px; right: -80px }
@@ -372,7 +183,7 @@
   .modal-card { position: relative; max-width: 1000px; width: 100% }
   .modal-img { width: 100%; height: auto; max-height: 82vh; object-fit: contain; border-radius: var(--pm-radius-md); display: block }
   .modal-close { all: unset; position: absolute; top: -46px; right: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--pm-color-surface-card); border: 1px solid var(--pm-color-border-subtle); color: var(--pm-color-text-primary); font-size: var(--pm-type-body-lg-size); line-height: var(--pm-font-line-height-none); cursor: pointer; display: flex; align-items: center; justify-content: center }
-  .modal-close:hover { border-color: var(--pm-color-accent-secondary); color: var(--pm-color-accent-secondary) }
+  .modal-close:hover { border-color: var(--pm-color-accent-secondary); color: var(--pm-color-text-accent-secondary) }
   .cs-hero { position: relative; z-index: var(--pm-z-content); padding-top: var(--pm-space-12); padding-bottom: var(--pm-space-16) }
   .cs-hero-logo { width: auto; display: block }
   .cs-hero h1 { font-size: var(--pm-type-display-md-size); line-height: var(--pm-font-line-height-tight); margin-top: var(--pm-space-6) }
@@ -413,34 +224,12 @@
   @media (max-width: 860px) {
     .cs-learning { padding-top: 0 }
   }
-
-  /* ---- site header (same markup and look as the portfolio's nav, as classes instead of inline styles) ---- */
-  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: var(--pm-z-nav); height: var(--pm-layout-nav-height); display: flex; align-items: center; background: var(--pm-color-surface-page) }
-  .site-nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100% }
-  .brand { display: flex; align-items: center; gap: var(--pm-space-3); font-weight: var(--pm-font-weight-bold); letter-spacing: var(--pm-font-tracking-wide); font-size: var(--pm-type-body-size) }
-  .cert-link { display: flex; align-items: center; gap: var(--pm-space-2); margin-left: var(--pm-space-2); padding-left: var(--pm-space-4); border-left: 1px solid var(--pm-color-border-strong) }
-  .cert-link .badge-icon { width: auto; flex-shrink: 0; display: block }
-  .cert-link .badge-label { font-weight: var(--pm-font-weight-semibold); color: var(--pm-color-text-tertiary) }
-  .nav-rule { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--pm-color-alpha-white-a18) } /* same rule as the portfolio nav; no semantic token for it yet */
-  .nav-progress { position: absolute; left: 0; bottom: 0; height: 3px; width: 0%; background: var(--pm-gradient-brand) }
-  .nav-spacer { height: var(--pm-layout-nav-height) }
-  .nav-links .pm-btn { padding: var(--pm-space-3) var(--pm-space-5); font-size: var(--pm-type-small-size) }
-  .overlay-top { display: flex; justify-content: flex-end }
-  .overlay-top .menu-btn { border-color: var(--pm-color-accent-primary) }
-  .overlay-links { display: flex; flex-direction: column; margin-top: var(--pm-space-6) }
-  .overlay-links .accent { color: var(--pm-color-accent-primary) }
-  .page { width: 100%; background: var(--pm-color-surface-page); position: relative; overflow: hidden }
 }
 
 /* ==========================================================================
    Product layer — UX Design Briefing only
    ========================================================================== */
 @layer product {
-  /* ---- backdrop: spotlight sizes and positions (same as the portfolio's Case Studies page) ---- */
-  .pg-briefing .bd-coral-mask { width: 480px; height: 480px; top: -180px; left: -170px }
-  .pg-briefing .bd-coral-glow { width: 320px; height: 320px; top: -100px; left: -90px }
-  .pg-briefing .bd-cyan-mask { width: 630px; height: 630px; top: 35px; right: -265px }
-  .pg-briefing .bd-cyan-glow { width: 420px; height: 420px; top: 140px; right: -160px }
 
   /* ---- hero ---- */
   .pg-briefing .hero-pills { display: flex; flex-wrap: wrap; gap: var(--pm-space-3); margin-top: var(--pm-space-6) }
@@ -454,7 +243,7 @@
   .pg-briefing .run-status[data-state="fresh"] .pm-pill__dot { background: var(--pm-color-status-success); box-shadow: var(--pm-shadow-glow-success) }
   .pg-briefing .run-status[data-state="stale"] .pm-pill__dot { background: var(--pm-color-status-warning) }
   .pg-briefing .run-status[data-state="error"] .pm-pill__dot { background: var(--pm-color-status-error) }
-  .pg-briefing .run-status a { margin-left: var(--pm-space-2); color: var(--pm-color-accent-secondary); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
+  .pg-briefing .run-status a { margin-left: var(--pm-space-2); color: var(--pm-color-text-accent-secondary); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
 
   .pg-briefing button.pm-btn { font-family: inherit }   /* the shared .pm-btn is styled for links; buttons need to inherit the font too */
 
@@ -537,24 +326,10 @@
   .pg-briefing .source-list li.down { color: var(--pm-color-text-tertiary); border-style: dashed }
   .pg-briefing .source-list a:hover { color: var(--pm-color-text-primary) }
   .pg-briefing .cs-split p.source-note { color: var(--pm-color-text-tertiary); font-size: var(--pm-type-small-size); margin-top: var(--pm-space-4) }
-
-  /* ---- header: the Let's connect button stays visible on mobile (no menu button, nothing else to put in a menu) ---- */
-  .pg-briefing .nav-links { display: flex }
-  .pg-briefing .nav-links .pm-btn { white-space: nowrap }
-  @media (max-width: 599px) {
-    /* icon-only below 600px so the name, badge and button fit on one line */
-    .pg-briefing .nav-links .pm-btn { padding: var(--pm-space-3) }
-    .pg-briefing .nav-links .btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
-  }
-
-  /* ---- footer: vertical padding the portfolio sets per page (same values), so the line sits where it does there ---- */
-  .pg-briefing .site-footer .wrap { padding-top: var(--pm-space-6); padding-bottom: var(--pm-space-6) }
-  @media (max-width: 860px) { .pg-briefing .site-footer .wrap { padding-top: var(--pm-space-8); padding-bottom: var(--pm-space-8) } }
   .pg-briefing main { padding-bottom: var(--pm-space-4) }
 
   /* ---- ambient motion: respect "reduce motion" (the portfolio does not yet; this product's rules require it) ---- */
   @media (prefers-reduced-motion: reduce) {
-    .grain, .grid-overlay, .aura { animation: none }
     .fade-in, .split-word { opacity: 1; transform: none; animation: none }
     html { scroll-behavior: auto }
   }
