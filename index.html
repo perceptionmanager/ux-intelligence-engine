@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/components.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/shell.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@13beb8196d5f5de14ca6fc8541cd41eaa20fe21d/dist/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@13beb8196d5f5de14ca6fc8541cd41eaa20fe21d/dist/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@13beb8196d5f5de14ca6fc8541cd41eaa20fe21d/dist/shell.css">
   <link rel="stylesheet" href="assets/css/site.css?v=20261112-shell">
 </head>
 <body class="pg-briefing">
@@ -22,7 +22,7 @@
 
 <div class="pm-page">
 
-  <!-- page shell from the design system (docs/shell.md): backdrop and the compact header (name, credential, Let's connect) -->
+  <!-- page shell from the design system (docs/shell.md): backdrop and the compact header (name, credential, Let's connect, theme switch) -->
   <div class="pm-backdrop__grain"></div>
   <div class="pm-backdrop__aura"></div>
   <div class="pm-backdrop__noise"></div>
@@ -45,6 +45,7 @@
         </a>
       </div>
       <a class="pm-btn pm-btn--ghost pm-site-header__cta" data-magnetic href="mailto:perceptionmanager@gmail.com"><svg class="pm-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-mail"/></svg><span class="pm-site-header__cta-label">Let's connect</span></a>
+      <button class="pm-btn pm-btn--ghost pm-btn--icon-only pm-theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle><svg class="pm-icon pm-theme-toggle__sun" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-sun"/></svg><svg class="pm-icon pm-theme-toggle__moon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#pm-icon-moon"/></svg></button>
     </div>
     <div class="pm-site-header__rule"></div>
     <div class="pm-site-header__progress" data-scroll-progress></div>
@@ -137,7 +138,7 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@929aacbeb78556649ba24b31d63a690b8f2ce7d5/dist/shell.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@13beb8196d5f5de14ca6fc8541cd41eaa20fe21d/dist/shell.js" defer></script>
 <script src="assets/js/briefing.js"></script>
 </body>
 </html>

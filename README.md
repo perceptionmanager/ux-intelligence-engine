@@ -8,7 +8,7 @@ as static JSON that the page renders. Every briefing links to its source article
 ## Structure
 
 ```
-index.html                 Page markup, inside the design system's page shell (compact header: name, credential, Let's connect; footer; backdrop)
+index.html                 Page markup, inside the design system's page shell (compact header: name, credential, Let's connect, theme switch; footer; backdrop)
 assets/css/site.css        This page's own styles (.pg-briefing); shell and components come from the design system
 assets/icons.svg, logos.svg  Copies of the design system's icon and footer-logo sprites (SVG <use> needs them on this origin)
 assets/js/briefing.js      Renders data/briefings.json (textContent only)
