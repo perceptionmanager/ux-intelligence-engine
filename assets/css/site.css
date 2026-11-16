@@ -7,6 +7,8 @@
 @layer tokens, base, components, product;
 
 @layer product {
+  /* Stat and step figures: one static aqua, as on the portfolio's Lab pages (they used to be tinted live by the glows) */
+  [data-color-slot] { color: var(--pm-color-text-accent-secondary) }
 
   .pg-briefing .run-status { margin: var(--pm-space-8) 0 0; line-height: var(--pm-font-line-height-relaxed) }   /* the design system's .pm-status, placed under the hero */
   .pg-briefing .run-status a { margin-left: var(--pm-space-2); color: var(--pm-color-text-accent-secondary); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px }
