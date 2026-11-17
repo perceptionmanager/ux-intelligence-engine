@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>/* theme: set before first paint (saved choice, then the system setting); same key as the portfolio */(function(){var t;try{t=localStorage.getItem('pm-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark'}document.documentElement.setAttribute('data-theme',t)})();</script>
+  <script>/* theme: set before first paint (saved choice, then the system setting); same key as the portfolio. Also hides the title until the design system draws it in (pm-title-pending). */(function(){var t;try{t=localStorage.getItem('pm-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark'}document.documentElement.setAttribute('data-theme',t);if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('pm-title-pending')}})();</script>
   <meta name="robots" content="noindex, nofollow">
   <title>UX Design Briefing — Alex Grinyayev</title>
   <meta name="description" content="A weekly briefing on what UX and product design practitioners are debating, synthesized from linked source articles.">
@@ -11,12 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <!-- Shared perceptionmanager design tokens. Pinned to a release: bump the version to take updates. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@b50cf7ad5bdfd9992d7df3ae4b5f467f4e1c24ce/dist/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@b50cf7ad5bdfd9992d7df3ae4b5f467f4e1c24ce/dist/components.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@b50cf7ad5bdfd9992d7df3ae4b5f467f4e1c24ce/dist/shell.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@517933fc293a284581c664ee07476a3af8ee15d8/dist/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@517933fc293a284581c664ee07476a3af8ee15d8/dist/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@517933fc293a284581c664ee07476a3af8ee15d8/dist/shell.css">
   <link rel="stylesheet" href="assets/css/site.css?v=20261116-ds07">
 </head>
-<body class="pg-briefing">
+<body class="pg-briefing" data-serif-reveal>
 
 <a class="pm-skip-link" href="#main">Skip to content</a>
 
@@ -126,7 +126,7 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@b50cf7ad5bdfd9992d7df3ae4b5f467f4e1c24ce/dist/shell.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/perceptionmanager/design-system@517933fc293a284581c664ee07476a3af8ee15d8/dist/shell.js" defer></script>
 <script src="assets/js/briefing.js?v=20261116-ds07"></script>
 </body>
 </html>
