@@ -1,15 +1,15 @@
 {
   "status": "ok",
-  "generatedAt": "2026-11-16T21:43:27.251Z",
+  "generatedAt": "2026-11-23T23:29:37.322Z",
   "model": "claude-sonnet-5-5",
   "lookbackDays": 14,
-  "articlesScanned": 56,
+  "articlesScanned": 58,
   "feeds": [
     {
       "name": "NN/g",
       "site": "https://www.nngroup.com",
       "ok": true,
-      "articles": 5
+      "articles": 6
     },
     {
       "name": "UX Tigers (Jakob Nielsen)",
@@ -21,7 +21,7 @@
       "name": "Smashing Magazine",
       "site": "https://www.smashingmagazine.com",
       "ok": true,
-      "articles": 4
+      "articles": 3
     },
     {
       "name": "UX Collective",
@@ -45,26 +45,25 @@
       "name": "Product Talk",
       "site": "https://www.producttalk.org",
       "ok": true,
-      "articles": 4
+      "articles": 6
     },
     {
       "name": "SVPG",
       "site": "https://www.svpg.com",
       "ok": true,
-      "articles": 1
+      "articles": 0
     },
     {
       "name": "MeasuringU",
       "site": "https://measuringu.com",
-      "ok": false,
-      "articles": 0,
-      "error": "HTTP 415"
+      "ok": true,
+      "articles": 2
     },
     {
       "name": "Rosenfeld Media",
       "site": "https://rosenfeldmedia.com",
       "ok": true,
-      "articles": 3
+      "articles": 2
     },
     {
       "name": "UXmatters",
@@ -76,13 +75,13 @@
       "name": "Brad Frost",
       "site": "https://bradfrost.com",
       "ok": true,
-      "articles": 2
+      "articles": 4
     },
     {
       "name": "Figma Blog",
       "site": "https://www.figma.com/blog",
       "ok": true,
-      "articles": 7
+      "articles": 5
     },
     {
       "name": "UX Planet",
@@ -99,54 +98,48 @@
   ],
   "briefings": [
     {
-      "id": "discovery-mwjsirrn",
+      "id": "discovery-mwtwe9m2",
       "category": "discovery",
       "categoryLabel": "Product discovery",
-      "title": "Automate the counting, keep the judgment human",
-      "dek": "Teams must decide which research tasks AI can run end to end and which need researchers and real participants.",
-      "scenario": "A product team at a large retailer ships changes every week and wants to cut research turnaround. Leadership proposes AI-run interviews, automatic coding of open-ended answers, and simulated users in place of recruited participants.",
+      "title": "AI in user research: real participants versus synthetic ones",
+      "dek": "Teams must decide which research roles AI can take over, and whether it can replace the people being studied.",
+      "scenario": "A research team at a large retailer has a tight budget and a backlog of studies. A manager proposes using AI to run and code interviews with real customers, and also using simulated users to skip recruitment.",
       "relation": "emphasis",
       "positions": [
         {
-          "label": "Automate interviews and coding",
-          "summary": "AI can now run interviews, code every free-text answer, and count how many people raised each theme. That makes open-ended questions affordable to analyze at scale, so teams no longer need to limit themselves to closed categories.",
+          "label": "AI works the real data",
+          "summary": "AI can run interviews, code every open-ended answer and count themes, which makes free-form questions affordable at scale. Whether an AI moderator catches as much as a human is hard to verify, because nobody sees what was missed.",
           "outlets": [
+            "UX Tigers (Jakob Nielsen)",
+            "MeasuringU"
+          ]
+        },
+        {
+          "label": "Synthetic users fall short",
+          "summary": "Simulated participants promise results faster and cheaper than recruiting, but the evidence cited here says they still cannot replace real people. One exception is pilot testing, where they can be useful.",
+          "outlets": [
+            "MeasuringU",
             "UX Tigers (Jakob Nielsen)"
           ]
-        },
-        {
-          "label": "Humans own framing and validation",
-          "summary": "Researchers should decide what each release has to measure and what it should help the team discover. Synthetic users are not an adequate replacement for real ones, with pilot testing the one exception noted. Another source frames the practical question as what to automate versus what to own.",
-          "outlets": [
-            "NN/g",
-            "UX Tigers (Jakob Nielsen)",
-            "Rosenfeld Media"
-          ]
         }
       ],
-      "context": "Development is speeding up with AI, and research has to keep pace without becoming a bottleneck. The sources agree that AI lowers the cost of collecting and analyzing data. They differ in emphasis on where that stops being safe. One source also notes that unused findings waste research spend, so speed alone does not fix the problem.",
+      "context": "Recruitment is among the costliest and slowest parts of a research budget, so the pull toward AI is strong. The sources separate two uses: AI handling the work of moderating and analysis with real participants, and AI replacing the participants themselves. They treat these differently. A comparison of AI and human moderators is only a first attempt at measurement.",
       "steps": [
         {
-          "label": "Split the workflow",
-          "text": "List each research task and mark whether it is collection and counting, or framing and interpretation."
+          "label": "Split the question",
+          "text": "Decide separately whether AI is doing moderation or analysis, or standing in for the participant, since the evidence differs for each."
         },
         {
-          "label": "Automate open-ended analysis",
-          "text": "Pilot AI interviewing and theme coding on a low-risk study, and have a researcher check the output against raw responses."
+          "label": "Audit moderator gaps",
+          "text": "Run AI and human moderators on comparable sessions and compare which facts each surfaced before trusting the AI alone."
         },
         {
-          "label": "Reserve real users",
-          "text": "Use synthetic participants only for pilot tests, and recruit real users for any finding that will drive a decision."
+          "label": "Limit synthetic users",
+          "text": "Use simulated participants only for low-risk work such as piloting a study, and keep real participants for findings that drive decisions."
         }
       ],
-      "caveat": "These are short excerpts, so they give no evidence on how accurate AI interviewing and coding are, or on where exactly the line between pilot use and decision-grade research falls.",
+      "caveat": "The excerpts are short and mostly summaries, so they don't show the methods or the full results behind the moderator comparison or the synthetic-user findings.",
       "sources": [
-        {
-          "outlet": "NN/g",
-          "title": "Research-In-The-Loop: How UXR Adapts to Development at AI Speed",
-          "url": "https://www.nngroup.com/articles/research-in-the-loop/?utm_source=rss&utm_medium=feed&utm_campaign=rss-syndication",
-          "date": "2026-11-13"
-        },
         {
           "outlet": "UX Tigers (Jakob Nielsen)",
           "title": "Closed vs. Open Questions in User Research: AI Makes Free-Form Answers Cheap to Count",
@@ -154,152 +147,84 @@
           "date": "2026-11-11"
         },
         {
+          "outlet": "MeasuringU",
+          "title": "Do AI and Human Moderators Uncover the Same Facts?",
+          "url": "https://measuringu.com/do-ai-and-human-moderators-uncover-the-same-facts/?utm_source=rss&utm_medium=rss&utm_campaign=do-ai-and-human-moderators-uncover-the-same-facts",
+          "date": "2026-11-17"
+        },
+        {
+          "outlet": "MeasuringU",
+          "title": "Pew Research Finds the Same Problem We Did with Digital Twins",
+          "url": "https://measuringu.com/pew-research-finds-the-same-problem-we-did-with-digital-twins/?utm_source=rss&utm_medium=rss&utm_campaign=pew-research-finds-the-same-problem-we-did-with-digital-twins",
+          "date": "2026-11-10"
+        },
+        {
           "outlet": "UX Tigers (Jakob Nielsen)",
           "title": "UX Roundup: No More Web | Social Knowledge Work | Auto-Logout | Agents in the Field | Agentic Training Video | Unused Research | Synthetic Users | Onboarding | AI Restraint",
           "url": "https://www.uxtigers.com/post/ux-roundup-20261113",
           "date": "2026-11-13"
-        },
-        {
-          "outlet": "Rosenfeld Media",
-          "title": "Starting as a UX Researcher? 3 sessions you must watch",
-          "url": "https://rosenfeldmedia.com/starting-ux-researcher-must-watch-sessions/",
-          "date": "2026-11-09"
         }
       ]
     },
     {
-      "id": "leadership-mwjsir0d",
-      "category": "leadership",
-      "categoryLabel": "Design leadership",
-      "title": "Designers weigh building code against shifting hiring",
-      "dek": "Should designers extend into building and shipping with AI, or first test how their own company and the market value the design role?",
-      "scenario": "A design lead at a large software company sees engineers and PMs prototyping with AI tools, and she is unsure whether her team's remit is shrinking. She has to decide whether to train her designers to ship code or to push for a clearer definition of the design role in planning.",
-      "relation": "emphasis",
+      "id": "tooling-mwtwe93l",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "When the prototype arrives before the requirements",
+      "dek": "Teams must decide whether a working build now serves as the spec, or whether a structured context document still has to come first.",
+      "scenario": "A designer at a large company builds a working version of a feature between meetings, days before the scheduled requirements review. The team now has to choose between treating that build as the reference and sending it back through the planned write-up and sign-off.",
+      "relation": "disagree",
       "positions": [
         {
-          "label": "Expand into building",
-          "summary": "AI makes it easier to turn ideas into working products, so designers can move their responsibilities further toward building and shipping. The conversation frames this as a chance to redraw where design work begins and ends, and treats product design engineering as a named path.",
+          "label": "The build is the spec",
+          "summary": "When a working version takes an afternoon, the prototype can come first and the written requirements can follow from it. Designers who work in code also remove handoffs, because more of what they design is what ships.",
           "outlets": [
+            "UX Collective",
             "Rosenfeld Media"
           ]
         },
         {
-          "label": "Check the market first",
-          "summary": "The late-2026 job market summary describes designers as struggling while product managers do well, which suggests positioning carries real risk. The product-role keynote adds that the product job has always differed widely between companies, so a role's boundaries depend heavily on local context.",
-          "outlets": [
-            "Lenny's Newsletter",
-            "SVPG"
-          ]
-        }
-      ],
-      "context": "Titles and responsibilities for design and product have never been uniform, and AI tools now let more people produce working software. That blurs who prototypes, who decides, and who ships. These pieces come from the same week in November 2026 and approach the shift from craft, role-definition, and hiring angles.",
-      "steps": [
-        {
-          "label": "Map your overlap",
-          "text": "List which build and decision tasks your designers, PMs, and engineers already share, and where AI tools have moved the lines."
-        },
-        {
-          "label": "Pilot shipping",
-          "text": "Let one or two designers ship small production changes with AI help, and track quality and review burden before scaling the practice."
-        },
-        {
-          "label": "Define the role locally",
-          "text": "Write down what design owns at your company, since the product role itself varies by organization and you should not assume a shared definition."
-        }
-      ],
-      "caveat": "The excerpts do not show why designers are faring worse in hiring, nor whether building code improves a designer's prospects, so the two stances are not tested against each other.",
-      "sources": [
-        {
-          "outlet": "Rosenfeld Media",
-          "title": "From designing to building: The rise of product design engineering with David Siren Eisner",
-          "url": "https://rosenfeldmedia.com/from-designing-to-building-the-rise-of-product-design-engineering-with-david-siren-eisner/",
-          "date": "2026-11-05"
-        },
-        {
-          "outlet": "SVPG",
-          "title": "AI and the Future of the Product Role",
-          "url": "https://www.svpg.com/ai-and-the-future-of-the-product-role/",
-          "date": "2026-11-06"
-        },
-        {
-          "outlet": "Lenny's Newsletter",
-          "title": "State of the tech job market: late 2026",
-          "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
-          "date": "2026-11-10"
-        }
-      ]
-    },
-    {
-      "id": "tooling-mwjsipza",
-      "category": "tooling",
-      "categoryLabel": "Tooling and AI",
-      "title": "Where designers should still hold the pen",
-      "dek": "Teams must decide which design work to delegate to AI and which to keep as human judgment, while sources disagree on whether taste is still a human edge.",
-      "scenario": "A design org at a large retailer is told to cut cycle time on its checkout redesign. Leadership wants AI to draft flows and visuals, and the team has to decide which decisions still need a designer's sign-off.",
-      "relation": "disagree",
-      "positions": [
-        {
-          "label": "Humans own vision and judgment",
-          "summary": "Figma's pieces frame AI as something that can produce and shape output, while people supply the vision and the judgment about what gets made. The open question they pose is which parts of the process designers choose to keep for themselves.",
+          "label": "Gather context before building",
+          "summary": "A shared workspace that collects diagrams, designs, and technical decisions, with an AI agent working from it, still turns scattered context into a plan. In this view the plan is what makes implementation easy.",
           "outlets": [
             "Figma Blog"
           ]
-        },
-        {
-          "label": "Taste is no longer exclusive",
-          "summary": "Nielsen's roundup argues that taste stops being a uniquely human advantage. A review of Anthropic's newest model similarly reports strong results across most product design tasks, which challenges the idea that a protected core of work remains.",
-          "outlets": [
-            "UX Tigers (Jakob Nielsen)",
-            "UX Planet"
-          ]
         }
       ],
-      "context": "The argument over designers and code is old, and one essay places it in a long history of makers learning through their materials. In that view, models are simply the next material, and understanding them takes hands-on building. The vendor and practitioner sources here also differ in what they are selling and what they have tested.",
+      "context": "AI tools have cut the cost of producing working software, so the old order of requirements, sign-off, then build is under pressure. Design-engineering hybrids, once rare, are becoming a more common way to work. Tool vendors are responding with products that keep a planning artifact in the loop.",
       "steps": [
         {
-          "label": "Map your decisions",
-          "text": "List the decisions in your process, such as problem framing, flows, visuals and copy, and mark which ones you currently trust to someone without review."
+          "label": "Audit your sequence",
+          "text": "Check where in your current process a working prototype already appears before requirements are signed off, and whether anyone is treating it as the reference."
         },
         {
-          "label": "Test on real work",
-          "text": "Run AI on a bounded past project and compare its output with the shipped design before deciding what to delegate."
+          "label": "Name the source of truth",
+          "text": "Decide explicitly whether the build, a spec document, or a combined context space is authoritative, so engineers and designers are not working from competing artifacts."
         },
         {
-          "label": "Build to learn",
-          "text": "Have designers prototype directly with models so their view of what to keep rests on experience with the material rather than opinion."
+          "label": "Test on one feature",
+          "text": "Run a single feature with the prototype as the primary spec and compare the review effort and rework against a feature that used a written plan."
         }
       ],
-      "caveat": "The excerpts are short and mostly opinion or promotion, so they offer no evidence on which design tasks AI handles well or whether taste can be measured.",
+      "caveat": "The excerpts are short and come from an essay, a book promotion, and a tool vendor's blog, so none of them shows evidence on quality, rework, or how teams handle edge cases and accountability without a written spec.",
       "sources": [
         {
-          "outlet": "Figma Blog",
-          "title": "AI’s role in the creative process",
-          "url": "https://www.figma.com/blog/ai-role-in-the-creative-process/",
-          "date": "2026-11-13"
-        },
-        {
-          "outlet": "Figma Blog",
-          "title": "In conversation: Dylan Field and David Friedberg on the human role in creating with AI",
-          "url": "https://www.figma.com/blog/in-conversation-dylan-field-and-david-friedberg/",
-          "date": "2026-11-06"
-        },
-        {
           "outlet": "UX Collective",
-          "title": "AI is the new old design material",
-          "url": "https://uxdesign.cc/ai-is-the-new-old-design-material-0e7f83540c9a?source=rss----138adf9c44c---4",
-          "date": "2026-11-13"
+          "title": "Prototypes have always been the most effective specification-especially with AI",
+          "url": "https://uxdesign.cc/prototypes-have-always-been-the-most-effective-specification-10162107b2ee?source=rss----138adf9c44c---4",
+          "date": "2026-11-22"
         },
         {
-          "outlet": "UX Planet",
-          "title": "Can Claude Fable 5.2 Replace Product Designers?",
-          "url": "https://uxplanet.org/can-claude-fable-5-2-replace-product-designers-8f0bd3554d12?source=rss----819cc2aaeee0---4",
-          "date": "2026-11-10"
+          "outlet": "Rosenfeld Media",
+          "title": "Design what gets shipped with David Eisner’s new book, Product Design Engineering",
+          "url": "https://rosenfeldmedia.com/design-what-gets-shipped-with-david-eisners-new-book/",
+          "date": "2026-11-20"
         },
         {
-          "outlet": "UX Tigers (Jakob Nielsen)",
-          "title": "UX Roundup: Human “Taste” Less Unique | World Usability Day | New Work With AI | Agent Waits | Pale Text | AI Teammates | Evidence | Proximity Compatibility Principle | Back Button",
-          "url": "https://www.uxtigers.com/post/ux-roundup-20261109",
-          "date": "2026-11-09"
+          "outlet": "Figma Blog",
+          "title": "Workflow lab: Turning context into a plan with Specs and the Figma agent",
+          "url": "https://www.figma.com/blog/workflow-lab-specs-and-the-figma-agent/",
+          "date": "2026-11-20"
         }
       ]
     }

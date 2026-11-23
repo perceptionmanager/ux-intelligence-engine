@@ -1,0 +1,232 @@
+{
+  "status": "ok",
+  "generatedAt": "2026-11-23T23:29:37.322Z",
+  "model": "claude-sonnet-5-5",
+  "lookbackDays": 14,
+  "articlesScanned": 58,
+  "feeds": [
+    {
+      "name": "NN/g",
+      "site": "https://www.nngroup.com",
+      "ok": true,
+      "articles": 6
+    },
+    {
+      "name": "UX Tigers (Jakob Nielsen)",
+      "site": "https://www.uxtigers.com",
+      "ok": true,
+      "articles": 6
+    },
+    {
+      "name": "Smashing Magazine",
+      "site": "https://www.smashingmagazine.com",
+      "ok": true,
+      "articles": 3
+    },
+    {
+      "name": "UX Collective",
+      "site": "https://uxdesign.cc",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "A List Apart",
+      "site": "https://alistapart.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Lenny's Newsletter",
+      "site": "https://www.lennysnewsletter.com",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Product Talk",
+      "site": "https://www.producttalk.org",
+      "ok": true,
+      "articles": 6
+    },
+    {
+      "name": "SVPG",
+      "site": "https://www.svpg.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "MeasuringU",
+      "site": "https://measuringu.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "Rosenfeld Media",
+      "site": "https://rosenfeldmedia.com",
+      "ok": true,
+      "articles": 2
+    },
+    {
+      "name": "UXmatters",
+      "site": "https://www.uxmatters.com",
+      "ok": true,
+      "articles": 0
+    },
+    {
+      "name": "Brad Frost",
+      "site": "https://bradfrost.com",
+      "ok": true,
+      "articles": 4
+    },
+    {
+      "name": "Figma Blog",
+      "site": "https://www.figma.com/blog",
+      "ok": true,
+      "articles": 5
+    },
+    {
+      "name": "UX Planet",
+      "site": "https://uxplanet.org",
+      "ok": true,
+      "articles": 8
+    },
+    {
+      "name": "Prototypr",
+      "site": "https://blog.prototypr.io",
+      "ok": true,
+      "articles": 0
+    }
+  ],
+  "briefings": [
+    {
+      "id": "discovery-mwtwe9m2",
+      "category": "discovery",
+      "categoryLabel": "Product discovery",
+      "title": "AI in user research: real participants versus synthetic ones",
+      "dek": "Teams must decide which research roles AI can take over, and whether it can replace the people being studied.",
+      "scenario": "A research team at a large retailer has a tight budget and a backlog of studies. A manager proposes using AI to run and code interviews with real customers, and also using simulated users to skip recruitment.",
+      "relation": "emphasis",
+      "positions": [
+        {
+          "label": "AI works the real data",
+          "summary": "AI can run interviews, code every open-ended answer and count themes, which makes free-form questions affordable at scale. Whether an AI moderator catches as much as a human is hard to verify, because nobody sees what was missed.",
+          "outlets": [
+            "UX Tigers (Jakob Nielsen)",
+            "MeasuringU"
+          ]
+        },
+        {
+          "label": "Synthetic users fall short",
+          "summary": "Simulated participants promise results faster and cheaper than recruiting, but the evidence cited here says they still cannot replace real people. One exception is pilot testing, where they can be useful.",
+          "outlets": [
+            "MeasuringU",
+            "UX Tigers (Jakob Nielsen)"
+          ]
+        }
+      ],
+      "context": "Recruitment is among the costliest and slowest parts of a research budget, so the pull toward AI is strong. The sources separate two uses: AI handling the work of moderating and analysis with real participants, and AI replacing the participants themselves. They treat these differently. A comparison of AI and human moderators is only a first attempt at measurement.",
+      "steps": [
+        {
+          "label": "Split the question",
+          "text": "Decide separately whether AI is doing moderation or analysis, or standing in for the participant, since the evidence differs for each."
+        },
+        {
+          "label": "Audit moderator gaps",
+          "text": "Run AI and human moderators on comparable sessions and compare which facts each surfaced before trusting the AI alone."
+        },
+        {
+          "label": "Limit synthetic users",
+          "text": "Use simulated participants only for low-risk work such as piloting a study, and keep real participants for findings that drive decisions."
+        }
+      ],
+      "caveat": "The excerpts are short and mostly summaries, so they don't show the methods or the full results behind the moderator comparison or the synthetic-user findings.",
+      "sources": [
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "Closed vs. Open Questions in User Research: AI Makes Free-Form Answers Cheap to Count",
+          "url": "https://www.uxtigers.com/post/open-closed-questions",
+          "date": "2026-11-11"
+        },
+        {
+          "outlet": "MeasuringU",
+          "title": "Do AI and Human Moderators Uncover the Same Facts?",
+          "url": "https://measuringu.com/do-ai-and-human-moderators-uncover-the-same-facts/?utm_source=rss&utm_medium=rss&utm_campaign=do-ai-and-human-moderators-uncover-the-same-facts",
+          "date": "2026-11-17"
+        },
+        {
+          "outlet": "MeasuringU",
+          "title": "Pew Research Finds the Same Problem We Did with Digital Twins",
+          "url": "https://measuringu.com/pew-research-finds-the-same-problem-we-did-with-digital-twins/?utm_source=rss&utm_medium=rss&utm_campaign=pew-research-finds-the-same-problem-we-did-with-digital-twins",
+          "date": "2026-11-10"
+        },
+        {
+          "outlet": "UX Tigers (Jakob Nielsen)",
+          "title": "UX Roundup: No More Web | Social Knowledge Work | Auto-Logout | Agents in the Field | Agentic Training Video | Unused Research | Synthetic Users | Onboarding | AI Restraint",
+          "url": "https://www.uxtigers.com/post/ux-roundup-20261113",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "tooling-mwtwe93l",
+      "category": "tooling",
+      "categoryLabel": "Tooling and AI",
+      "title": "When the prototype arrives before the requirements",
+      "dek": "Teams must decide whether a working build now serves as the spec, or whether a structured context document still has to come first.",
+      "scenario": "A designer at a large company builds a working version of a feature between meetings, days before the scheduled requirements review. The team now has to choose between treating that build as the reference and sending it back through the planned write-up and sign-off.",
+      "relation": "disagree",
+      "positions": [
+        {
+          "label": "The build is the spec",
+          "summary": "When a working version takes an afternoon, the prototype can come first and the written requirements can follow from it. Designers who work in code also remove handoffs, because more of what they design is what ships.",
+          "outlets": [
+            "UX Collective",
+            "Rosenfeld Media"
+          ]
+        },
+        {
+          "label": "Gather context before building",
+          "summary": "A shared workspace that collects diagrams, designs, and technical decisions, with an AI agent working from it, still turns scattered context into a plan. In this view the plan is what makes implementation easy.",
+          "outlets": [
+            "Figma Blog"
+          ]
+        }
+      ],
+      "context": "AI tools have cut the cost of producing working software, so the old order of requirements, sign-off, then build is under pressure. Design-engineering hybrids, once rare, are becoming a more common way to work. Tool vendors are responding with products that keep a planning artifact in the loop.",
+      "steps": [
+        {
+          "label": "Audit your sequence",
+          "text": "Check where in your current process a working prototype already appears before requirements are signed off, and whether anyone is treating it as the reference."
+        },
+        {
+          "label": "Name the source of truth",
+          "text": "Decide explicitly whether the build, a spec document, or a combined context space is authoritative, so engineers and designers are not working from competing artifacts."
+        },
+        {
+          "label": "Test on one feature",
+          "text": "Run a single feature with the prototype as the primary spec and compare the review effort and rework against a feature that used a written plan."
+        }
+      ],
+      "caveat": "The excerpts are short and come from an essay, a book promotion, and a tool vendor's blog, so none of them shows evidence on quality, rework, or how teams handle edge cases and accountability without a written spec.",
+      "sources": [
+        {
+          "outlet": "UX Collective",
+          "title": "Prototypes have always been the most effective specification-especially with AI",
+          "url": "https://uxdesign.cc/prototypes-have-always-been-the-most-effective-specification-10162107b2ee?source=rss----138adf9c44c---4",
+          "date": "2026-11-22"
+        },
+        {
+          "outlet": "Rosenfeld Media",
+          "title": "Design what gets shipped with David Eisner’s new book, Product Design Engineering",
+          "url": "https://rosenfeldmedia.com/design-what-gets-shipped-with-david-eisners-new-book/",
+          "date": "2026-11-20"
+        },
+        {
+          "outlet": "Figma Blog",
+          "title": "Workflow lab: Turning context into a plan with Specs and the Figma agent",
+          "url": "https://www.figma.com/blog/workflow-lab-specs-and-the-figma-agent/",
+          "date": "2026-11-20"
+        }
+      ]
+    }
+  ]
+}
